@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, CheckCircle2, ArrowRight, Quote } from "lucide-react";
 import hero from "@/assets/hero-advocate.jpg";
 import court from "@/assets/court.jpg";
-import emblem from "@/assets/urmika-emblem.png.asset.json";
+import portrait from "@/assets/advocate-portrait.jpg";
+import { ConsultationSection, TeamSection, GlimpsesSection, FaqSection } from "@/components/site/Sections";
 import { SiteShell, SectionTitle } from "@/components/site/Layout";
 import { FIRM, PRACTICE, STATS } from "@/components/site/data";
 
@@ -72,7 +73,7 @@ function Index() {
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-2">
           <div className="relative">
-            <img src={emblem.url} alt="Urmika Juris & Associates emblem" loading="lazy" className="w-full rounded-2xl shadow-card" />
+            <img src={portrait} alt={`Advocate ${FIRM.advocate}`} loading="lazy" className="mx-auto h-[560px] w-full max-w-md rounded-2xl object-cover object-top shadow-card" />
             <div className="absolute -bottom-6 -right-4 rounded-xl bg-gold px-6 py-4 text-primary-foreground shadow-gold">
               <div className="font-display text-3xl">15+</div>
               <div className="text-xs font-semibold">Years of Excellence</div>
@@ -114,6 +115,10 @@ function Index() {
         </div>
       </section>
 
+      <ConsultationSection />
+      <TeamSection />
+      <GlimpsesSection />
+
       {/* Courts band */}
       <section className="relative overflow-hidden bg-navy-deep py-24 text-navy-foreground">
         <img src={court} alt="Supreme Court of India" loading="lazy" width={1280} height={832} className="absolute inset-0 h-full w-full object-cover opacity-25" />
@@ -142,6 +147,7 @@ function Index() {
           </div>
         </div>
       </section>
+      <FaqSection />
     </SiteShell>
   );
 }

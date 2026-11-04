@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Scale, ShieldCheck, Handshake } from "lucide-react";
-import hero from "@/assets/hero-advocate.jpg";
+import hero from "@/assets/advocate-portrait.jpg";
+import { TeamSection, GlimpsesSection } from "@/components/site/Sections";
 import { SiteShell, PageHero, SectionTitle } from "@/components/site/Layout";
 import { FIRM, STATS } from "@/components/site/data";
 
@@ -28,7 +29,7 @@ function About() {
       <PageHero eyebrow="About Us" title="Truth Alone Triumphs" subtitle="A firm founded on ethics, expertise and an unwavering commitment to our clients." />
       <section className="py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-2">
-          <img src={hero} alt={`Advocate ${FIRM.advocate}`} loading="lazy" width={1280} height={1024} className="rounded-2xl shadow-card" />
+          <img src={hero} alt={`Advocate ${FIRM.advocate}`} loading="lazy" className="mx-auto h-[600px] w-full max-w-md rounded-2xl object-cover object-top shadow-card" />
           <div>
             <p className="text-sm uppercase tracking-[0.3em] text-gold">Founder & Principal Advocate</p>
             <h2 className="mt-3 text-3xl text-navy md:text-4xl">{FIRM.advocate}</h2>
@@ -63,6 +64,8 @@ function About() {
           </div>
         </div>
       </section>
+      <TeamSection />
+      <GlimpsesSection />
     </SiteShell>
   );
 }
