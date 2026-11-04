@@ -34,6 +34,6 @@ describe("App routing", () => {
     const last = matches.at(-1);
 
     expect(last?.routeId).not.toBe(rootRouteId);
-    expect(last?.pathname).toBe("/practice-areas");
+    expect(last?.pathname).toBe("/practice-areas/");
   });
 });
