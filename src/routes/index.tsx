@@ -4,8 +4,9 @@ import hero from "@/assets/hero-advocate.jpg";
 import court from "@/assets/court.jpg";
 import portrait from "@/assets/advocate-portrait.jpg";
 import { ConsultationSection, TeamSection, GlimpsesSection, FaqSection } from "@/components/site/Sections";
+import { PracticeAreasSection } from "@/components/site/PracticeAreas";
 import { SiteShell, SectionTitle } from "@/components/site/Layout";
-import { FIRM, PRACTICE, STATS } from "@/components/site/data";
+import { FIRM, STATS } from "@/components/site/data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -98,22 +99,7 @@ function Index() {
       </section>
 
       {/* Practice */}
-      <section className="bg-secondary py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionTitle eyebrow="What We Do" title="Our Practice Areas" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {PRACTICE.map((p) => (
-              <div key={p.title} className="group rounded-2xl border bg-card p-6 shadow-card transition hover:-translate-y-1 hover:border-gold">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-navy text-gold group-hover:bg-gold group-hover:text-primary-foreground">
-                  <p.icon className="h-6 w-6" />
-                </div>
-                <h3 className="mt-5 text-lg text-navy">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PracticeAreasSection limit={6} showMore subtitle="Focused counsel across every major branch of law — each area handled by advocates who appear before these forums regularly." />
 
       <ConsultationSection />
       <TeamSection />

@@ -83,7 +83,13 @@ export function Footer() {
           <div>
             <h4 className="font-display text-gold">Practice Areas</h4>
             <ul className="mt-4 space-y-2 text-sm text-navy-foreground/75">
-              {PRACTICE.slice(0, 5).map((p) => <li key={p.title}>{p.title}</li>)}
+              {PRACTICE.slice(0, 5).map((p) => (
+                <li key={p.slug}>
+                  <Link to="/practice-areas/$slug" params={{ slug: p.slug }} className="hover:text-gold">
+                    {p.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
