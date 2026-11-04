@@ -22,8 +22,8 @@ describe("App routing", () => {
     for (const area of PRACTICE) {
       const matches = router.matchRoutes(`/practice-areas/${area.slug}`);
       const last = matches.at(-1);
-      expect(last?.routeId).not.toBe(rootRouteId);
-      expect(last?.params.slug).toBe(area.slug);
+      expect(last?.routeId).toBe("/practice-areas/$slug");
+      expect(last?.pathname).toBe(`/practice-areas/${area.slug}`);
     }
   });
 
