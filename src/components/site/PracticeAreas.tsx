@@ -20,11 +20,11 @@ export function PracticeCard({ area }: { area: PracticeArea }) {
           </li>
         ))}
       </ul>
-      <div className="mt-auto pt-7">
+      <div className="mt-auto pt-7 text-center">
         <Link
           to="/practice-areas/$slug"
           params={{ slug: area.slug }}
-          className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-gold transition hover:brightness-110"
+          className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-2.5 text-sm font-semibold text-primary-foreground shadow-gold transition hover:brightness-110"
         >
           Know More <ArrowRight className="h-4 w-4" />
         </Link>
