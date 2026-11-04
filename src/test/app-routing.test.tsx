@@ -14,4 +14,25 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("matches every practice area slug on its own page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    for (const area of PRACTICE) {
+      const matches = router.matchRoutes(`/practice-areas/${area.slug}`);
+      const last = matches.at(-1);
+      expect(last?.routeId).not.toBe(rootRouteId);
+      expect(last?.params.slug).toBe(area.slug);
+    }
+  });
+
+  it("still serves the practice areas listing at /practice-areas", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    const matches = router.matchRoutes("/practice-areas");
+    const last = matches.at(-1);
+
+    expect(last?.routeId).not.toBe(rootRouteId);
+    expect(last?.pathname).toBe("/practice-areas");
+  });
 });
