@@ -20,14 +20,15 @@ export function PracticeCard({ area }: { area: PracticeArea }) {
           </li>
         ))}
       </ul>
-      <Link
-        to="/practice-areas/$slug"
-        params={{ slug: area.slug }}
-        className="mt-auto inline-flex w-fit items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-gold transition hover:brightness-110"
-        style={{ marginTop: "1.75rem" }}
-      >
-        Know More <ArrowRight className="h-4 w-4" />
-      </Link>
+      <div className="mt-auto pt-7">
+        <Link
+          to="/practice-areas/$slug"
+          params={{ slug: area.slug }}
+          className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-primary-foreground shadow-gold transition hover:brightness-110"
+        >
+          Know More <ArrowRight className="h-4 w-4" />
+        </Link>
+      </div>
     </div>
   );
 }
