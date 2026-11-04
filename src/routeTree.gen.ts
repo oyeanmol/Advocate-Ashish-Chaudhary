@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as PracticeAreasRouteImport } from './routes/practice-areas'
+import { Route as PracticeAreasIndexRouteImport } from './routes/practice-areas/index'
+import { Route as PracticeAreasSlugRouteImport } from './routes/practice-areas/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,39 +36,67 @@ const PracticeAreasRoute = PracticeAreasRouteImport.update({
   path: '/practice-areas',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PracticeAreasIndexRoute = PracticeAreasIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => PracticeAreasRoute,
+} as any)
+const PracticeAreasSlugRoute = PracticeAreasSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => PracticeAreasRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/practice-areas': typeof PracticeAreasRoute
+  '/practice-areas': typeof PracticeAreasRouteWithChildren
+  '/practice-areas/$slug': typeof PracticeAreasSlugRoute
+  '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/practice-areas': typeof PracticeAreasRoute
+  '/practice-areas/$slug': typeof PracticeAreasSlugRoute
+  '/practice-areas': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
-  '/practice-areas': typeof PracticeAreasRoute
+  '/practice-areas': typeof PracticeAreasRouteWithChildren
+  '/practice-areas/$slug': typeof PracticeAreasSlugRoute
+  '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/practice-areas'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/practice-areas'
+    | '/practice-areas/$slug'
+    | '/practice-areas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/practice-areas'
-  id: '__root__' | '/' | '/about' | '/contact' | '/practice-areas'
+  to: '/' | '/about' | '/contact' | '/practice-areas/$slug' | '/practice-areas'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/practice-areas'
+    | '/practice-areas/$slug'
+    | '/practice-areas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
-  PracticeAreasRoute: typeof PracticeAreasRoute
+  PracticeAreasRoute: typeof PracticeAreasRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -99,14 +129,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PracticeAreasRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/practice-areas/': {
+      id: '/practice-areas/'
+      path: '/'
+      fullPath: '/practice-areas/'
+      preLoaderRoute: typeof PracticeAreasIndexRouteImport
+      parentRoute: typeof PracticeAreasRoute
+    }
+    '/practice-areas/$slug': {
+      id: '/practice-areas/$slug'
+      path: '/$slug'
+      fullPath: '/practice-areas/$slug'
+      preLoaderRoute: typeof PracticeAreasSlugRouteImport
+      parentRoute: typeof PracticeAreasRoute
+    }
   }
 }
+
+interface PracticeAreasRouteChildren {
+  PracticeAreasSlugRoute: typeof PracticeAreasSlugRoute
+  PracticeAreasIndexRoute: typeof PracticeAreasIndexRoute
+}
+
+const PracticeAreasRouteChildren: PracticeAreasRouteChildren = {
+  PracticeAreasSlugRoute: PracticeAreasSlugRoute,
+  PracticeAreasIndexRoute: PracticeAreasIndexRoute,
+}
+
+const PracticeAreasRouteWithChildren = PracticeAreasRoute._addFileChildren(
+  PracticeAreasRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
-  PracticeAreasRoute: PracticeAreasRoute,
+  PracticeAreasRoute: PracticeAreasRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
