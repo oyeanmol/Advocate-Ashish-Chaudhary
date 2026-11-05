@@ -41,8 +41,8 @@ function Index() {
       <section className="relative overflow-hidden bg-navy-deep text-navy-foreground">
         <img src={heroLibrary} alt="Law library chambers" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-hero-overlay absolute inset-0" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-navy-deep via-navy-deep/70 to-transparent" />
-        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-10 px-4 pt-20 pb-16 md:pt-24 md:pb-20 lg:flex-row lg:items-end lg:gap-8 lg:pt-28 lg:pb-0">
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-deep via-navy-deep/70 to-transparent" />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 pt-20 pb-0 md:pt-24 lg:flex-row lg:items-end lg:gap-8 lg:pt-28">
           <div className="w-full lg:max-w-xl lg:flex-1 lg:pb-24">
             <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-navy/60 px-4 py-1.5 text-sm">
               <span className="h-2 w-2 rounded-full bg-gold" /> {FIRM.tagline}
@@ -72,13 +72,14 @@ function Index() {
             </div>
           </div>
           <div className="relative w-full lg:flex-1">
-            <div className="absolute inset-x-10 bottom-10 h-40 rounded-full bg-gold/15 blur-3xl" />
+            <div className="absolute inset-x-10 bottom-12 h-36 rounded-full bg-gold/15 blur-3xl" />
+            <div className="absolute inset-x-20 bottom-0 h-6 rounded-[100%] bg-black/60 blur-lg" />
             <img
               src={team.url}
               alt={`Advocates of ${FIRM.name}`}
               width={1774}
               height={887}
-              className="relative w-full max-w-2xl drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] lg:ml-auto lg:-mr-6 lg:-mb-3 xl:-mr-10"
+              className="relative w-full max-w-2xl drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] lg:ml-auto lg:-mr-6 lg:-mb-4 xl:-mr-10"
             />
           </div>
         </div>

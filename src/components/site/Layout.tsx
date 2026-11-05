@@ -114,11 +114,11 @@ export function Footer() {
 export function FloatingButtons() {
   return (
     <div className="fixed bottom-5 right-5 z-50 flex flex-col gap-3">
-      <a href={FIRM.whatsapp} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full bg-whatsapp px-5 py-3 font-semibold text-navy-foreground shadow-card">
-        WhatsApp <MessageCircle className="h-5 w-5" />
+      <a href={FIRM.whatsapp} target="_blank" rel="noreferrer" className="flex items-center gap-2 rounded-full bg-whatsapp px-3.5 py-3 font-semibold text-navy-foreground shadow-card sm:px-5">
+        <span className="hidden sm:inline">WhatsApp</span> <MessageCircle className="h-5 w-5" />
       </a>
-      <a href={FIRM.phoneHref} className="flex items-center gap-2 rounded-full bg-gold px-5 py-3 font-semibold text-primary-foreground shadow-gold">
-        Call Now <Phone className="h-5 w-5" />
+      <a href={FIRM.phoneHref} className="flex items-center gap-2 rounded-full bg-gold px-3.5 py-3 font-semibold text-primary-foreground shadow-gold sm:px-5">
+        <span className="hidden sm:inline">Call Now</span> <Phone className="h-5 w-5" />
       </a>
     </div>
   );
