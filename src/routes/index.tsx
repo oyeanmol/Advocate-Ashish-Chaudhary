@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Phone, CheckCircle2, ArrowRight, Quote } from "lucide-react";
-import hero from "@/assets/hero-advocate.jpg";
+import heroLibrary from "@/assets/hero-library.jpg";
+import team from "@/assets/team-advocates.png.asset.json";
 import court from "@/assets/court.jpg";
 import portrait from "@/assets/advocate-portrait.jpg";
 import { ConsultationSection, TeamSection, GlimpsesSection, FaqSection } from "@/components/site/Sections";
@@ -38,34 +39,48 @@ function Index() {
     <SiteShell>
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-deep text-navy-foreground">
-        <img src={hero} alt="Advocate in chambers" width={1280} height={1024} className="absolute inset-0 h-full w-full object-cover object-[70%_center]" />
+        <img src={heroLibrary} alt="Law library chambers" width={1600} height={912} className="absolute inset-0 h-full w-full object-cover" />
         <div className="bg-hero-overlay absolute inset-0" />
-        <div className="relative mx-auto max-w-7xl px-4 py-24 md:py-32">
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-navy/60 px-4 py-1.5 text-sm">
-            <span className="h-2 w-2 rounded-full bg-gold" /> {FIRM.tagline}
-          </span>
-          <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
-            Welcome to <span className="text-gold-gradient">Urmika Juris</span> & Associates
-          </h1>
-          <p className="mt-5 font-serif text-2xl text-gold-soft">Trusted Legal Counsel. Unwavering Commitment to Justice.</p>
-          <p className="mt-4 max-w-xl text-navy-foreground/75">
-            Led by Advocate {FIRM.advocate}, we provide strategic, ethical and result-driven legal representation across courts — from consultation to final verdict.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <a href={FIRM.phoneHref} className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-semibold text-primary-foreground shadow-gold">
-              <Phone className="h-4 w-4" /> Call {FIRM.phone}
-            </a>
-            <Link to="/practice-areas" className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-7 py-3.5 font-semibold hover:bg-navy">
-              Our Services <ArrowRight className="h-4 w-4" />
-            </Link>
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-deep via-navy-deep/70 to-transparent" />
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 pt-20 pb-0 md:pt-24 lg:flex-row lg:items-end lg:gap-8 lg:pt-28">
+          <div className="w-full lg:max-w-xl lg:flex-1 lg:pb-24">
+            <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-navy/60 px-4 py-1.5 text-sm">
+              <span className="h-2 w-2 rounded-full bg-gold" /> {FIRM.tagline}
+            </span>
+            <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-tight md:text-6xl">
+              Welcome to <span className="text-gold-gradient">Urmika Juris</span> & Associates
+            </h1>
+            <p className="mt-5 font-serif text-2xl text-gold-soft">Trusted Legal Counsel. Unwavering Commitment to Justice.</p>
+            <p className="mt-4 max-w-xl text-navy-foreground/75">
+              Led by Advocate {FIRM.advocate}, we provide strategic, ethical and result-driven legal representation across courts — from consultation to final verdict.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <a href={FIRM.phoneHref} className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-semibold text-primary-foreground shadow-gold">
+                <Phone className="h-4 w-4" /> Call {FIRM.phone}
+              </a>
+              <Link to="/practice-areas" className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-7 py-3.5 font-semibold hover:bg-navy">
+                Our Services <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="mt-12 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
+              {STATS.map((s) => (
+                <div key={s.label} className="rounded-xl border border-gold/20 bg-navy/60 p-4 backdrop-blur">
+                  <div className="font-display text-2xl text-gold">{s.value}</div>
+                  <div className="text-xs text-navy-foreground/70">{s.label}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-12 grid max-w-2xl grid-cols-2 gap-4 md:grid-cols-4">
-            {STATS.map((s) => (
-              <div key={s.label} className="rounded-xl border border-gold/20 bg-navy/60 p-4 backdrop-blur">
-                <div className="font-display text-2xl text-gold">{s.value}</div>
-                <div className="text-xs text-navy-foreground/70">{s.label}</div>
-              </div>
-            ))}
+          <div className="relative w-full lg:flex-1">
+            <div className="absolute inset-x-10 bottom-12 h-36 rounded-full bg-gold/15 blur-3xl" />
+            <div className="absolute inset-x-20 bottom-0 h-6 rounded-[100%] bg-black/60 blur-lg" />
+            <img
+              src={team.url}
+              alt={`Advocates of ${FIRM.name}`}
+              width={1774}
+              height={887}
+              className="relative w-full max-w-2xl drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)] lg:ml-auto lg:-mr-6 lg:-mb-4 xl:-mr-10"
+            />
           </div>
         </div>
       </section>
