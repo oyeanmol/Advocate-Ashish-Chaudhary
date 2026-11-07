@@ -5,35 +5,37 @@ import {
   Clock,
   Phone,
   MessageCircle,
-  Scale,
-  CheckCircle2,
   MapPin,
-  Calendar,
-  Send,
-  ArrowRight,
+  AlertCircle,
+  ExternalLink,
+  Edit3,
 } from "lucide-react";
 import { FIRM, LEGAL_SERVICES } from "./data";
 import urmikaOriginalLogo from "@/assets/urmika-original-logo.jpg";
 import { ConsultationModalContext, useConsultationModal } from "@/hooks/use-consultation-modal";
+import { WhatsAppLogo } from "./WhatsAppLogo";
 
 export { useConsultationModal };
 
 export function ConsultationModalProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [handoffActive, setHandoffActive] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = useState<string>("");
 
   // Form states
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [service, setService] = useState("criminal-lawyer");
-  const [mode, setMode] = useState("Tis Hazari Chamber Visit");
+  const [mode, setMode] = useState<"Phone Call" | "Chamber Visit" | "Video Conference">("Chamber Visit");
   const [notes, setNotes] = useState("");
   const [agreed, setAgreed] = useState(true);
 
   const openModal = () => {
     setIsOpen(true);
-    setSubmitted(false);
+    setHandoffActive(false);
+    setValidationError(null);
   };
 
   const closeModal = () => {
@@ -59,19 +61,65 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
     };
   }, [isOpen]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const selectedServiceObj = LEGAL_SERVICES.find((s) => s.slug === service);
+  const selectedServiceTitle =
+    selectedServiceObj?.title ??
+    (LEGAL_SERVICES[0]?.title ?? "General Legal Consultation");
+
+  const handleWhatsAppHandoff = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) return;
-    setSubmitted(true);
+    setValidationError(null);
+
+    const cleanName = name.trim();
+    const cleanPhone = phone.trim();
+    const digitsOnly = cleanPhone.replace(/\D/g, "");
+
+    if (cleanName.length < 2) {
+      setValidationError("Please enter your full name (minimum 2 characters).");
+      return;
+    }
+
+    if (digitsOnly.length < 10 || digitsOnly.length > 15) {
+      setValidationError("Please enter a valid mobile number (10 to 15 digits).");
+      return;
+    }
+
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setValidationError("Please enter a valid email address or leave it blank.");
+      return;
+    }
+
+    if (!agreed) {
+      setValidationError("Please acknowledge the 30-minute structured consultation terms under BCI Rule 36.");
+      return;
+    }
+
+    // Build prewritten WhatsApp message using visitor's actual form inputs
+    const messageLines = [
+      "Hello Urmika Juris & Associates,",
+      "",
+      "I would like to request an initial legal consultation at your Tis Hazari chamber.",
+      "",
+      `• Name: ${cleanName}`,
+      `• Phone: ${cleanPhone}`,
+      email.trim() ? `• Email: ${email.trim()}` : null,
+      `• Legal Service Area: ${selectedServiceTitle}`,
+      `• Preferred Consultation Mode: ${mode}`,
+      notes.trim() ? `• Brief Matter Notes: ${notes.trim()}` : null,
+    ].filter(Boolean) as string[];
+
+    const whatsappUrl = `https://wa.me/918802487291?text=${encodeURIComponent(messageLines.join("\n"))}`;
+    setPreparedWhatsAppUrl(whatsappUrl);
+
+    // Open WhatsApp in a new tab/window
+    try {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      // Browser popup blocker fallback is rendered in the handoff UI
+    }
+
+    setHandoffActive(true);
   };
-
-  const selectedServiceObj = LEGAL_SERVICES.find((s) => s.slug === service) || LEGAL_SERVICES[0];
-
-  // Dynamic WhatsApp link with user's details prefilled
-  const encodedQuery = encodeURIComponent(
-    `Hello Urmika Juris & Associates,\n\nI would like to book a 30-minute legal consultation.\n\n• Name: ${name || "Client"}\n• Phone: ${phone || "Not provided"}\n• Legal Domain: ${selectedServiceObj.title}\n• Preferred Mode: ${mode}\n• Brief Concern: ${notes || "Legal inquiry"}`,
-  );
-  const dynamicWhatsAppUrl = `https://wa.me/918802487291?text=${encodedQuery}`;
 
   return (
     <ConsultationModalContext.Provider value={{ isOpen, openModal, closeModal }}>
@@ -86,13 +134,13 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
             if (e.target === e.currentTarget) closeModal();
           }}
         >
-          <div className="relative w-full max-w-4xl overflow-hidden rounded-xl border border-[#FEC556]/40 bg-[#0F1D38] text-white shadow-2xl transition-all duration-300">
+          <div className="relative w-full max-w-4xl overflow-hidden rounded-xl border border-[#FEC556]/40 bg-[#0F1D38] text-white shadow-2xl transition-transform duration-300">
             {/* Modal Close Button */}
             <button
               type="button"
               onClick={closeModal}
               aria-label="Close consultation modal"
-              className="absolute top-4 right-4 z-20 rounded-md bg-black/40 p-2 text-gray-300 hover:bg-[#172B54] hover:text-white transition cursor-pointer border border-white/10"
+              className="absolute top-4 right-4 z-20 rounded-md bg-black/40 p-2 text-gray-300 hover:bg-[#172B54] hover:text-white transition-colors duration-200 cursor-pointer border border-white/10"
             >
               <X className="h-5 w-5" />
             </button>
@@ -181,17 +229,17 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                       rel="noreferrer"
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-[#34A853] hover:brightness-110 transition"
                     >
-                      <MessageCircle className="h-3.5 w-3.5" />
+                      <WhatsAppLogo className="h-3.5 w-3.5" />
                       <span>WhatsApp</span>
                     </a>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: High-Trust Consultation Booking Form */}
+              {/* Right Column: Consultation Booking Form / WhatsApp Handoff */}
               <div className="lg:col-span-7 bg-white text-[#111827] p-6 sm:p-8 flex flex-col justify-between">
-                {!submitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                {!handoffActive ? (
+                  <form onSubmit={handleWhatsAppHandoff} className="space-y-4">
                     <div>
                       <div className="inline-block border-l-2 border-[#172B54] bg-[#FEFBF3] px-2.5 py-0.5 text-[10.5px] font-bold uppercase tracking-wider text-[#172B54] mb-2">
                         Case Appointment Request
@@ -200,9 +248,17 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                         Schedule Your Discussion
                       </h4>
                       <p className="text-xs text-gray-500 mt-0.5">
-                        Please provide preliminary matter details for conflict checks.
+                        Fill in your matter details to prepare your direct chamber WhatsApp enquiry.
                       </p>
                     </div>
+
+                    {/* Validation Error Banner */}
+                    {validationError && (
+                      <div className="rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800 flex items-start gap-2">
+                        <AlertCircle className="h-4 w-4 shrink-0 text-red-600 mt-0.5" />
+                        <div>{validationError}</div>
+                      </div>
+                    )}
 
                     {/* Full Name & Phone Number */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
@@ -222,30 +278,31 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
 
                       <div>
                         <label className="block text-xs font-bold text-gray-700 mb-1">
-                          Contact Number <span className="text-red-500">*</span>
+                          Mobile Number <span className="text-red-500">*</span>
                         </label>
                         <input
                           type="tel"
                           required
                           value={phone}
                           onChange={(e) => setPhone(e.target.value)}
-                          placeholder="e.g. +91 98110 XXXXX"
+                          placeholder="e.g. +91 98765 43210"
                           className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-xs text-gray-900 outline-none focus:border-[#172B54] focus:ring-1 focus:ring-[#172B54]"
                         />
                       </div>
                     </div>
 
-                    {/* Email & Legal Domain */}
+                    {/* Email (Optional) & Practice Area */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
                         <label className="block text-xs font-bold text-gray-700 mb-1">
-                          Email Address (Optional)
+                          Email Address{" "}
+                          <span className="text-[10px] text-gray-400 font-normal">(Optional)</span>
                         </label>
                         <input
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          placeholder="e.g. name@example.com"
+                          placeholder="name@example.com"
                           className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-xs text-gray-900 outline-none focus:border-[#172B54] focus:ring-1 focus:ring-[#172B54]"
                         />
                       </div>
@@ -268,49 +325,50 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                       </div>
                     </div>
 
-                    {/* Consultation Mode */}
+                    {/* Consultation Mode Selection */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 mb-1">
                         Preferred Consultation Mode
                       </label>
                       <div className="grid grid-cols-3 gap-2">
-                        {[
-                          "Tis Hazari Chamber Visit",
-                          "Telephonic Review",
-                          "Virtual Video Session",
-                        ].map((m) => (
-                          <button
-                            key={m}
-                            type="button"
-                            onClick={() => setMode(m)}
-                            className={`rounded border px-2.5 py-2 text-[11px] font-semibold text-center transition cursor-pointer ${
-                              mode === m
-                                ? "border-[#172B54] bg-[#172B54] text-[#FEC556] shadow-sm"
-                                : "border-gray-200 bg-[#FEFBF3] text-gray-700 hover:border-gray-400"
-                            }`}
-                          >
-                            {m}
-                          </button>
-                        ))}
+                        {(["Chamber Visit", "Phone Call", "Video Conference"] as const).map(
+                          (m) => (
+                            <button
+                              key={m}
+                              type="button"
+                              onClick={() => setMode(m)}
+                              className={`py-2 px-1 text-center rounded text-xs font-semibold border transition cursor-pointer ${
+                                mode === m
+                                  ? "bg-[#172B54] text-[#FEC556] border-[#172B54] shadow-sm"
+                                  : "bg-gray-50 text-gray-600 border-gray-200 hover:bg-gray-100"
+                              }`}
+                            >
+                              {m}
+                            </button>
+                          ),
+                        )}
                       </div>
                     </div>
 
                     {/* Brief Query Notes */}
                     <div>
                       <label className="block text-xs font-bold text-gray-700 mb-1">
-                        Brief Summary of Matter / Query
+                        Brief Case Summary / Matter Overview{" "}
+                        <span className="text-[10px] text-gray-400 font-normal">
+                          (Confidential)
+                        </span>
                       </label>
                       <textarea
-                        rows={3}
+                        rows={2}
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}
-                        placeholder="Briefly mention the nature of dispute, FIR number, court jurisdiction, or document verification required..."
+                        placeholder="Briefly describe your legal concern, court forum, or key questions for the advocates..."
                         className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-xs text-gray-900 outline-none focus:border-[#172B54] focus:ring-1 focus:ring-[#172B54]"
                       />
                     </div>
 
-                    {/* Norms & Agreement Checkbox */}
-                    <label className="flex items-start gap-2.5 cursor-pointer pt-1">
+                    {/* BCI Rule 36 Checkbox */}
+                    <label className="flex items-start gap-2 cursor-pointer pt-1">
                       <input
                         type="checkbox"
                         checked={agreed}
@@ -323,77 +381,78 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                       </span>
                     </label>
 
-                    {/* Form Submit & Quick Actions */}
-                    <div className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                    {/* Primary Button: Continue to WhatsApp */}
+                    <div className="pt-2">
                       <button
                         type="submit"
                         disabled={!agreed}
-                        className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 rounded bg-[#172B54] py-3 text-xs font-bold text-[#FEC556] shadow-md hover:bg-[#1f386e] transition-all disabled:opacity-50 cursor-pointer"
+                        className="w-full inline-flex items-center justify-center gap-2 rounded bg-[#34A853] py-3.5 text-xs font-bold text-white shadow-md hover:brightness-110 transition-colors duration-200 disabled:opacity-50 cursor-pointer"
                       >
-                        <span>Confirm & Request Consultation</span>
-                        <ArrowRight className="h-4 w-4" />
+                        <WhatsAppLogo className="h-4 w-4" />
+                        <span>Continue to WhatsApp</span>
                       </button>
-
-                      <a
-                        href={dynamicWhatsAppUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded bg-[#34A853] px-4 py-3 text-xs font-bold text-white shadow-md hover:brightness-110 transition cursor-pointer"
-                      >
-                        <MessageCircle className="h-4 w-4" />
-                        <span>WhatsApp Now</span>
-                      </a>
+                      <p className="mt-2 text-center text-[11px] text-gray-500">
+                        Direct connection to Chamber Helpline: <strong>+91 88024 87291</strong>
+                      </p>
                     </div>
                   </form>
                 ) : (
-                  /* Success Confirmation Screen */
-                  <div className="py-8 text-center space-y-5 animate-in fade-in duration-300">
-                    <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-[#34A853]">
-                      <CheckCircle2 className="h-10 w-10" />
+                  /* WhatsApp Handoff Information Screen */
+                  <div className="py-6 text-center space-y-5 animate-in fade-in duration-300">
+                    <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-[#34A853]">
+                      <WhatsAppLogo className="h-8 w-8" />
                     </div>
 
                     <div>
-                      <h4 className="font-heading text-2xl font-extrabold text-[#172B54]">
-                        Consultation Request Received
+                      <h4 className="font-heading text-xl sm:text-2xl font-extrabold text-[#172B54]">
+                        WhatsApp Enquiry Prepared
                       </h4>
-                      <p className="mt-2 text-xs sm:text-sm text-gray-600 max-w-md mx-auto leading-relaxed">
-                        Thank you, <strong className="text-gray-900">{name}</strong>. Your inquiry
-                        for <strong className="text-gray-900">{selectedServiceObj.title}</strong>{" "}
-                        has been logged with our chamber registry.
-                      </p>
-                    </div>
-
-                    <div className="rounded-lg border border-amber-200 bg-[#FEFBF3] p-4 text-xs text-left text-gray-700 max-w-md mx-auto space-y-1.5">
-                      <div className="font-bold text-[#172B54] border-b border-amber-200/60 pb-1">
-                        Next Procedural Steps:
-                      </div>
-                      <div>• Mode: {mode}</div>
-                      <div>• Contact Number: {phone}</div>
-                      <div>
-                        • Chamber Officer will connect within 30 minutes during working hours.
-                      </div>
-                      <div>
-                        • Urgent inquiries: Please proceed to WhatsApp with details pre-filled.
+                      <div className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-3.5 text-xs text-emerald-950 font-medium max-w-md mx-auto leading-relaxed shadow-sm">
+                        "WhatsApp is opening with your enquiry details. Please review the message and press Send to share it with the chamber."
                       </div>
                     </div>
 
-                    <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
+                    {/* Summary of Prepared Details */}
+                    <div className="rounded-lg border border-gray-200 bg-[#FEFBF3] p-4 text-xs text-left text-gray-700 max-w-md mx-auto space-y-1.5">
+                      <div className="font-bold text-[#172B54] border-b border-gray-200 pb-1">
+                        Prepared Consultation Details:
+                      </div>
+                      <div>• <strong>Name:</strong> {name}</div>
+                      <div>• <strong>Phone:</strong> {phone}</div>
+                      {email && <div>• <strong>Email:</strong> {email}</div>}
+                      <div>• <strong>Legal Service:</strong> {selectedServiceTitle}</div>
+                      <div>• <strong>Mode:</strong> {mode}</div>
+                      {notes && <div>• <strong>Notes:</strong> {notes}</div>}
+                    </div>
+
+                    {/* Fallback CTAs for browser/app compatibility */}
+                    <div className="pt-2 flex flex-col gap-2.5 max-w-md mx-auto">
                       <a
-                        href={dynamicWhatsAppUrl}
+                        href={preparedWhatsAppUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 rounded bg-[#34A853] px-6 py-3 text-xs font-bold text-white shadow hover:brightness-110 transition"
+                        className="inline-flex items-center justify-center gap-2 rounded bg-[#34A853] py-3 text-xs font-bold text-white shadow hover:brightness-110 transition cursor-pointer"
                       >
-                        <MessageCircle className="h-4 w-4" />
-                        <span>Open Details in WhatsApp</span>
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Open WhatsApp Again</span>
                       </a>
+
                       <a
                         href={FIRM.phoneHref}
-                        className="inline-flex items-center gap-2 rounded border border-gray-300 bg-white px-5 py-3 text-xs font-bold text-[#172B54] hover:bg-gray-50 transition"
+                        className="inline-flex items-center justify-center gap-2 rounded border border-gray-300 bg-white py-2.5 text-xs font-bold text-[#172B54] hover:bg-gray-50 transition cursor-pointer"
                       >
                         <Phone className="h-4 w-4 text-[#172B54]" />
-                        <span>Direct Call: {FIRM.phone}</span>
+                        <span>Call Chamber Directly: {FIRM.phone}</span>
                       </a>
+
+                      <button
+                        type="button"
+                        onClick={() => setHandoffActive(false)}
+                        className="inline-flex items-center justify-center gap-1.5 text-xs text-gray-600 hover:text-[#172B54] pt-1 cursor-pointer"
+                      >
+                        <Edit3 className="h-3.5 w-3.5" />
+                        <span>Edit Enquiry Details</span>
+                      </button>
                     </div>
                   </div>
                 )}

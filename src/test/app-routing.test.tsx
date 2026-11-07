@@ -113,9 +113,10 @@ describe("Urmika Juris Business Identity Verification", () => {
 
   it("verifies How We Work contains 3 distinct stages matching VakeelSaab reference", () => {
     expect(HOW_WE_WORK_STEPS).toHaveLength(3);
-    expect(HOW_WE_WORK_STEPS[0].step).toBe("01");
-    expect(HOW_WE_WORK_STEPS[1].step).toBe("02");
-    expect(HOW_WE_WORK_STEPS[2].step).toBe("03");
+    const [step1, step2, step3] = HOW_WE_WORK_STEPS;
+    expect(step1?.step).toBe("01");
+    expect(step2?.step).toBe("02");
+    expect(step3?.step).toBe("03");
   });
 
   it("verifies all 19 legal services matching VakeelSaab are defined with exact emojis", () => {

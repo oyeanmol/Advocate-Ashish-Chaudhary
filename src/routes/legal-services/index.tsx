@@ -31,7 +31,7 @@ function LegalServicesHubPage() {
         title="Legal Services"
         subtitle="Strategic, Disciplined Advocacy Across Civil, Criminal, Matrimonial, Property, and Corporate Jurisdictions"
       />
-      <LegalServicesSection limit={undefined} showCategoryFilters={true} showViewAll={false} />
+      <LegalServicesSection showCategoryFilters={true} showViewAll={false} />
       <HowWeWorkSection showHeading={true} />
     </SiteShell>
   );

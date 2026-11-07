@@ -50,13 +50,15 @@
   --color-ring: var(--ring);
   --color-navy: #172b54;
   --color-navy-deep: #0f1d38;
+  --color-navy-hover: #1f386e;
   --color-navy-foreground: #ffffff;
   --color-gold: #fec556;
   --color-gold-hover: #edb340;
   --color-gold-soft: #fed685;
+  --color-gold-dark: #b8860b;
   --color-whatsapp: #34a853;
   --color-surface-cream: #fefbf3;
-  --color-surface-ice: #f0f4f9;
+  --color-surface-ice: #edf3fa;
 }
 
 :root {
@@ -100,6 +102,10 @@
 }
 
 @layer base {
+  html,
+  body {
+    overflow-x: clip;
+  }
   * {
     border-color: var(--color-border);
   }
@@ -113,6 +119,25 @@
   h3,
   h4 {
     font-family: var(--font-heading);
+  }
+
+  /* Hallmark Gate 26a & Gate 15: Global Instant Keyboard Focus States (3:1+ Contrast) */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+    transition: outline 0s, outline-offset 0s !important;
+  }
+
+  /* High contrast on white/light surfaces and native form controls */
+  .bg-white :focus-visible,
+  .bg-\[\#FEFBF3\] :focus-visible,
+  .bg-\[\#EDF3FA\] :focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid var(--color-navy);
+    outline-offset: 2px;
+    transition: outline 0s, outline-offset 0s !important;
   }
 }
 
@@ -151,7 +176,8 @@
   animation: marquee-scroll 32s linear infinite;
 }
 
-.animate-marquee:hover {
+.animate-marquee:hover,
+.animate-marquee:focus-within {
   animation-play-state: paused;
 }
 
@@ -173,4 +199,109 @@
 
 .animate-spinner-dash {
   animation: spinner-dash 1.5s ease-in-out infinite;
+}
+
+/* Floating Action Button Animations */
+@keyframes phone-ring {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  3% {
+    transform: rotate(-16deg) scale(1.08);
+  }
+  6% {
+    transform: rotate(16deg) scale(1.08);
+  }
+  9% {
+    transform: rotate(-12deg) scale(1.08);
+  }
+  12% {
+    transform: rotate(12deg) scale(1.08);
+  }
+  15% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-phone-ring {
+  animation: phone-ring 3.8s ease-in-out infinite;
+}
+
+@keyframes pulse-radar {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.animate-pulse-radar {
+  animation: pulse-radar 2.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  25%, 100% {
+    transform: translateX(300%) skewX(-20deg);
+  }
+}
+
+.animate-shimmer-sweep {
+  animation: shimmer-sweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 3.2s ease-in-out infinite;
+}
+
+@keyframes ai-glow-pulse {
+  0%, 100% {
+    box-shadow: 0 8px 24px -4px rgba(15, 29, 56, 0.7), 0 0 14px -2px rgba(254, 197, 86, 0.35);
+  }
+  50% {
+    box-shadow: 0 12px 32px -4px rgba(15, 29, 56, 0.85), 0 0 24px 2px rgba(254, 197, 86, 0.6);
+  }
+}
+
+.animate-ai-glow {
+  animation: ai-glow-pulse 3s ease-in-out infinite;
+}
+
+/* Hallmark Gate 18 & Gate 27: Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none !important;
+    transform: none !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  .animate-spinner-dash {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

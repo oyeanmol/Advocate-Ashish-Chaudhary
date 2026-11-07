@@ -55,13 +55,12 @@ This document establishes the explicit 1:1 mapping between the reference platfor
    - Explicit disclaimer that wording is subject to advocate confirmation.
    - User reviews terms and continues to WhatsApp, Phone, or Contact Form.
 
-4. **AI Legal Enquiry Assistant (`AiChatbot`)**:
+4. **Chamber Information Assistant (`AiChatbot`)**:
    - Persistent floating widget at `bottom-6 right-6`.
    - Expandable chat dialog with loading states, suggested quick prompts, and clear chat action.
    - Connected to server-side RPC function (`submitLegalEnquiry`).
-   - Supports `GEMINI_API_KEY` or `OPENAI_API_KEY` when configured in environment.
-   - In offline/unconfigured environment mode, operates safely using the verified Urmika knowledge base without fabricating information or failing.
-   - Mandatory disclaimer: _"General Information Only. Does not constitute legal advice or an advocate-client relationship."_
+   - 100% private deterministic knowledge base engine covering Criminal Law, Civil Law, Matrimonial Law, Section 138 NI Act, Consultation Protocol, Chamber Location, and Advocate Information. Zero external AI API integrations, zero third-party data transmission.
+   - Mandatory confidentiality disclaimer and warning: _"Do not submit confidential case documents or sensitive legal details here."_
 
 5. **Lead Generation Persistent Widgets (`FloatingButtons`)**:
    - WhatsApp float button (`https://wa.me/918802487291`).

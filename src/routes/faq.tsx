@@ -8,7 +8,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { useConsultationModal } from "@/components/site/ConsultationModal";
-import { MessageCircle, HelpCircle } from "lucide-react";
+import { HelpCircle } from "lucide-react";
+import { WhatsAppLogo } from "@/components/site/WhatsAppLogo";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -89,7 +90,7 @@ function FaqPage() {
                 rel="noreferrer"
                 className="flex items-center gap-2 rounded bg-[#34A853] px-5 py-3 text-xs font-bold text-white shadow hover:brightness-110 transition"
               >
-                <MessageCircle className="h-4 w-4" /> Message on WhatsApp
+                <WhatsAppLogo className="h-4 w-4" /> Message on WhatsApp
               </a>
             </div>
           </div>
