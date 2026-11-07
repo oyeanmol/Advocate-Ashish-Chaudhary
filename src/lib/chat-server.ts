@@ -1,25 +1,267 @@
 import { createServerFn } from "@tanstack/react-start";
-import { FIRM, LEGAL_SERVICES, HOW_WE_WORK_STEPS } from "@/components/site/data";
+import { FIRM } from "@/components/site/data";
 
-interface ChatRequest {
+export interface ChatRequest {
   message: string;
   history?: Array<{ role: "user" | "assistant"; content: string }>;
 }
 
-interface ChatResponse {
+export interface ChatResponse {
   reply: string;
   isAiGenerated: boolean;
   disclaimer: string;
 }
 
-const SYSTEM_DISCLAIMER =
-  "This AI assistant provides general information and website assistance only. It does not provide legal advice or establish an advocate-client relationship. For advice relating to your specific matter, please contact the firm directly at +91 88024 87291 or urmikajuris@gmail.com.";
+export const SYSTEM_DISCLAIMER =
+  "This automated assistant provides general firm and procedural information only. It does not provide legal advice or establish an advocate-client relationship. For legal counsel regarding your matter, contact our chamber directly at +91 88024 87291 or urmikajuris@gmail.com.";
 
 /**
- * Server-side handler for the Urmika Juris legal enquiry assistant.
- * Securely checks for GEMINI_API_KEY or OPENAI_API_KEY on the server.
- * If configured, connects to the generative model.
- * If unconfigured, utilizes the verified firm knowledge base safely.
+ * Pure deterministic FAQ knowledge engine.
+ * Matches keywords and inquiries against verified firm domain areas.
+ * Zero external network calls, zero model API keys.
+ */
+export function getDeterministicChatReply(message: string): ChatResponse {
+  const lower = message.toLowerCase();
+  let responseText = "";
+
+  // 1. Criminal Law
+  if (
+    lower.includes("criminal") ||
+    lower.includes("bail") ||
+    lower.includes("fir") ||
+    lower.includes("arrest") ||
+    lower.includes("police") ||
+    lower.includes("quash") ||
+    lower.includes("anticipatory") ||
+    lower.includes("bnss") ||
+    lower.includes("crpc") ||
+    lower.includes("ipc") ||
+    lower.includes("bns") ||
+    lower.includes("jail") ||
+    lower.includes("chargesheet")
+  ) {
+    responseText =
+      `Criminal Law Practice at Urmika Juris & Associates:\n\n` +
+      `Our advocates handle regular bail, anticipatory bail (under BNSS / CrPC), Section 482 FIR quashing petitions before the Delhi High Court, and trial defense before Sessions and District Courts across Delhi.\n\n` +
+      `• Primary Forums: Tis Hazari Courts, Patiala House, Rohini, Saket, Dwarka, Karkardooma, and the Delhi High Court.\n` +
+      `• Key Focus: Protection of personal liberty, statutory compliance, cross-examination, and appellate relief.\n\n` +
+      `For urgent criminal matters or bail listings, please contact our chamber line directly at +91 88024 87291 or WhatsApp us.`;
+  }
+  // 2. Civil Law & Injunctions
+  else if (
+    lower.includes("civil") ||
+    lower.includes("injunction") ||
+    lower.includes("recovery") ||
+    lower.includes("suit") ||
+    lower.includes("partition") ||
+    lower.includes("contract") ||
+    lower.includes("agreement") ||
+    lower.includes("breach") ||
+    lower.includes("possession") ||
+    lower.includes("damages") ||
+    lower.includes("execution")
+  ) {
+    responseText =
+      `Civil Litigation Practice at Urmika Juris & Associates:\n\n` +
+      `We represent individuals and commercial entities in civil recovery suits, permanent and interim injunctions (Order 39 CPC), ancestral partition disputes, declaration of title, and execution of court decrees.\n\n` +
+      `• Court Forums: Civil Courts at Tis Hazari, all Delhi District Court complexes, and Original Civil Jurisdiction before the Delhi High Court.\n` +
+      `• Procedure: Evidence examination, statutory limitation evaluation, plaint drafting, and disciplined courtroom presentation.\n\n` +
+      `To discuss your civil dispute, schedule an initial 30-minute review via phone (+91 88024 87291) or our website consultation form.`;
+  }
+  // 3. Matrimonial & Family Law
+  else if (
+    lower.includes("divorce") ||
+    lower.includes("matrimonial") ||
+    lower.includes("family") ||
+    lower.includes("custody") ||
+    lower.includes("maintenance") ||
+    lower.includes("alimony") ||
+    lower.includes("domestic violence") ||
+    lower.includes("dv act") ||
+    lower.includes("498a") ||
+    lower.includes("annulment") ||
+    lower.includes("separation")
+  ) {
+    responseText =
+      `Family & Matrimonial Law Practice:\n\n` +
+      `Our chamber provides discreet, ethical guidance in family and matrimonial matters:\n` +
+      `• Mutual Consent Divorce under Section 13B Hindu Marriage Act\n` +
+      `• Contested Divorce on statutory grounds\n` +
+      `• Interim & Permanent Maintenance petitions (Section 125 CrPC / BNSS)\n` +
+      `• Child Custody and Visitation rights\n` +
+      `• Defense and prosecution in Domestic Violence and Section 498A matters\n\n` +
+      `We prioritize pre-litigation mediation and structured amicable settlements wherever viable. Consult our advocates at Chamber 298A Tis Hazari Courts or call +91 88024 87291.`;
+  }
+  // 4. NI Act Matters (Section 138 Cheque Bounce)
+  else if (
+    lower.includes("138") ||
+    lower.includes("cheque") ||
+    lower.includes("check") ||
+    lower.includes("bounce") ||
+    lower.includes("dishonour") ||
+    lower.includes("dishonor") ||
+    lower.includes("ni act") ||
+    lower.includes("negotiable")
+  ) {
+    responseText =
+      `Section 138 Negotiable Instruments Act (Cheque Bounce Matters):\n\n` +
+      `We represent both complainants seeking debt recovery and accused respondents defending false or disputed claims:\n` +
+      `• Drafting and serving statutory 30-day legal demand notices\n` +
+      `• Filing criminal complaints before Judicial Magistrates (within strict 30-day limitation)\n` +
+      `• Trial defense, evidence affidavit preparation, and cross-examination\n` +
+      `• Compounding and structured pre-trial settlements\n\n` +
+      `Strict statutory timelines govern cheque dishonour cases. Contact our Tis Hazari chamber immediately at +91 88024 87291 for limitation review.`;
+  }
+  // 5. Consultation Process & Protocol
+  else if (
+    lower.includes("consult") ||
+    lower.includes("process") ||
+    lower.includes("procedure") ||
+    lower.includes("how it works") ||
+    lower.includes("step") ||
+    lower.includes("mode") ||
+    lower.includes("video") ||
+    lower.includes("phone consultation")
+  ) {
+    responseText =
+      `Initial Legal Consultation Process at Urmika Juris:\n\n` +
+      `1. Initial Case Review: Up to 30 minutes structured discussion to review your factual background, relevant documents, and court forum.\n` +
+      `2. Procedural Evaluation: Objective assessment of merits, court jurisdiction, and statutory limitation periods.\n` +
+      `3. Flexible Modes: Choose between an in-person Chamber Visit at Tis Hazari Courts, a direct Phone Call, or a secure Video Conference.\n` +
+      `4. Transparent Terms: Professional conduct governed strictly under Bar Council of India Rule 36.\n\n` +
+      `To book your consultation, click the 'Book Consultation' button on the website, use the WhatsApp button, or call +91 88024 87291.`;
+  }
+  // 6. Consultation Availability & Chamber Timings
+  else if (
+    lower.includes("timing") ||
+    lower.includes("timings") ||
+    lower.includes("hours") ||
+    lower.includes("available") ||
+    lower.includes("availability") ||
+    lower.includes("open") ||
+    lower.includes("saturday") ||
+    lower.includes("sunday") ||
+    lower.includes("schedule")
+  ) {
+    responseText =
+      `Chamber Timings & Availability:\n\n` +
+      `• Days: Monday through Saturday\n` +
+      `• Consultation Timings: 10:00 AM – 7:00 PM (By prior appointment)\n` +
+      `• Sunday: Chamber closed; emergency bail or urgent remand inquiries coordinated via helpline: +91 88024 87291.\n\n` +
+      `Court benches function from 10:00 AM to 4:00 PM. Evening chamber hours from 4:30 PM to 7:00 PM are dedicated to pre-scheduled client briefings.`;
+  }
+  // 7. Chamber Location
+  else if (
+    lower.includes("location") ||
+    lower.includes("address") ||
+    lower.includes("chamber") ||
+    lower.includes("office") ||
+    lower.includes("where") ||
+    lower.includes("tis hazari") ||
+    lower.includes("reach") ||
+    lower.includes("metro") ||
+    lower.includes("direction")
+  ) {
+    responseText =
+      `Chamber Location Details:\n\n` +
+      `Urmika Juris & Associates\n` +
+      `Chamber 298A, Western Wing, Tis Hazari Courts Complex,\n` +
+      `Delhi – 110054, India.\n\n` +
+      `• Landmark: Located in the Western Wing of Tis Hazari Courts complex, near Tis Hazari Metro Station (Red Line) and Kashmiri Gate.\n` +
+      `• Chamber Telephone: +91 88024 87291\n` +
+      `• Chamber Hours: Monday to Saturday, 10:00 AM – 7:00 PM (By prior appointment).`;
+  }
+  // 8. Contact Details & Helpline
+  else if (
+    lower.includes("contact") ||
+    lower.includes("phone") ||
+    lower.includes("call") ||
+    lower.includes("number") ||
+    lower.includes("whatsapp") ||
+    lower.includes("email") ||
+    lower.includes("helpline") ||
+    lower.includes("reach out")
+  ) {
+    responseText =
+      `Direct Chamber Contact Channels:\n\n` +
+      `• Telephone Helpline: +91 88024 87291\n` +
+      `• WhatsApp Chamber Line: +91 88024 87291\n` +
+      `• Official Email: urmikajuris@gmail.com\n` +
+      `• Physical Address: Chamber 298A, Western Wing, Tis Hazari Courts, Delhi – 110054\n\n` +
+      `You can also use the contact form on our website to prepare an enquiry directly for our WhatsApp helpline.`;
+  }
+  // 9. Advocate Team & Leadership Information
+  else if (
+    lower.includes("advocate") ||
+    lower.includes("lawyer") ||
+    lower.includes("team") ||
+    lower.includes("who") ||
+    lower.includes("aashish") ||
+    lower.includes("ashish") ||
+    lower.includes("satish") ||
+    lower.includes("durga") ||
+    lower.includes("krishan") ||
+    lower.includes("principal") ||
+    lower.includes("founder") ||
+    lower.includes("counsel")
+  ) {
+    responseText =
+      `Legal Advocacy Team at Urmika Juris & Associates:\n\n` +
+      `• Advocate Aashish Choudhary — Founder & Principal Advocate (Delhi Bar Council & Associates)\n` +
+      `• Satish Chand (Advocate) — Senior Counsel\n` +
+      `• Durga Das (Advocate) — Counsel\n` +
+      `• Krishan Kumar (Advocate) — Counsel\n\n` +
+      `Our advocates appear actively before the Tis Hazari District Courts, Delhi High Court, the Supreme Court of India, and statutory appellate tribunals.`;
+  }
+  // 10. Property, Real Estate & RERA
+  else if (
+    lower.includes("property") ||
+    lower.includes("real estate") ||
+    lower.includes("rera") ||
+    lower.includes("tenant") ||
+    lower.includes("landlord") ||
+    lower.includes("builder")
+  ) {
+    responseText =
+      `Property & Real Estate Law Practice:\n\n` +
+      `We advise on property acquisition title verification, builder delay relief before RERA Delhi, eviction petitions under Delhi Rent Control, and civil partition suits across Delhi courts.\n\n` +
+      `To discuss your property matter, contact our chamber line at +91 88024 87291 or book a consultation.`;
+  }
+  // 11. High Court Writs & Constitutional Matters
+  else if (
+    lower.includes("writ") ||
+    lower.includes("high court") ||
+    lower.includes("supreme court") ||
+    lower.includes("article 226") ||
+    lower.includes("article 32") ||
+    lower.includes("nclt")
+  ) {
+    responseText =
+      `High Court Writs & Appellate Practice:\n\n` +
+      `Our advocates draft and argue Article 226 writ petitions before the Delhi High Court and Special Leave Petitions (SLP) before the Supreme Court of India in cases of administrative overreach, fundamental rights violations, and statutory appeals.\n\n` +
+      `Connect directly with our advocates at Chamber 298A Tis Hazari Courts or call +91 88024 87291.`;
+  }
+  // 12. Fallback for Unknown / Specific Queries
+  else {
+    responseText =
+      `I am an automated chamber information assistant for Urmika Juris & Associates and cannot answer this specific question or provide tailored legal advice.\n\n` +
+      `For reliable legal counsel regarding your specific situation, please connect directly with our chamber advocates:\n` +
+      `• WhatsApp Chamber Line: +91 88024 87291\n` +
+      `• Direct Telephone Call: +91 88024 87291\n` +
+      `• Chamber Address: Ch. 298A, Western Wing, Tis Hazari Courts, Delhi – 110054\n` +
+      `• Website Contact: Use the Contact page or 'Book Consultation' button on this site.\n\n` +
+      `Note: This automated assistant provides website navigation guidance only and is not a substitute for professional legal counsel from an advocate.`;
+  }
+
+  return {
+    reply: responseText,
+    isAiGenerated: false,
+    disclaimer: SYSTEM_DISCLAIMER,
+  };
+}
+
+/**
+ * Server function endpoint wrapping the pure deterministic knowledge engine.
  */
 export const submitLegalEnquiry = createServerFn({ method: "POST" })
   .validator((data: unknown): ChatRequest => {
@@ -27,197 +269,17 @@ export const submitLegalEnquiry = createServerFn({ method: "POST" })
       throw new Error("Invalid request payload");
     }
     const d = data as Record<string, unknown>;
-    const message = typeof d.message === "string" ? d.message.trim() : "";
+    const rawMessage = d["message"];
+    const message = typeof rawMessage === "string" ? rawMessage.trim() : "";
     if (!message || message.length > 1000) {
       throw new Error("Message must be between 1 and 1000 characters");
     }
-    const history = Array.isArray(d.history)
-      ? (d.history as Array<{ role: "user" | "assistant"; content: string }>)
+    const rawHistory = d["history"];
+    const history = Array.isArray(rawHistory)
+      ? (rawHistory as Array<{ role: "user" | "assistant"; content: string }>)
       : [];
     return { message, history: history.slice(-6) };
   })
   .handler(async ({ data }): Promise<ChatResponse> => {
-    const { message, history } = data;
-    const lower = message.toLowerCase();
-
-    // Check if an AI provider key is set on the server
-    const geminiKey = process.env.GEMINI_API_KEY;
-    const openaiKey = process.env.OPENAI_API_KEY;
-
-    if (geminiKey) {
-      try {
-        const prompt = `You are the AI Legal Enquiry Assistant for Urmika Juris & Associates (Delhi law firm with chambers at Ch. 298A, Western Wing, Tis Hazari Courts, Delhi – 110054).
-Firm Founder & Principal Advocate: Advocate Aashish Choudhary.
-Advocates: Satish Chand (Advocate), Durga Das (Advocate), Krishan Kumar (Advocate).
-Contact: Mobile +91 88024 87291, Email urmikajuris@gmail.com.
-Services: 19 Practice Areas matching full legal service directory including Criminal Law (bail, FIR quashing, trials), Property Law (RERA, title search, land disputes), Civil Law (injunctions, recovery suits), Family & Divorce Law (mutual consent, custody, maintenance), Corporate Law, Cyber Crime Law, Intellectual Property, Labour & Employment, Consumer Protection, Tax Law, NCLT, and High Court Writs.
-Consultation: Initial 30-minute structured consultation. Charges beyond initial period communicated according to applicable agreed terms and professional norms.
-
-IMPORTANT RULES:
-1. Always state you are an AI assistant and not an advocate.
-2. Never give definitive legal advice or guarantee any case outcome.
-3. Keep responses concise, professional, respectful, and guide the visitor to contact the advocates for their specific matter.
-4. Conclude with guidance to call +91 88024 87291 or visit Chamber 298A, Tis Hazari Courts.
-
-User question: ${message}`;
-
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
-            }),
-          },
-        );
-
-        if (res.ok) {
-          const json = await res.json();
-          const text = json.candidates?.[0]?.content?.parts?.[0]?.text;
-          if (text) {
-            return {
-              reply: text.trim(),
-              isAiGenerated: true,
-              disclaimer: SYSTEM_DISCLAIMER,
-            };
-          }
-        }
-      } catch (err) {
-        console.warn(
-          "Server AI provider call failed, falling back to verified knowledge base:",
-          err,
-        );
-      }
-    } else if (openaiKey) {
-      try {
-        const res = await fetch("https://api.openai.com/v1/chat/completions", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${openaiKey}`,
-          },
-          body: JSON.stringify({
-            model: "gpt-4o-mini",
-            messages: [
-              {
-                role: "system",
-                content: `You are the AI Legal Enquiry Assistant for Urmika Juris & Associates. Advocates: Satish Chand (Advocate), Durga Das (Advocate), Krishan Kumar (Advocate). Chamber: Ch. 298A, Western Wing, Tis Hazari Courts, Delhi – 110054. Phone: +91 88024 87291. Email: urmikajuris@gmail.com. Initial consultation is up to 30 minutes. You do not provide definitive legal advice or guarantee outcomes.`,
-              },
-              ...history,
-              { role: "user", content: message },
-            ],
-            max_tokens: 350,
-          }),
-        });
-
-        if (res.ok) {
-          const json = await res.json();
-          const text = json.choices?.[0]?.message?.content;
-          if (text) {
-            return {
-              reply: text.trim(),
-              isAiGenerated: true,
-              disclaimer: SYSTEM_DISCLAIMER,
-            };
-          }
-        }
-      } catch (err) {
-        console.warn("OpenAI API call failed, falling back to verified knowledge base:", err);
-      }
-    }
-
-    // Verified Knowledge Engine (Deterministic, Safe, Accurate)
-    // Runs when external AI keys are not yet configured in the environment.
-    let responseText = "";
-
-    if (
-      lower.includes("consult") ||
-      lower.includes("fee") ||
-      lower.includes("charge") ||
-      lower.includes("price") ||
-      lower.includes("cost") ||
-      lower.includes("book")
-    ) {
-      responseText =
-        `Urmika Juris & Associates offers an initial structured consultation of up to 30 minutes. ` +
-        `Any applicable charges beyond the initial consultation period, or subsequent professional case fees, will be communicated according to applicable agreed terms and professional norms. ` +
-        `Where agreed, consultation charges may be adjusted as part of the overall case fees. ` +
-        `To schedule a consultation at Chamber 298A Tis Hazari Courts or via phone, please call +91 88024 87291 or WhatsApp us.`;
-    } else if (
-      lower.includes("location") ||
-      lower.includes("address") ||
-      lower.includes("chamber") ||
-      lower.includes("office") ||
-      lower.includes("where") ||
-      lower.includes("tis hazari")
-    ) {
-      responseText =
-        `Our chamber is situated at:\n` +
-        `Ch. 298A, Western Wing, Tis Hazari Courts, Delhi – 110054.\n\n` +
-        `Chamber hours: Monday to Saturday, 10:00 AM – 7:00 PM (by prior appointment).\n` +
-        `Phone: +91 88024 87291 | Email: urmikajuris@gmail.com.`;
-    } else if (
-      lower.includes("advocate") ||
-      lower.includes("lawyer") ||
-      lower.includes("team") ||
-      lower.includes("who") ||
-      lower.includes("aashish") ||
-      lower.includes("ashish")
-    ) {
-      responseText =
-        `Urmika Juris & Associates is led by:\n` +
-        `• Advocate Aashish Choudhary — Founder & Principal Advocate\n` +
-        `• Satish Chand (Advocate) — Senior Counsel\n` +
-        `• Durga Das (Advocate) — Counsel\n` +
-        `• Krishan Kumar (Advocate) — Counsel\n\n` +
-        `Our advocates appear before Tis Hazari District Courts, Delhi High Court, and appellate tribunals.`;
-    } else if (
-      lower.includes("criminal") ||
-      lower.includes("bail") ||
-      lower.includes("fir") ||
-      lower.includes("police") ||
-      lower.includes("arrest")
-    ) {
-      responseText =
-        `Our Criminal Law practice handles regular bail, anticipatory bail (under BNSS / CrPC), FIR quashing before the High Court, trial defense before Sessions Courts, and criminal appeals.\n\n` +
-        `For urgent criminal matters in Delhi, please contact our advocates directly at +91 88024 87291.`;
-    } else if (
-      lower.includes("divorce") ||
-      lower.includes("family") ||
-      lower.includes("custody") ||
-      lower.includes("maintenance") ||
-      lower.includes("domestic violence")
-    ) {
-      responseText =
-        `Our Family & Matrimonial Law practice handles mutual consent divorce, contested divorce, child custody, interim and permanent maintenance, and domestic violence protection.\n\n` +
-        `We prioritize confidential mediation and structured settlements in Family Courts across Delhi.`;
-    } else if (
-      lower.includes("property") ||
-      lower.includes("real estate") ||
-      lower.includes("rera") ||
-      lower.includes("tenant") ||
-      lower.includes("land")
-    ) {
-      responseText = `Our Property & Real Estate practice provides title search due diligence, partition and possession civil suits, RERA delay complaints, and lease disputes before Tis Hazari and Delhi forums.`;
-    } else if (lower.includes("cheque") || lower.includes("138") || lower.includes("bounce")) {
-      responseText = `We represent both complainants and respondents in Section 138 Negotiable Instruments Act cheque bounce proceedings, including statutory 30-day legal notice drafting, trial presentation, and compounding.`;
-    } else if (
-      lower.includes("writ") ||
-      lower.includes("high court") ||
-      lower.includes("supreme court") ||
-      lower.includes("constitution")
-    ) {
-      responseText = `Our advocates file Article 226 writ petitions before the Delhi High Court and Article 32/136 petitions before the Supreme Court of India in matters involving administrative arbitrariness and violation of fundamental rights.`;
-    } else {
-      responseText =
-        `Welcome to Urmika Juris & Associates. We provide legal counsel across Criminal Law, Family & Divorce, Property & Real Estate, Corporate & Commercial Advisory, Civil Litigation, Consumer Protection, Cheque Bounce (NI Act), and High Court Writs.\n\n` +
-        `Our chambers are at Ch. 298A, Western Wing, Tis Hazari Courts, Delhi. You can book an initial 30-minute consultation by calling +91 88024 87291 or using the consultation form on this website.`;
-    }
-
-    return {
-      reply: responseText,
-      isAiGenerated: false,
-      disclaimer: SYSTEM_DISCLAIMER,
-    };
+    return getDeterministicChatReply(data.message);
   });

@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Phone, ShieldCheck, ChevronRight, ArrowRight } from "lucide-react";
+import { Phone, ShieldCheck, ChevronRight, ArrowRight, Landmark } from "lucide-react";
 import { SiteShell, SectionTitle } from "@/components/site/Layout";
 import { FIRM, LEGAL_SERVICES, findLegalService } from "@/components/site/data";
 import { useConsultationModal } from "@/components/site/ConsultationModal";

@@ -19,26 +19,25 @@ export function LegalServiceCard({ service }: { service: LegalService }) {
   const { openModal } = useConsultationModal();
 
   return (
-    <div className="group flex flex-col justify-between rounded-xl border border-gray-200/90 bg-white p-6 sm:p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#FEC556] hover:shadow-xl">
+    <div className="group flex flex-col justify-between rounded-xl border border-gray-200/90 bg-white p-6 sm:p-7 shadow-sm transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-1.5 motion-reduce:transform-none hover:border-gold hover:shadow-xl">
       <div>
-        {/* Header with Exact Emoji and Sharp Category Badge (No AI Round Pills) */}
+        {/* Header with Exact Emoji and Sharp Category Badge */}
         <div className="flex items-center justify-between mb-5">
-          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#EDF3FA] text-2xl border border-[#172B54]/10 shadow-sm group-hover:scale-110 group-hover:bg-[#172B54] transition-all duration-200">
+          <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-surface-ice text-2xl border border-navy/10 shadow-sm group-hover:scale-110 motion-reduce:transform-none group-hover:bg-navy transition-[transform,background-color] duration-200">
             <span role="img" aria-label={service.title}>
               {service.emoji}
             </span>
           </div>
-          <span className="border-l-2 border-[#172B54] bg-[#FEFBF3] px-2.5 py-1 text-[10.5px] font-bold uppercase tracking-wider text-[#172B54]">
+          <span className="border-l-2 border-navy bg-surface-cream px-2.5 py-1 text-[10.5px] font-bold tracking-wide text-navy">
             {service.category}
           </span>
         </div>
 
         {/* Title & Short */}
-        <h3 className="font-heading text-xl font-bold text-[#172B54] flex items-center gap-2">
-          <span className="text-xl shrink-0">{service.emoji}</span>
-          <span>{service.title}</span>
+        <h3 className="font-heading text-xl font-bold text-navy">
+          {service.title}
         </h3>
-        <p className="mt-1 text-xs font-semibold text-[#B8860B]">{service.short}</p>
+        <p className="mt-1 text-xs font-semibold text-gold-dark">{service.short}</p>
         <p className="mt-3 text-sm text-gray-600 leading-relaxed line-clamp-3">{service.desc}</p>
 
         {/* Core Points */}
@@ -49,7 +48,7 @@ export function LegalServiceCard({ service }: { service: LegalService }) {
           <ul className="space-y-1.5">
             {service.points.slice(0, 3).map((pt) => (
               <li key={pt} className="flex items-start gap-2 text-xs text-gray-700">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-[#FEC556]" />
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 bg-gold" />
                 <span className="line-clamp-1">{pt}</span>
               </li>
             ))}
@@ -62,7 +61,7 @@ export function LegalServiceCard({ service }: { service: LegalService }) {
         <Link
           to="/legal-services/$slug"
           params={{ slug: service.slug }}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#172B54] hover:text-[#B8860B] transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-navy hover:text-gold-dark transition-colors"
         >
           <span>Service Details</span>
           <ChevronRight className="h-3.5 w-3.5" />
@@ -70,7 +69,7 @@ export function LegalServiceCard({ service }: { service: LegalService }) {
         <button
           type="button"
           onClick={openModal}
-          className="inline-flex items-center gap-1.5 rounded bg-[#172B54] px-4 py-2 text-xs font-semibold text-[#FEC556] shadow-sm hover:bg-[#1f386e] transition-all cursor-pointer"
+          className="inline-flex items-center gap-1.5 rounded bg-navy px-4 py-2 text-xs font-semibold text-gold shadow-sm hover:bg-navy-hover transition-colors duration-200 cursor-pointer"
         >
           <span>Consult</span>
           <ArrowRight className="h-3.5 w-3.5" />
@@ -105,13 +104,13 @@ export function LegalServicesSection({
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-block border-l-2 border-[#172B54] bg-[#FEFBF3] px-3.5 py-1 text-xs font-bold uppercase tracking-widest text-[#172B54]">
+          <div className="inline-block border-l-2 border-navy bg-surface-cream px-3.5 py-1 text-xs font-semibold tracking-wide text-navy">
             Litigation & Advisory Domains
           </div>
-          <h2 className="mt-3 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#172B54] tracking-tight">
+          <h2 className="mt-3 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy tracking-tight">
             Legal Services
           </h2>
-          <div className="mx-auto mt-4 h-1 w-20 rounded bg-[#FEC556]" />
+          <div className="mx-auto mt-4 h-1 w-20 rounded bg-gold" />
           <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
             Focused, courtroom-tested advocacy across civil, criminal, matrimonial, corporate, and
             constitutional forums in Delhi.
@@ -126,10 +125,10 @@ export function LegalServicesSection({
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded px-4 py-2 text-xs font-bold tracking-wide transition-all duration-200 cursor-pointer ${
+                className={`rounded px-4 py-2 text-xs font-bold tracking-wide transition-[color,background-color,border-color,box-shadow] duration-200 cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#172B54] text-[#FEC556] shadow-md border border-[#172B54]"
-                    : "bg-[#FEFBF3] text-gray-700 border border-gray-200 hover:border-[#172B54]/40 hover:text-[#172B54]"
+                    ? "bg-navy text-gold shadow-md border border-navy"
+                    : "bg-surface-cream text-gray-700 border border-gray-200 hover:border-navy/40 hover:text-navy"
                 }`}
               >
                 {cat}
@@ -150,10 +149,10 @@ export function LegalServicesSection({
           <div className="mt-14 text-center">
             <Link
               to="/legal-services"
-              className="inline-flex items-center gap-2 rounded bg-[#172B54] px-8 py-4 text-sm font-bold text-white shadow-lg hover:bg-[#1f386e] transition-all"
+              className="inline-flex items-center gap-2 rounded bg-navy px-8 py-4 text-sm font-bold text-white shadow-lg hover:bg-navy-hover transition-[background-color,box-shadow] duration-200"
             >
-              <span>Explore All Legal Services</span>
-              <ArrowRight className="h-4 w-4 text-[#FEC556]" />
+              <span>Explore All 19 Legal Services</span>
+              <ArrowRight className="h-4 w-4 text-gold" />
             </Link>
           </div>
         )}

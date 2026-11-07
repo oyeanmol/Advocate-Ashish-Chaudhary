@@ -5,14 +5,15 @@ import {
   Mail,
   MapPin,
   Clock,
-  MessageCircle,
-  Send,
-  CheckCircle2,
   ShieldCheck,
+  AlertCircle,
+  ExternalLink,
+  Edit3,
 } from "lucide-react";
 import { SiteShell, PageHero } from "@/components/site/Layout";
 import { FIRM, LEGAL_SERVICES } from "@/components/site/data";
 import { useConsultationModal } from "@/components/site/ConsultationModal";
+import { WhatsAppLogo } from "@/components/site/WhatsAppLogo";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -34,7 +35,7 @@ export const Route = createFileRoute("/contact")({
 });
 
 const inputClasses =
-  "w-full rounded border border-gray-300 bg-white px-4 py-3 text-sm text-[#111827] placeholder-gray-400 outline-none transition focus:border-[#172B54] focus:ring-1 focus:ring-[#172B54]";
+  "w-full rounded border border-gray-300 bg-white px-4 py-3 text-sm text-[#111827] placeholder-gray-400 outline-none transition-colors focus:border-[#172B54] focus:ring-1 focus:ring-[#172B54]";
 
 function ContactPage() {
   const { openModal } = useConsultationModal();
@@ -43,22 +44,67 @@ function ContactPage() {
   const [email, setEmail] = useState("");
   const [service, setService] = useState("");
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [handoffActive, setHandoffActive] = useState(false);
+  const [validationError, setValidationError] = useState<string | null>(null);
+  const [preparedWhatsAppUrl, setPreparedWhatsAppUrl] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName.trim() || !mobile.trim()) return;
-    setSubmitted(true);
-  };
+    setValidationError(null);
 
-  const getWhatsAppEnquiryUrl = () => {
-    const text = `Hello Urmika Juris & Associates,
-My Name: ${fullName}
-Mobile: ${mobile}
-Email: ${email || "Not specified"}
-Service Required: ${service || "General Consultation"}
-Enquiry Details: ${message || "I would like to schedule a 30-minute legal consultation at Tis Hazari Chamber."}`;
-    return `https://wa.me/918802487291?text=${encodeURIComponent(text)}`;
+    const cleanName = fullName.trim();
+    const cleanMobile = mobile.trim();
+    const digitsOnly = cleanMobile.replace(/\D/g, "");
+
+    if (cleanName.length < 2) {
+      setValidationError("Please enter your full name (minimum 2 characters).");
+      return;
+    }
+
+    if (digitsOnly.length < 10 || digitsOnly.length > 15) {
+      setValidationError("Please enter a valid mobile number (10 to 15 digits).");
+      return;
+    }
+
+    if (email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      setValidationError("Please enter a valid email address or leave it blank.");
+      return;
+    }
+
+    if (!service) {
+      setValidationError("Please select the legal practice area relevant to your enquiry.");
+      return;
+    }
+
+    if (message.trim().length < 5) {
+      setValidationError("Please provide a brief summary of your legal matter (at least 5 characters).");
+      return;
+    }
+
+    // Build prewritten WhatsApp message using visitor's actual form inputs
+    const messageLines = [
+      "Hello Urmika Juris & Associates,",
+      "",
+      "I am submitting a consultation enquiry through your website contact page.",
+      "",
+      `• Name: ${cleanName}`,
+      `• Mobile: ${cleanMobile}`,
+      email.trim() ? `• Email: ${email.trim()}` : null,
+      `• Legal Service Required: ${service}`,
+      `• Matter Summary: ${message.trim()}`,
+    ].filter(Boolean) as string[];
+
+    const whatsappUrl = `https://wa.me/918802487291?text=${encodeURIComponent(messageLines.join("\n"))}`;
+    setPreparedWhatsAppUrl(whatsappUrl);
+
+    // Open WhatsApp in a new tab/window
+    try {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      // Browser popup blocker fallback is rendered in the handoff UI
+    }
+
+    setHandoffActive(true);
   };
 
   return (
@@ -102,67 +148,59 @@ Enquiry Details: ${message || "I would like to schedule a 30-minute legal consul
                 <div className="flex items-start gap-3.5 rounded border border-gray-200 bg-[#FEFBF3] p-4">
                   <Phone className="h-5 w-5 text-[#172B54] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs font-bold text-[#172B54]">Direct Chamber Telephone</div>
-                    <a
-                      href={FIRM.phoneHref}
-                      className="text-xs text-amber-800 font-semibold hover:underline mt-0.5 block"
-                    >
-                      {FIRM.phone}
-                    </a>
+                    <div className="text-xs font-bold text-[#172B54]">Telephone & WhatsApp</div>
+                    <div className="text-xs text-gray-700 mt-0.5">
+                      <a href={FIRM.phoneHref} className="hover:text-amber-800 font-semibold">
+                        {FIRM.phone}
+                      </a>{" "}
+                      (Direct Chamber Line)
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5 rounded border border-gray-200 bg-[#FEFBF3] p-4">
                   <Mail className="h-5 w-5 text-[#172B54] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs font-bold text-[#172B54]">Official Email</div>
-                    <a
-                      href={FIRM.emailHref}
-                      className="text-xs text-amber-800 font-semibold hover:underline mt-0.5 block"
-                    >
-                      {FIRM.email}
-                    </a>
+                    <div className="text-xs font-bold text-[#172B54]">Email Communications</div>
+                    <div className="text-xs text-gray-700 mt-0.5">
+                      <a href={FIRM.emailHref} className="hover:text-amber-800 font-semibold">
+                        {FIRM.email}
+                      </a>
+                    </div>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3.5 rounded border border-gray-200 bg-[#FEFBF3] p-4">
                   <Clock className="h-5 w-5 text-[#172B54] shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs font-bold text-[#172B54]">Chamber Hours</div>
-                    <div className="text-xs text-gray-700 mt-0.5">{FIRM.hours}</div>
+                    <div className="text-xs font-bold text-[#172B54]">Consultation Timings</div>
+                    <div className="text-xs text-gray-700 mt-0.5 leading-relaxed">{FIRM.hours}</div>
                   </div>
                 </div>
               </div>
 
-              {/* WhatsApp & Call Direct Action Block */}
-              <div className="rounded bg-[#172B54] p-6 text-white space-y-3">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#FEC556]">
-                  Immediate Legal Connect
+              {/* Direct WhatsApp Box */}
+              <div className="rounded-xl border border-emerald-300 bg-emerald-50 p-5">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-900">
+                  <WhatsAppLogo className="h-4 w-4" />
+                  <span>Chamber WhatsApp</span>
                 </div>
-                <p className="text-xs text-gray-300">
-                  For urgent bail hearings or time-sensitive court notices, contact us via WhatsApp
-                  or direct phone.
+                <p className="mt-2 text-xs text-emerald-950 leading-relaxed">
+                  For preliminary scheduling or immediate coordination, you can message our chamber directly.
                 </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                  <a
-                    href={FIRM.whatsappHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center justify-center gap-2 rounded bg-[#34A853] py-2.5 px-3 text-xs font-bold text-white shadow hover:brightness-110 transition"
-                  >
-                    <MessageCircle className="h-4 w-4" /> WhatsApp Chat
-                  </a>
-                  <a
-                    href={FIRM.phoneHref}
-                    className="flex items-center justify-center gap-2 rounded bg-[#FEC556] py-2.5 px-3 text-xs font-bold text-[#172B54] shadow hover:bg-amber-400 transition"
-                  >
-                    <Phone className="h-4 w-4" /> Call Chamber
-                  </a>
-                </div>
+                <a
+                  href={FIRM.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-3 inline-flex items-center gap-2 rounded bg-[#34A853] px-4 py-2 text-xs font-bold text-white shadow hover:brightness-110 transition"
+                >
+                  <WhatsAppLogo className="h-4 w-4" />
+                  <span>Message on WhatsApp</span>
+                </a>
               </div>
             </div>
 
-            {/* Right Column: Interactive Consultation Request Form */}
+            {/* Right Column: Contact Form with Direct WhatsApp Handoff */}
             <div className="lg:col-span-7">
               <div className="rounded border border-gray-200 bg-[#FEFBF3] p-8 shadow-sm">
                 <div className="flex items-center justify-between mb-6 border-b border-gray-200 pb-4">
@@ -177,44 +215,82 @@ Enquiry Details: ${message || "I would like to schedule a 30-minute legal consul
                   <button
                     type="button"
                     onClick={openModal}
-                    className="text-xs text-[#172B54] font-semibold underline hover:text-amber-800"
+                    className="text-xs text-[#172B54] font-semibold underline hover:text-amber-800 cursor-pointer"
                   >
                     View Terms
                   </button>
                 </div>
 
-                {submitted ? (
-                  <div className="py-10 text-center space-y-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded bg-[#F0FDF4] text-[#34A853] mx-auto">
-                      <CheckCircle2 className="h-8 w-8" />
+                {handoffActive ? (
+                  /* WhatsApp Handoff Information Screen */
+                  <div className="py-8 text-center space-y-5 animate-in fade-in duration-300">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-[#34A853] mx-auto">
+                      <WhatsAppLogo className="h-8 w-8" />
                     </div>
-                    <h4 className="font-heading text-xl font-bold text-[#172B54]">
-                      Thank You, {fullName}
-                    </h4>
-                    <p className="text-xs text-gray-600 max-w-md mx-auto leading-relaxed">
-                      We have compiled your enquiry details. For the fastest response, send these
-                      details directly to our chamber WhatsApp or call our advocate helpline.
-                    </p>
 
+                    <div>
+                      <h4 className="font-heading text-xl font-bold text-[#172B54]">
+                        WhatsApp Enquiry Prepared
+                      </h4>
+                      <div className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50/70 p-3.5 text-xs text-emerald-950 font-medium max-w-md mx-auto leading-relaxed shadow-sm">
+                        "WhatsApp is opening with your enquiry details. Please review the message and press Send to share it with the chamber."
+                      </div>
+                    </div>
+
+                    {/* Summary of Prepared Details */}
+                    <div className="rounded-lg border border-gray-200 bg-white p-4 text-xs text-left text-gray-700 max-w-md mx-auto space-y-1.5 shadow-sm">
+                      <div className="font-bold text-[#172B54] border-b border-gray-100 pb-1">
+                        Prepared Enquiry Details:
+                      </div>
+                      <div>• <strong>Name:</strong> {fullName}</div>
+                      <div>• <strong>Mobile:</strong> {mobile}</div>
+                      {email && <div>• <strong>Email:</strong> {email}</div>}
+                      <div>• <strong>Service:</strong> {service}</div>
+                      <div>• <strong>Summary:</strong> {message}</div>
+                    </div>
+
+                    {/* Fallback Action Buttons */}
                     <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
                       <a
-                        href={getWhatsAppEnquiryUrl()}
+                        href={preparedWhatsAppUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex items-center gap-2 rounded bg-[#34A853] px-6 py-3 text-xs font-bold text-white shadow hover:brightness-110 transition"
+                        className="inline-flex items-center gap-2 rounded bg-[#34A853] px-6 py-3 text-xs font-bold text-white shadow hover:brightness-110 transition cursor-pointer"
                       >
-                        <MessageCircle className="h-4 w-4" /> Send Enquiry via WhatsApp
+                        <ExternalLink className="h-4 w-4" />
+                        <span>Open WhatsApp Again</span>
                       </a>
+
                       <a
                         href={FIRM.phoneHref}
-                        className="flex items-center gap-2 rounded bg-[#172B54] px-6 py-3 text-xs font-bold text-[#FEC556] shadow hover:bg-[#1f386e] transition"
+                        className="inline-flex items-center gap-2 rounded border border-gray-300 bg-white px-5 py-3 text-xs font-bold text-[#172B54] hover:bg-gray-50 transition cursor-pointer"
                       >
-                        <Phone className="h-4 w-4" /> Call Chamber Now
+                        <Phone className="h-4 w-4 text-[#172B54]" />
+                        <span>Call Chamber Directly: {FIRM.phone}</span>
                       </a>
+                    </div>
+
+                    <div>
+                      <button
+                        type="button"
+                        onClick={() => setHandoffActive(false)}
+                        className="inline-flex items-center gap-1.5 text-xs text-gray-600 hover:text-[#172B54] cursor-pointer"
+                      >
+                        <Edit3 className="h-3.5 w-3.5" />
+                        <span>Edit Enquiry Details</span>
+                      </button>
                     </div>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Validation Error Banner */}
+                    {validationError && (
+                      <div className="rounded border border-red-200 bg-red-50 p-3 text-xs text-red-800 flex items-start gap-2">
+                        <AlertCircle className="h-4 w-4 shrink-0 text-red-600 mt-0.5" />
+                        <div>{validationError}</div>
+                      </div>
+                    )}
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-bold text-gray-700 mb-1">
@@ -280,10 +356,11 @@ Enquiry Details: ${message || "I would like to schedule a 30-minute legal consul
 
                     <div>
                       <label className="block text-xs font-bold text-gray-700 mb-1">
-                        Brief Summary of Matter
+                        Brief Summary of Matter <span className="text-red-500">*</span>
                       </label>
                       <textarea
                         rows={4}
+                        required
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Briefly describe the court notice, FIR, dispute, or legal assistance required..."
@@ -301,11 +378,14 @@ Enquiry Details: ${message || "I would like to schedule a 30-minute legal consul
 
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center gap-2 rounded bg-[#172B54] py-3.5 text-sm font-bold text-[#FEC556] shadow-md hover:bg-[#1f386e] transition"
+                      className="w-full flex items-center justify-center gap-2 rounded bg-[#34A853] py-3.5 text-sm font-bold text-white shadow-md hover:brightness-110 transition-colors cursor-pointer"
                     >
-                      <Send className="h-4 w-4" />
-                      <span>Submit Consultation Request</span>
+                      <WhatsAppLogo className="h-4 w-4" />
+                      <span>Continue to WhatsApp</span>
                     </button>
+                    <p className="text-center text-[11px] text-gray-500 mt-1">
+                      Direct Chamber Helpline: <strong>+91 88024 87291</strong>
+                    </p>
                   </form>
                 )}
               </div>

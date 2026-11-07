@@ -26,7 +26,7 @@ function PracticeIndexPage() {
         title="Our Legal Services"
         subtitle="Focused counsel across every major branch of law — practicing before Tis Hazari Courts, Delhi High Court and Supreme Court."
       />
-      <LegalServicesSection limit={undefined} showCategoryFilters={true} showViewAll={false} />
+      <LegalServicesSection showCategoryFilters={true} showViewAll={false} />
       <HowWeWorkSection />
     </SiteShell>
   );

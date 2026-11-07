@@ -24,24 +24,28 @@ interface Message {
 const INITIAL_MESSAGE: Message = {
   id: "welcome",
   role: "assistant",
-  content: `Hello. I am the AI Legal Enquiry Assistant for Urmika Juris & Associates. 
+  content: `Hello. I am the Automated Chamber Information Assistant for Urmika Juris & Associates.
 
-I can assist you with information regarding:
-• Our 19 legal services & court forums in Delhi
-• Initial 30-minute consultation terms
-• Tis Hazari Courts chamber details & timings
-• Connecting with Founder Advocate Aashish Choudhary & our legal team
+I can assist you with verified information regarding:
+• Our 19 legal practice areas & court forums in Delhi
+• Criminal Law (bail, FIR quashing, trial defense)
+• Civil Litigation (recovery suits, injunctions, partition)
+• Matrimonial Law (mutual consent, custody, maintenance)
+• Section 138 Cheque Bounce proceedings (NI Act)
+• Chamber location at Tis Hazari Courts & timings
+• Consultation terms & advocate information
 
 How may I assist you today?`,
   timestamp: "Just now",
 };
 
 const SUGGESTED_QUESTIONS = [
-  "What are the consultation terms?",
-  "Where is your chamber located?",
-  "Bail & criminal defense services",
+  "Criminal defense & bail guidance",
+  "Section 138 cheque bounce process",
   "Family & divorce matter guidance",
-  "Property & RERA dispute help",
+  "Civil suits & injunction remedies",
+  "Where is your chamber located?",
+  "What are the consultation terms?",
 ];
 
 export function AiChatbot() {
@@ -115,29 +119,36 @@ export function AiChatbot() {
 
   return (
     <>
-      {/* Floating Chat Trigger Button (Sharp Architectural Badge — No Rounded-Full AI Pill) */}
+      {/* Floating Chat Trigger Button (Compact Floating Pill matching Action Dock) */}
       {!isOpen && (
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          aria-label="Open AI Legal Enquiry Assistant"
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-lg bg-[#172B54] border border-[#FEC556]/60 px-4 py-3 text-white shadow-2xl hover:scale-105 hover:bg-[#1f386e] transition-all duration-200 group cursor-pointer"
+          aria-label="Open Legal Enquiry Assistant"
+          className="fixed bottom-6 right-5 sm:right-6 z-40 group flex h-12 w-12 sm:h-auto sm:w-auto w-auto max-w-fit items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-navy-deep via-navy to-[#1F3A70] border border-gold/80 p-3 sm:px-4 sm:py-2.5 text-white shadow-[0_6px_25px_rgba(23,43,84,0.55)] hover:shadow-[0_8px_30px_rgba(254,197,86,0.35)] hover:border-gold hover:scale-105 transition-[box-shadow,border-color,transform] duration-200 cursor-pointer animate-float-subtle motion-reduce:animate-none"
         >
-          <div className="relative flex h-8 w-8 items-center justify-center rounded bg-[#FEC556] text-[#172B54]">
-            <Bot className="h-5 w-5" />
+          {/* AI Avatar Icon with Ping Beacon */}
+          <div className="relative flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center rounded-full bg-gold text-navy shrink-0">
+            <Bot className="h-4 w-4 sm:h-4.5 sm:w-4.5" />
             <span className="absolute -top-0.5 -right-0.5 flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 motion-reduce:animate-none" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
           </div>
-          <div className="text-left hidden sm:block pr-1">
-            <div className="text-xs font-bold text-white flex items-center gap-1.5">
-              <span>Legal Assistant</span>
-              <span className="rounded bg-[#FEC556]/20 px-1.5 py-0.2 text-[10px] text-[#FEC556] font-mono">
+
+          {/* Desktop details */}
+          <div className="hidden sm:flex flex-col text-left leading-tight pr-1 select-none">
+            <div className="flex items-center gap-1.5">
+              <span className="text-xs font-bold text-white tracking-wide group-hover:text-gold transition-colors">
+                AI Assistant
+              </span>
+              <span className="rounded-full bg-gold/20 border border-gold/60 px-1.5 py-0.5 text-[9px] font-semibold text-gold">
                 AI
               </span>
             </div>
-            <div className="text-[11px] text-gray-300">Enquiries & Info</div>
+            <span className="text-[10px] text-gray-300 font-medium">
+              Enquiries & Info
+            </span>
           </div>
         </button>
       )}
@@ -148,12 +159,12 @@ export function AiChatbot() {
           role="dialog"
           aria-modal="false"
           aria-label="Legal Enquiry Assistant Window"
-          className="fixed bottom-4 right-4 z-50 flex h-[580px] w-[92vw] max-w-[410px] flex-col rounded-xl border border-[#FEC556]/40 bg-[#0F1D38] text-white shadow-2xl backdrop-blur-md overflow-hidden animate-in slide-in-from-bottom-5 duration-200"
+          className="fixed bottom-4 right-4 z-50 flex h-[580px] w-[92vw] max-w-[410px] flex-col rounded-xl border border-gold/40 bg-navy-deep text-white shadow-2xl backdrop-blur-md overflow-hidden animate-in slide-in-from-bottom-5 duration-200"
         >
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-white/10 bg-[#172B54] px-4 py-3.5">
+          <div className="flex items-center justify-between border-b border-white/10 bg-navy px-4 py-3.5">
             <div className="flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded bg-[#FEC556] text-[#172B54] font-bold">
+              <div className="flex h-9 w-9 items-center justify-center rounded bg-gold text-navy font-bold">
                 <Bot className="h-5 w-5" />
               </div>
               <div>
@@ -173,7 +184,7 @@ export function AiChatbot() {
                 type="button"
                 onClick={clearChat}
                 title="Clear conversation"
-                className="rounded p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer"
+                className="rounded p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
@@ -181,19 +192,18 @@ export function AiChatbot() {
                 type="button"
                 onClick={() => setIsOpen(false)}
                 title="Close chat"
-                className="rounded p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition cursor-pointer"
+                className="rounded p-1.5 text-gray-400 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
           </div>
 
-          {/* Mandatory Safety Disclaimer Banner */}
-          <div className="bg-[#172B54]/60 border-b border-white/10 px-3.5 py-2 flex items-start gap-2 text-[10.5px] text-gray-300">
-            <ShieldAlert className="h-3.5 w-3.5 text-[#FEC556] shrink-0 mt-0.5" />
+          {/* Mandatory Safety & Confidentiality Warning Banner */}
+          <div className="bg-navy/95 border-b border-gold/30 px-3.5 py-2.5 flex items-start gap-2 text-[10.5px] text-amber-100">
+            <ShieldAlert className="h-4 w-4 text-gold shrink-0 mt-0.5" />
             <p className="leading-tight">
-              <strong>General Information Only:</strong> Does not constitute legal advice or an
-              advocate-client relationship.
+              <strong className="text-gold">CONFIDENTIALITY WARNING:</strong> Automated assistant for general website queries only. <em>Do not submit confidential case documents, FIR copies, or sensitive legal details here.</em> For privileged consultations under Section 126, contact the chamber directly.
             </p>
           </div>
 
@@ -207,8 +217,8 @@ export function AiChatbot() {
                 <div
                   className={`max-w-[85%] rounded-lg px-3.5 py-2.5 leading-relaxed whitespace-pre-wrap shadow-sm ${
                     m.role === "user"
-                      ? "bg-[#FEC556] text-[#172B54] font-medium"
-                      : "bg-[#172B54] text-gray-100 border border-white/10"
+                      ? "bg-gold text-navy font-medium"
+                      : "bg-navy text-gray-100 border border-white/10"
                   }`}
                 >
                   {m.content}
@@ -218,8 +228,8 @@ export function AiChatbot() {
             ))}
 
             {loading && (
-              <div className="flex items-center gap-2 rounded-lg bg-[#172B54] border border-white/10 px-3.5 py-2.5 text-gray-300 max-w-[70%]">
-                <Sparkles className="h-3.5 w-3.5 text-[#FEC556] animate-spin" />
+              <div className="flex items-center gap-2 rounded-lg bg-navy border border-white/10 px-3.5 py-2.5 text-gray-300 max-w-[70%]">
+                <Sparkles className="h-3.5 w-3.5 text-gold animate-spin" />
                 <span className="text-xs">Consulting knowledge base...</span>
               </div>
             )}
@@ -228,13 +238,13 @@ export function AiChatbot() {
 
           {/* Quick Prompts (Sharp Rectangular Badges — No Pill Capsule Tags) */}
           {messages.length <= 2 && (
-            <div className="px-3 py-1.5 border-t border-white/5 bg-[#172B54]/30 overflow-x-auto flex gap-1.5 no-scrollbar">
+            <div className="px-3 py-1.5 border-t border-white/5 bg-navy/30 overflow-x-auto flex gap-1.5 no-scrollbar">
               {SUGGESTED_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   type="button"
                   onClick={() => handleSend(q)}
-                  className="shrink-0 rounded border border-[#FEC556]/30 bg-[#FEC556]/10 px-2.5 py-1 text-[11px] text-[#FEC556] hover:bg-[#FEC556]/20 transition cursor-pointer"
+                  className="shrink-0 rounded border border-gold/30 bg-gold/10 px-2.5 py-1 text-[11px] text-gold hover:bg-gold/20 transition-colors cursor-pointer"
                 >
                   {q}
                 </button>
@@ -247,7 +257,7 @@ export function AiChatbot() {
             <span>Direct Chamber Line:</span>
             <a
               href={FIRM.phoneHref}
-              className="flex items-center gap-1 text-[#FEC556] hover:underline font-medium"
+              className="flex items-center gap-1 text-gold hover:underline font-medium"
             >
               <Phone className="h-3 w-3" /> {FIRM.phone}
             </a>
@@ -259,7 +269,7 @@ export function AiChatbot() {
               e.preventDefault();
               handleSend();
             }}
-            className="border-t border-white/10 bg-[#172B54] p-2.5 flex items-center gap-2"
+            className="border-t border-white/10 bg-navy p-2.5 flex items-center gap-2"
           >
             <input
               ref={inputRef}
@@ -267,14 +277,14 @@ export function AiChatbot() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about legal services, chamber, or consultation..."
-              className="flex-1 rounded-xl border border-white/15 bg-[#0F1D38] px-3.5 py-2 text-xs text-white placeholder-gray-400 outline-none focus:border-[#FEC556] focus:ring-1 focus:ring-[#FEC556]"
+              className="flex-1 rounded-xl border border-white/15 bg-navy-deep px-3.5 py-2 text-xs text-white placeholder-gray-400 outline-none focus:border-gold focus:ring-1 focus:ring-gold"
               maxLength={1000}
             />
             <button
               type="submit"
               disabled={!input.trim() || loading}
               aria-label="Send message"
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#FEC556] text-[#172B54] transition hover:brightness-110 disabled:opacity-40 disabled:hover:brightness-100"
+              className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold text-navy transition-colors hover:brightness-110 disabled:opacity-40 disabled:hover:brightness-100"
             >
               <Send className="h-4 w-4" />
             </button>

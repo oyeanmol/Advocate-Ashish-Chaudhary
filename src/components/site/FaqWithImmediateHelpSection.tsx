@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   ChevronDown,
   Phone,
-  MessageCircle,
   Lock,
   CheckCircle2,
   Zap,
@@ -11,6 +10,7 @@ import {
 } from "lucide-react";
 import { FIRM } from "./data";
 import { useConsultationModal } from "./ConsultationModal";
+import { WhatsAppLogo } from "./WhatsAppLogo";
 
 const FAQS_VAKEELSAAB = [
   {
@@ -35,8 +35,8 @@ const FAQS_VAKEELSAAB = [
   },
   {
     num: 5,
-    q: "Can I choose the lawyer I want to consult online?",
-    a: "Yes. You can consult directly with Founder Advocate Aashish Choudhary or our senior counsel bench specializing in your specific court forum and legal domain.",
+    q: "Can I consult directly with your chamber advocates?",
+    a: "Yes. You can consult directly with Founder Advocate Aashish Choudhary and the practicing advocates of our Tis Hazari chamber regarding your matter.",
   },
   {
     num: 6,
@@ -59,21 +59,21 @@ export function FaqWithImmediateHelpSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1D38] via-[#172B54] to-[#0A1428] py-20 md:py-24 text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(#FEC556_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-navy-deep via-navy to-[#0A1428] py-20 md:py-24 text-white">
+      <div className="absolute inset-0 bg-[radial-gradient(var(--color-gold)_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Tag Matching Image 5 */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#FEC556]/40 bg-black/40 px-4 py-1 text-xs font-semibold text-[#FEC556] backdrop-blur-sm mb-4">
-            <Sparkles className="h-3.5 w-3.5 text-[#FEC556]" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-black/40 px-4 py-1 text-xs font-semibold text-gold backdrop-blur-sm mb-4">
+            <Sparkles className="h-3.5 w-3.5 text-gold" />
             <span>Expert Legal Consultation</span>
           </div>
 
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
             Online Legal Consultation - Frequently Asked Questions
           </h2>
-          <div className="mx-auto mt-4 h-1 w-20 rounded bg-[#FEC556]" />
+          <div className="mx-auto mt-4 h-1 w-20 rounded bg-gold" />
         </div>
 
         {/* 2-Column Split Matching Image 5 */}
@@ -85,7 +85,7 @@ export function FaqWithImmediateHelpSection() {
               return (
                 <div
                   key={faq.q}
-                  className="rounded-xl border border-white/10 bg-[#0F1D38]/80 backdrop-blur-md overflow-hidden transition-all duration-200 hover:border-[#FEC556]/50 shadow-md"
+                  className="rounded-xl border border-white/10 bg-navy-deep/80 backdrop-blur-md overflow-hidden transition-colors duration-200 hover:border-gold/50 shadow-md"
                 >
                   <button
                     type="button"
@@ -93,7 +93,7 @@ export function FaqWithImmediateHelpSection() {
                     className="w-full flex items-center justify-between p-4 sm:p-5 text-left transition cursor-pointer"
                   >
                     <div className="flex items-center gap-3.5 pr-2">
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#FEC556]/20 border border-[#FEC556]/40 text-xs font-bold text-[#FEC556]">
+                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold/20 border border-gold/40 text-xs font-bold text-gold">
                         {faq.num}
                       </span>
                       <span className="font-heading text-sm sm:text-base font-bold text-white">
@@ -102,7 +102,7 @@ export function FaqWithImmediateHelpSection() {
                     </div>
                     <div
                       className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/5 border border-white/10 transition-transform duration-200 ${
-                        isOpen ? "rotate-180 bg-[#FEC556] text-[#172B54]" : "text-gray-300"
+                        isOpen ? "rotate-180 bg-gold text-navy" : "text-gray-300"
                       }`}
                     >
                       <ChevronDown className="h-4 w-4" />
@@ -121,52 +121,52 @@ export function FaqWithImmediateHelpSection() {
 
           {/* Right Column: Vibrant Gold Immediate Legal Help Card Matching Image 5 */}
           <div className="lg:col-span-4 sticky top-24">
-            <div className="rounded-2xl bg-[#FEC556] p-7 sm:p-8 text-[#172B54] shadow-2xl relative overflow-hidden flex flex-col justify-between">
+            <div className="rounded-2xl bg-gold p-7 sm:p-8 text-navy shadow-2xl relative overflow-hidden flex flex-col justify-between">
               <div>
                 {/* Phone icon in circle */}
-                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/40 border border-[#172B54]/20 text-[#172B54] shadow-md mb-5">
-                  <Phone className="h-7 w-7 text-[#172B54]" />
+                <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/40 border border-navy/20 text-navy shadow-md mb-5">
+                  <Phone className="h-7 w-7 text-navy" />
                 </div>
 
                 <div className="text-center">
-                  <h3 className="font-heading text-2xl font-extrabold text-[#172B54] leading-tight">
+                  <h3 className="font-heading text-2xl font-extrabold text-navy leading-tight">
                     Need Immediate Legal Help?
                   </h3>
 
                   {/* 4 Feature Badges Row Matching Image 5 */}
                   <div className="mt-5 grid grid-cols-4 gap-2">
                     <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#172B54] text-[#FEC556] shadow-sm">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-gold shadow-sm">
                         <Lock className="h-5 w-5" />
                       </div>
-                      <span className="text-[10px] font-bold text-[#172B54] mt-1.5 uppercase">
+                      <span className="text-[10px] font-bold text-navy mt-1.5 uppercase">
                         Private
                       </span>
                     </div>
 
                     <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#172B54] text-[#FEC556] shadow-sm">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-gold shadow-sm">
                         <CheckCircle2 className="h-5 w-5" />
                       </div>
-                      <span className="text-[10px] font-bold text-[#172B54] mt-1.5 uppercase">
+                      <span className="text-[10px] font-bold text-navy mt-1.5 uppercase">
                         Verified
                       </span>
                     </div>
 
                     <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#172B54] text-[#FEC556] shadow-sm">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-gold shadow-sm">
                         <Zap className="h-5 w-5" />
                       </div>
-                      <span className="text-[10px] font-bold text-[#172B54] mt-1.5 uppercase">
+                      <span className="text-[10px] font-bold text-navy mt-1.5 uppercase">
                         Instant
                       </span>
                     </div>
 
                     <div className="flex flex-col items-center">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#172B54] text-[#FEC556] shadow-sm">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-navy text-gold shadow-sm">
                         <ClipboardList className="h-5 w-5" />
                       </div>
-                      <span className="text-[10px] font-bold text-[#172B54] mt-1.5 uppercase">
+                      <span className="text-[10px] font-bold text-navy mt-1.5 uppercase">
                         Transparent
                       </span>
                     </div>
@@ -176,12 +176,12 @@ export function FaqWithImmediateHelpSection() {
                   <div className="mt-7">
                     <a
                       href={FIRM.phoneHref}
-                      className="font-heading text-3xl font-extrabold tracking-tight text-[#172B54] hover:scale-105 transition-transform inline-block"
+                      className="font-heading text-3xl font-extrabold tracking-tight text-navy hover:scale-105 transition-transform inline-block"
                     >
                       {FIRM.phone}
                     </a>
-                    <p className="mt-2 text-xs font-semibold text-[#172B54]/90 max-w-xs mx-auto leading-relaxed">
-                      Connect with verified lawyers instantly for urgent legal consultation
+                    <p className="mt-2 text-xs font-semibold text-navy/90 max-w-xs mx-auto leading-relaxed">
+                      Speak directly with our chamber advocates regarding your preliminary legal consultation and court representation.
                     </p>
                   </div>
 
@@ -189,23 +189,23 @@ export function FaqWithImmediateHelpSection() {
                   <div className="mt-6 space-y-3">
                     <a
                       href={FIRM.phoneHref}
-                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#172B54] py-3.5 text-sm font-bold text-white shadow-lg hover:bg-[#0F1D38] transition cursor-pointer"
+                      className="flex w-full items-center justify-center gap-2 rounded-xl bg-navy py-3.5 text-sm font-bold text-white shadow-lg hover:bg-navy-deep transition-colors duration-200 cursor-pointer"
                     >
-                      <Phone className="h-4 w-4 text-[#FEC556]" />
+                      <Phone className="h-4 w-4 text-gold" />
                       <span>Call Now</span>
                     </a>
 
                     <button
                       type="button"
                       onClick={openModal}
-                      className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-[#172B54] py-3 text-xs font-bold text-[#172B54] hover:bg-white/30 transition cursor-pointer"
+                      className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-navy py-3 text-xs font-bold text-navy hover:bg-white/30 transition-colors duration-200 cursor-pointer"
                     >
                       <span>Book 30-Min Structured Review</span>
                     </button>
                   </div>
 
                   {/* Bottom Line Matching Image 5 */}
-                  <div className="mt-6 pt-4 border-t border-[#172B54]/20 flex items-center justify-between text-xs text-[#172B54] font-bold">
+                  <div className="mt-6 pt-4 border-t border-navy/20 flex items-center justify-between text-xs text-navy font-bold">
                     <div className="flex items-center gap-1.5 text-[11px]">
                       <span className="h-2 w-2 rounded-full bg-emerald-700 animate-pulse" />
                       <span>Available 10 AM - 7 PM</span>
@@ -215,9 +215,9 @@ export function FaqWithImmediateHelpSection() {
                       href={FIRM.whatsappHref}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[#34A853] px-3.5 py-1 text-[11px] font-bold text-white shadow hover:brightness-110 transition"
+                      className="inline-flex items-center gap-1.5 rounded-full bg-whatsapp px-3.5 py-1 text-[11px] font-bold text-white shadow hover:brightness-110 transition-[filter] duration-200"
                     >
-                      <MessageCircle className="h-3.5 w-3.5" />
+                      <WhatsAppLogo className="h-3.5 w-3.5" />
                       <span>Whatsapp</span>
                     </a>
                   </div>

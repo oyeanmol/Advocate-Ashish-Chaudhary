@@ -1,14 +1,14 @@
 export function ConsultationMessageSection() {
   return (
-    <section className="py-20 md:py-24 bg-white text-[#111827] border-b border-gray-200/80">
+    <section className="py-20 md:py-24 bg-white text-foreground border-b border-gray-200/80">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         {/* Title Matching Image 3 */}
         <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#172B54] tracking-tight">
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navy tracking-tight">
             Consult a Lawyer Online —{" "}
             <span className="relative inline-block pb-2">
               Confidential & Privileged
-              <span className="absolute bottom-0 left-0 right-0 h-1 rounded bg-[#FEC556]" />
+              <span className="absolute bottom-0 left-0 right-0 h-1 rounded bg-gold" />
             </span>
           </h2>
         </div>

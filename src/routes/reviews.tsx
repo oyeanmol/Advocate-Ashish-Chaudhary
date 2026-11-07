@@ -26,8 +26,8 @@ export function ReviewsPage() {
     <SiteShell>
       <PageHero
         eyebrow="Ethical Standards & Feedback"
-        title="Client Feedback & Professional Ethics"
-        subtitle="Our Commitment to Truth, Client-Counsel Privilege, and Compliance with Bar Council of India Regulations"
+        title="Professional Conduct & Legal Ethics"
+        subtitle="Commitment to Advocate-Client Privilege, Procedural Diligence, and Compliance with Bar Council of India Rule 36"
       />
 
       <section className="py-20 md:py-24 bg-white text-[#111827]">

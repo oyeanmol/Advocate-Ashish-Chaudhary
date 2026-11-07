@@ -113,21 +113,21 @@ function AboutPage() {
               {/* Verified Advocates Panel */}
               <div className="mt-8 border-t border-gray-100 pt-6">
                 <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
-                  Our Practicing Advocates:
+                  Advocates Representing the Firm:
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {FIRM.advocates.map((adv) => (
                     <div
                       key={adv.name}
-                      className="rounded border border-gray-200 bg-[#FEFBF3] p-4 shadow-sm hover:border-[#FEC556] transition-colors"
+                      className="rounded border border-gray-200 bg-[#FEFBF3] p-4 shadow-sm hover:border-[#172B54]/40 transition-colors"
                     >
                       <div className="flex items-center gap-2 mb-1">
-                        <Gavel className="h-4 w-4 text-[#FEC556]" />
+                        <Gavel className="h-4 w-4 text-[#172B54]" />
                         <div className="font-heading text-sm font-bold text-[#172B54]">
                           {adv.name}
                         </div>
                       </div>
-                      <div className="text-xs font-semibold text-amber-700">{adv.role}</div>
+                      <div className="text-xs font-semibold text-[#172B54]/85">{adv.role}</div>
                       <div className="text-[11px] text-gray-600 mt-1">{adv.forum}</div>
                     </div>
                   ))}
@@ -186,7 +186,7 @@ function AboutPage() {
           <SectionTitle
             eyebrow="Chamber Presence"
             title="Permanent Chamber at Tis Hazari Courts"
-            subtitle="Central Delhi location providing seamless physical proximity to district judicial benches and registrar counters."
+            subtitle="Central Delhi location providing direct physical proximity to district judicial benches and registrar counters."
           />
 
           <div className="rounded-xl border border-gray-200 bg-[#EDF3FA] p-8 text-left grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
