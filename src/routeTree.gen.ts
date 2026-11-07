@@ -12,6 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as HowWeWorkRouteImport } from './routes/how-we-work'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as LegalServicesIndexRouteImport } from './routes/legal-services/index'
+import { Route as LegalServicesSlugRouteImport } from './routes/legal-services/$slug'
 import { Route as PracticeAreasIndexRouteImport } from './routes/practice-areas/index'
 import { Route as PracticeAreasSlugRouteImport } from './routes/practice-areas/$slug'
 
@@ -30,6 +37,41 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeWorkRoute = HowWeWorkRouteImport.update({
+  id: '/how-we-work',
+  path: '/how-we-work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalServicesIndexRoute = LegalServicesIndexRouteImport.update({
+  id: '/legal-services/',
+  path: '/legal-services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalServicesSlugRoute = LegalServicesSlugRouteImport.update({
+  id: '/legal-services/$slug',
+  path: '/legal-services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PracticeAreasIndexRoute = PracticeAreasIndexRouteImport.update({
   id: '/practice-areas/',
   path: '/practice-areas/',
@@ -45,14 +87,28 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/how-we-work': typeof HowWeWorkRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/reviews': typeof ReviewsRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/legal-services/$slug': typeof LegalServicesSlugRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
+  '/legal-services/': typeof LegalServicesIndexRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/how-we-work': typeof HowWeWorkRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/reviews': typeof ReviewsRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/legal-services/$slug': typeof LegalServicesSlugRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
+  '/legal-services': typeof LegalServicesIndexRoute
   '/practice-areas': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesById {
@@ -60,21 +116,58 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/how-we-work': typeof HowWeWorkRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/reviews': typeof ReviewsRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/legal-services/$slug': typeof LegalServicesSlugRoute
   '/practice-areas/$slug': typeof PracticeAreasSlugRoute
+  '/legal-services/': typeof LegalServicesIndexRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/about' | '/contact' | '/practice-areas/$slug' | '/practice-areas/'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/how-we-work'
+    | '/privacy-policy'
+    | '/reviews'
+    | '/terms-of-service'
+    | '/legal-services/$slug'
+    | '/practice-areas/$slug'
+    | '/legal-services/'
+    | '/practice-areas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/practice-areas/$slug' | '/practice-areas'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/faq'
+    | '/how-we-work'
+    | '/privacy-policy'
+    | '/reviews'
+    | '/terms-of-service'
+    | '/legal-services/$slug'
+    | '/practice-areas/$slug'
+    | '/legal-services'
+    | '/practice-areas'
   id:
     | '__root__'
     | '/'
     | '/about'
     | '/contact'
+    | '/faq'
+    | '/how-we-work'
+    | '/privacy-policy'
+    | '/reviews'
+    | '/terms-of-service'
+    | '/legal-services/$slug'
     | '/practice-areas/$slug'
+    | '/legal-services/'
     | '/practice-areas/'
   fileRoutesById: FileRoutesById
 }
@@ -82,7 +175,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  FaqRoute: typeof FaqRoute
+  HowWeWorkRoute: typeof HowWeWorkRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ReviewsRoute: typeof ReviewsRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
+  LegalServicesSlugRoute: typeof LegalServicesSlugRoute
   PracticeAreasSlugRoute: typeof PracticeAreasSlugRoute
+  LegalServicesIndexRoute: typeof LegalServicesIndexRoute
   PracticeAreasIndexRoute: typeof PracticeAreasIndexRoute
 }
 
@@ -109,6 +209,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-work': {
+      id: '/how-we-work'
+      path: '/how-we-work'
+      fullPath: '/how-we-work'
+      preLoaderRoute: typeof HowWeWorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal-services/': {
+      id: '/legal-services/'
+      path: '/legal-services'
+      fullPath: '/legal-services/'
+      preLoaderRoute: typeof LegalServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal-services/$slug': {
+      id: '/legal-services/$slug'
+      path: '/legal-services/$slug'
+      fullPath: '/legal-services/$slug'
+      preLoaderRoute: typeof LegalServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/practice-areas/': {
       id: '/practice-areas/'
       path: '/practice-areas'
@@ -130,7 +279,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  FaqRoute: FaqRoute,
+  HowWeWorkRoute: HowWeWorkRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ReviewsRoute: ReviewsRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
+  LegalServicesSlugRoute: LegalServicesSlugRoute,
   PracticeAreasSlugRoute: PracticeAreasSlugRoute,
+  LegalServicesIndexRoute: LegalServicesIndexRoute,
   PracticeAreasIndexRoute: PracticeAreasIndexRoute,
 }
 export const routeTree = rootRouteImport

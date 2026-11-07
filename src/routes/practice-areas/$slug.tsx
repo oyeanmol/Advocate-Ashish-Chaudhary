@@ -1,94 +1,101 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, ArrowRight, Phone } from "lucide-react";
+import { ArrowLeft, ArrowRight, Phone, ShieldCheck, Landmark } from "lucide-react";
 import { SiteShell, SectionTitle } from "@/components/site/Layout";
-import { CoreAreasGrid, ExploreAreasGrid, PracticeCta } from "@/components/site/PracticeAreas";
-import { FIRM, PRACTICE } from "@/components/site/data";
+import { FIRM, LEGAL_SERVICES, findLegalService } from "@/components/site/data";
+import { useConsultationModal } from "@/components/site/ConsultationModal";
 
 export const Route = createFileRoute("/practice-areas/$slug")({
   loader: ({ params }) => {
-    const area = PRACTICE.find((p) => p.slug === params.slug);
-    if (!area) throw notFound();
-    return { slug: area.slug };
+    const service = findLegalService(params.slug);
+    if (!service) throw notFound();
+    return { slug: service.slug };
   },
   head: ({ params }) => {
-    const area = PRACTICE.find((p) => p.slug === params.slug);
-    const title = area ? `${area.title} Advocates | Urmika Juris & Associates` : "Practice Area | Urmika Juris & Associates";
-    const desc = area ? `${area.short}. Expert legal counsel from Urmika Juris & Associates.` : "Legal services by Urmika Juris & Associates.";
+    const service = findLegalService(params.slug);
+    const title = service
+      ? `${service.emoji} ${service.title} Advocates | Urmika Juris & Associates`
+      : "Legal Service | Urmika Juris & Associates";
+    const desc = service
+      ? `${service.short}. Legal representation at Tis Hazari Courts, Delhi.`
+      : "Legal services by Urmika Juris & Associates.";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
-        { property: "og:description", content: desc },
       ],
     };
   },
-  component: PracticeDetail,
+  component: PracticeAreaDetailPage,
 });
 
-function PracticeDetail() {
+function PracticeAreaDetailPage() {
   const { slug } = Route.useParams();
-  const area = PRACTICE.find((p) => p.slug === slug);
-  if (!area) return null;
+  const service = findLegalService(slug);
+  const { openModal } = useConsultationModal();
+
+  if (!service) return null;
 
   return (
     <SiteShell>
-      <section className="bg-navy-deep py-20 text-navy-foreground">
-        <div className="mx-auto max-w-7xl px-4">
-          <Link to="/practice-areas" className="inline-flex items-center gap-2 text-sm text-navy-foreground/70 transition hover:text-gold">
-            <ArrowLeft className="h-4 w-4" /> Back to Practice Areas
+      <section className="bg-[#172B54] py-16 text-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Link
+            to="/legal-services"
+            className="inline-flex items-center gap-1.5 text-xs text-gray-300 hover:text-[#FEC556] transition mb-4"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" /> Back to Our Legal Services
           </Link>
-          <div className="mt-6 flex items-start gap-5">
-            <div className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-navy text-gold sm:flex">
-              <area.icon className="h-8 w-8" />
-            </div>
-            <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-gold">{FIRM.name}</p>
-              <h1 className="mt-3 max-w-3xl text-4xl md:text-5xl">Expert Advocates for {area.title}</h1>
-              <p className="mt-4 font-serif text-2xl text-gold-soft">{area.short}</p>
-              <p className="mt-4 max-w-2xl text-navy-foreground/75">{area.blurb}</p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a href={FIRM.phoneHref} className="inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-semibold text-primary-foreground shadow-gold">
-                  <Phone className="h-4 w-4" /> Call {FIRM.phone}
-                </a>
-                <Link to="/contact" className="inline-flex items-center gap-2 rounded-full border border-gold/40 px-7 py-3.5 font-semibold hover:bg-navy">
-                  Send Your Details <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
+
+          <span className="block text-xs uppercase font-bold tracking-widest text-[#FEC556]">
+            {service.category}
+          </span>
+          <h1 className="mt-2 font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white flex items-center gap-3">
+            <span className="text-4xl sm:text-5xl">{service.emoji}</span>
+            <span>{service.title}</span>
+          </h1>
+          <p className="mt-3 font-serif text-xl text-amber-100">{service.short}</p>
+          <p className="mt-4 max-w-2xl text-sm text-gray-200 leading-relaxed">{service.blurb}</p>
+
+          <div className="mt-8 flex flex-wrap gap-4">
+            <button
+              type="button"
+              onClick={openModal}
+              className="rounded-lg bg-[#FEC556] px-6 py-3 text-xs font-bold text-[#172B54] shadow hover:bg-amber-400 transition"
+            >
+              Book 30-Minute Consultation
+            </button>
+            <a
+              href={FIRM.phoneHref}
+              className="inline-flex items-center gap-2 rounded-lg border border-white/20 bg-white/10 px-5 py-3 text-xs font-semibold text-white hover:bg-white/20 transition"
+            >
+              <Phone className="h-3.5 w-3.5 text-[#FEC556]" />
+              Call {FIRM.phone}
+            </a>
           </div>
         </div>
       </section>
 
-      <section className="py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionTitle eyebrow="What We Handle" title={`${area.title} — Core Areas Covered`} />
-          <CoreAreasGrid area={area} />
-        </div>
-      </section>
-
-      <section className="bg-secondary py-24">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionTitle eyebrow="Our Approach" title="How We Work On Your Matter" />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {["Detailed study of your documents and facts", "Clear written advice on options, risk and timelines", "Filing, drafting and appearances before the right forum", "Regular updates at every hearing and stage", "Transparent fees discussed before we begin", "Confidential handling of every detail"].map((s) => (
-              <div key={s} className="rounded-2xl border bg-card p-6 shadow-card">
-                <span className="mt-1.5 block h-1.5 w-1.5 rounded-full bg-gold" />
-                <p className="mt-3 font-serif text-lg text-navy">{s}</p>
+      <section className="py-20 bg-white text-[#111827]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionTitle
+            eyebrow="Core Practice Areas"
+            title={`${service.title} — Key Sub-Domains`}
+            subtitle="Advocacy and advisory areas covered before Tis Hazari and Delhi judicial benches."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {service.core.map((item) => (
+              <div
+                key={item}
+                className="flex items-start gap-3 rounded-xl border border-gray-200 bg-[#FEFBF3] p-4 shadow-sm"
+              >
+                <ShieldCheck className="h-5 w-5 text-[#FEC556] shrink-0 mt-0.5" />
+                <span className="text-xs sm:text-sm font-semibold text-[#172B54]">{item}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      <section className="bg-navy-deep py-20 text-navy-foreground">
-        <div className="mx-auto max-w-7xl px-4">
-          <SectionTitle light eyebrow="Explore" title="Other Practice Areas" />
-          <ExploreAreasGrid current={area.slug} />
-        </div>
-      </section>
-
-      <PracticeCta />
     </SiteShell>
   );
 }

@@ -15,19 +15,25 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#172B54] px-4 text-white">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+        <h1 className="text-8xl font-black text-[#FEC556]">404</h1>
+        <h2 className="mt-4 font-heading text-2xl font-bold text-white">Page Not Found</h2>
+        <p className="mt-2 text-sm text-gray-300">
+          The requested legal resource or page does not exist or has been relocated.
         </p>
-        <div className="mt-6">
+        <div className="mt-8 flex justify-center gap-3">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-lg bg-[#FEC556] px-5 py-2.5 text-sm font-bold text-[#172B54] shadow-md hover:bg-amber-400 transition"
           >
-            Go home
+            Return to Homepage
+          </Link>
+          <Link
+            to="/legal-services"
+            className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20 transition"
+          >
+            Our Legal Services
           </Link>
         </div>
       </div>
@@ -43,29 +49,30 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center bg-[#172B54] px-4 text-white">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+        <h1 className="text-2xl font-bold tracking-tight text-[#FEC556]">
+          Temporary Loading Error
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <p className="mt-3 text-sm text-gray-300">
+          Something unexpected occurred while loading this page. Please refresh or navigate back to
+          the homepage.
         </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
           <button
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-lg bg-[#FEC556] px-5 py-2.5 text-sm font-bold text-[#172B54] shadow-md hover:bg-amber-400"
           >
-            Try again
+            Retry
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white hover:bg-white/20"
           >
-            Go home
+            Homepage
           </a>
         </div>
       </div>
@@ -78,9 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Urmika Juris & Associates" },
-      { name: "description", content: "Urmika Juris & Associates — advocates and legal consultants." },
+      { title: "Urmika Juris & Associates | Advocates & Legal Consultants, Tis Hazari Courts" },
+      {
+        name: "description",
+        content:
+          "Urmika Juris & Associates — dedicated advocates practicing at Tis Hazari Courts, Delhi High Court and Supreme Court. Criminal Defense, Family Law, Property Disputes, Corporate Advisory.",
+      },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Urmika Juris & Associates" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -88,7 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap",
       },
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
@@ -119,7 +131,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
   );
