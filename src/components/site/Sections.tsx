@@ -96,18 +96,20 @@ export function TeamSection() {
         <SectionTitle
           eyebrow="Judicial Advocates"
           title="Advocates of Urmika Juris & Associates"
-          subtitle="Practicing across Tis Hazari Courts, Delhi High Court and appellate tribunals."
+          subtitle="Practicing across District Courts, High Courts across India, and the Supreme Court of India."
         />
-        <div className="grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
           {FIRM.advocates.map((adv) => (
             <div
               key={adv.name}
-              className="rounded-xl border border-gray-200 bg-[#FEFBF3] p-6 text-center shadow-sm"
+              className="rounded-xl border border-gray-200 bg-[#FEFBF3] p-5 text-center shadow-sm hover:border-[#172B54] transition-colors"
             >
-              <Scale className="h-8 w-8 text-[#FEC556] mx-auto mb-3" />
-              <h3 className="font-heading text-lg font-bold text-[#172B54]">{adv.name}</h3>
-              <div className="text-xs font-semibold text-amber-800 mt-1">{adv.designation}</div>
-              <div className="text-[11px] text-gray-500 mt-2">{adv.forum}</div>
+              <Scale className="h-7 w-7 text-[#FEC556] mx-auto mb-2.5" />
+              <h3 className="font-heading text-base font-bold text-[#172B54]">Adv. {adv.name}</h3>
+              <div className="inline-block text-[10px] font-bold uppercase tracking-wider text-amber-900 bg-amber-100/80 px-2 py-0.5 rounded mt-1.5">
+                {adv.role === "Founder & Principal Advocate" ? "Principal" : adv.role}
+              </div>
+              <div className="text-[11px] text-gray-600 mt-2 leading-relaxed">{adv.forum}</div>
             </div>
           ))}
         </div>

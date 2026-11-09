@@ -146,9 +146,9 @@ export function getDeterministicChatReply(message: string): ChatResponse {
     responseText =
       `Chamber Timings & Availability:\n\n` +
       `• Days: Monday through Saturday\n` +
-      `• Consultation Timings: 10:00 AM – 7:00 PM (By prior appointment)\n` +
+      `• Consultation Timings: 10:00 AM – 6:00 PM (By prior appointment)\n` +
       `• Sunday: Chamber closed; emergency bail or urgent remand inquiries coordinated via helpline: +91 88024 87291.\n\n` +
-      `Court benches function from 10:00 AM to 4:00 PM. Evening chamber hours from 4:30 PM to 7:00 PM are dedicated to pre-scheduled client briefings.`;
+      `Court benches function from 10:00 AM to 4:00 PM. Evening chamber hours from 4:00 PM to 6:00 PM are dedicated to pre-scheduled client briefings.`;
   }
   // 7. Chamber Location
   else if (
@@ -169,7 +169,7 @@ export function getDeterministicChatReply(message: string): ChatResponse {
       `Delhi – 110054, India.\n\n` +
       `• Landmark: Located in the Western Wing of Tis Hazari Courts complex, near Tis Hazari Metro Station (Red Line) and Kashmiri Gate.\n` +
       `• Chamber Telephone: +91 88024 87291\n` +
-      `• Chamber Hours: Monday to Saturday, 10:00 AM – 7:00 PM (By prior appointment).`;
+      `• Chamber Hours: Monday to Saturday, 10:00 AM – 6:00 PM (By prior appointment).`;
   }
   // 8. Contact Details & Helpline
   else if (
@@ -208,10 +208,10 @@ export function getDeterministicChatReply(message: string): ChatResponse {
     responseText =
       `Legal Advocacy Team at Urmika Juris & Associates:\n\n` +
       `• Advocate Aashish Choudhary — Founder & Principal Advocate (Delhi Bar Council & Associates)\n` +
-      `• Satish Chand (Advocate) — Senior Counsel\n` +
-      `• Durga Das (Advocate) — Counsel\n` +
-      `• Krishan Kumar (Advocate) — Counsel\n\n` +
-      `Our advocates appear actively before the Tis Hazari District Courts, Delhi High Court, the Supreme Court of India, and statutory appellate tribunals.`;
+      `• Satish Chand (Advocate) — Senior Advocate\n` +
+      `• Durga Das (Advocate) — Senior Advocate\n` +
+      `• Krishan Kumar (Advocate) — Senior Advocate\n\n` +
+      `Our advocates represent matters across District Courts, High Courts across India, the Supreme Court of India, and statutory appellate tribunals.`;
   }
   // 10. Property, Real Estate & RERA
   else if (
