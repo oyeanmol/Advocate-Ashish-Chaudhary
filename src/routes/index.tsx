@@ -35,20 +35,23 @@ import { useConsultationModal } from "@/components/site/ConsultationModal";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Urmika Juris & Associates | Advocates, Tis Hazari Courts Delhi" },
+      {
+        title:
+          "Urmika Juris & Associates | Advocates Across India — Supreme Court, High Courts & District Courts",
+      },
       {
         name: "description",
         content:
-          "Urmika Juris & Associates — Trusted advocates practicing at Tis Hazari Courts, Delhi High Court and Supreme Court. Criminal Defense, Family Law, Property Disputes, Corporate Litigation.",
+          "Urmika Juris & Associates — Trusted advocates practicing across India before the Supreme Court, State High Courts, and District Courts with permanent chambers at Tis Hazari Courts, Delhi. Criminal Defense, Family Law, Property Disputes, Corporate Litigation.",
       },
       {
         property: "og:title",
-        content: "Urmika Juris & Associates | Advocates, Tis Hazari Courts Delhi",
+        content: "Urmika Juris & Associates | Advocates Across India",
       },
       {
         property: "og:description",
         content:
-          "Advocates Aashish Choudhary, Satish Chand, Durga Das and Krishan Kumar representing clients across Delhi courts.",
+          "Founder Advocate Aashish Choudhary and Senior Advocates Satish Chand, Durga Das and Krishan Kumar representing clients across District Courts, High Courts, and the Supreme Court of India.",
       },
     ],
   }),
@@ -60,7 +63,7 @@ export const Route = createFileRoute("/")({
  */
 const MARQUEE_ITEMS = [
   { icon: MapPin, text: "Chamber 298A, Western Wing, Tis Hazari Courts, Delhi – 110054" },
-  { icon: Scale, text: "Delhi High Court & Supreme Court Representation" },
+  { icon: Scale, text: "Supreme Court, High Courts Across India & District Courts Representation" },
   { icon: Clock, text: "Initial 30-Minute Structured Consultation" },
   { icon: ShieldCheck, text: "Bar Council of India Rule 36 Ethical Compliance" },
   { icon: Gavel, text: "Founder & Principal Advocate: Aashish Choudhary" },
@@ -113,18 +116,18 @@ function IndexPage() {
 
               {/* Subtitle */}
               <p className="mt-4 font-serif text-xl sm:text-2xl text-amber-100/90 leading-snug">
-                Strategic, Ethical & Dedicated Legal Advocacy Across Delhi Courts
+                Strategic, Ethical & Dedicated Legal Advocacy Across Courts in India
               </p>
 
               {/* Core Description with Verified Advocate Names */}
               <p className="mt-5 text-base sm:text-lg text-gray-200 leading-relaxed max-w-2xl drop-shadow-sm">
                 Led by Founder & Principal Advocate{" "}
-                <span className="text-white font-semibold">Aashish Choudhary</span> alongside
-                advocates <span className="text-white font-semibold">Satish Chand</span>,{" "}
+                <span className="text-white font-semibold">Aashish Choudhary</span> alongside Senior
+                Advocates <span className="text-white font-semibold">Satish Chand</span>,{" "}
                 <span className="text-white font-semibold">Durga Das</span>, and{" "}
                 <span className="text-white font-semibold">Krishan Kumar</span>, delivering
-                disciplined courtroom advocacy across Tis Hazari Courts, the Delhi High Court, and
-                appellate tribunals.
+                disciplined courtroom advocacy across District Courts, High Courts across India, and
+                the Supreme Court of India.
               </p>
 
               {/* CTAs: Book Consultation (modal) + Call + WhatsApp */}
@@ -325,29 +328,53 @@ function IndexPage() {
                 anchored by the constitutional ethos of <em>Satyamev Jayate</em> — Truth Alone
                 Triumphs. Founded and led by{" "}
                 <strong className="text-navy">Advocate Aashish Choudhary</strong>, the firm
-                operates its primary chamber at Tis Hazari Courts in Delhi, handling contentious
-                courtroom trials, appellate matters, and strategic advisory.
+                operates its primary chamber at Tis Hazari Courts in Delhi, while representing clients
+                across India before District Courts, State High Courts, and the Supreme Court of India.
               </p>
 
-              {/* Verified Advocates List */}
-              <div className="mt-6 space-y-3">
-                <div className="text-xs font-bold uppercase tracking-wider text-gray-500">
-                  Advocates Representing the Firm:
+              {/* Prominently Highlighted Practicing Advocates Panel */}
+              <div className="mt-7 space-y-3.5">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-bold uppercase tracking-wider text-navy">
+                    Practicing Advocates Representing the Firm:
+                  </div>
+                  <span className="text-[11px] font-semibold text-amber-900 bg-amber-100/80 border border-amber-300 px-2.5 py-0.5 rounded-full">
+                    Courtroom Legal Team
+                  </span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {FIRM.advocates.map((adv) => (
                     <div
                       key={adv.name}
-                      className="rounded-xl border border-gray-200 bg-surface-cream p-4 shadow-sm hover:border-gold transition-colors duration-200"
+                      className="group rounded-xl border border-gray-200 bg-surface-cream p-4 shadow-sm hover:border-gold hover:shadow-md transition-[border-color,box-shadow] duration-200"
                     >
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <Gavel className="h-4 w-4 text-navy" />
-                        <div className="font-heading text-sm font-bold text-navy">
-                          {adv.name}
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <Gavel className="h-4 w-4 text-navy shrink-0" />
+                          <div className="font-heading text-sm font-bold text-navy group-hover:text-gold-dark transition-colors">
+                            Adv. {adv.name}
+                          </div>
                         </div>
+                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-navy text-gold">
+                          {adv.role === "Founder & Principal Advocate" ? "Principal" : adv.role}
+                        </span>
                       </div>
-                      <div className="text-xs font-semibold text-navy/85">{adv.role}</div>
-                      <div className="text-[11px] text-gray-600 mt-1">{adv.forum}</div>
+                      <div className="text-[11px] text-gray-700 mt-1 flex items-start gap-1.5">
+                        <Scale className="h-3.5 w-3.5 text-navy/70 shrink-0 mt-0.5" />
+                        <span className="leading-tight">{adv.forum}</span>
+                      </div>
+                      <div className="mt-2.5 pt-2 border-t border-gray-200/70 flex items-center justify-between text-[11px]">
+                        <span className="text-gray-500 font-medium">Direct Enquiry</span>
+                        <a
+                          href={`https://wa.me/918802487291?text=${encodeURIComponent(`Hello Urmika Juris, I would like to consult with Advocate ${adv.name} regarding my legal matter.`)}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-bold text-navy hover:text-gold-dark flex items-center gap-1"
+                        >
+                          <span>Consult</span>
+                          <ArrowRight className="h-3 w-3" />
+                        </a>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -400,10 +427,7 @@ function IndexPage() {
         </div>
       </section>
 
-      {/* 4. BIG CONSULTATION NARRATIVE MESSAGE (Matching Image 3 — Placed before Legal Services) */}
-      <ConsultationMessageSection />
-
-      {/* 5. LEGAL SERVICES SECTION (Homepage displays 4 core services in a clean single 4-col row, remaining in Explore All) */}
+      {/* 4. LEGAL SERVICES SECTION (Homepage displays 4 core services in a clean single 4-col row, remaining in Explore All) */}
       <LegalServicesSection limit={4} showCategoryFilters={true} showViewAll={true} />
 
       {/* 6. HOW WE WORK SECTION (Matching Image 4 — Globe & Scales left card + 4 yellow roadmap cards) */}
@@ -415,67 +439,68 @@ function IndexPage() {
       {/* 8. PROMISE SECTION ("The Urmika Juris Promise: A Hybrid Path to Justice" with 3 pillars) */}
       <PromiseSection />
 
-      {/* 9. JUDICIAL FORUMS & COURT COVERAGE (With Authentic Court Building Photographs) */}
+      {/* 8. JUDICIAL FORUMS & COURT COVERAGE ACROSS INDIA (With Authentic Court Building Photographs) */}
       <section className="relative overflow-hidden bg-navy-deep py-20 md:py-24 text-white">
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <div className="inline-block border-l-2 border-gold bg-black/40 px-3.5 py-1 text-xs font-semibold tracking-wide text-gold mb-3">
-              Jurisdictional Practice
+              Pan-India Jurisdictional Representation
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white">
-              Representing Matters Across Courts in Delhi
+              Representing Matters Across Courts in India
             </h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded bg-gold" />
             <p className="mt-4 text-base sm:text-lg text-gray-300 leading-relaxed">
               Our advocates maintain active presence and direct filing privileges across the Supreme
-              Court, High Court of Delhi, Tis Hazari, and specialized commercial tribunals.
+              Court of India, State High Courts across India, Tis Hazari headquarters, and specialized
+              commercial tribunals nationwide.
             </p>
           </div>
 
-          {/* 6-Card Judicial Coverage Grid with Real Court Photos */}
+          {/* 6-Card Judicial Coverage Grid with Real Court Photos (Ordered by Judicial Hierarchy) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {[
               {
-                name: "Tis Hazari District Courts",
-                jurisdiction: "Headquarters & Primary Chamber (Ch. 298A)",
-                desc: "Trial court representation in Sessions, Civil Judge, and ADJ benches for Central and West Delhi.",
-                photo: courtTisHazari,
-                badge: "Permanent Chamber",
-              },
-              {
-                name: "High Court of Delhi",
-                jurisdiction: "Sher Shah Road, New Delhi",
-                desc: "Original civil suits, criminal quashing petitions (BNSS/CrPC), writ petitions (Art 226), and commercial appeals.",
-                photo: courtDelhiHighCourt,
-                badge: "Appellate & Writs",
-              },
-              {
                 name: "Supreme Court of India",
-                jurisdiction: "Tilak Marg, New Delhi",
-                desc: "Special Leave Petitions (SLP under Art 136), transfer petitions, and constitutional writs (Art 32).",
+                jurisdiction: "Tilak Marg, New Delhi (All-India Jurisdiction)",
+                desc: "Special Leave Petitions (SLP under Art 136), transfer petitions between states, statutory appeals, and constitutional writs (Art 32).",
                 photo: courtSupremeCourt,
-                badge: "Apex Court",
+                badge: "Apex Court of India",
               },
               {
-                name: "Patiala House Courts",
-                jurisdiction: "India Gate / New Delhi District",
-                desc: "Special CBI, ED, and economic offences trial courts, along with New Delhi district civil & criminal litigation.",
-                photo: courtPatialaHouse,
-                badge: "District & Sessions",
-              },
-              {
-                name: "Saket District Courts",
-                jurisdiction: "South & South East Delhi",
-                desc: "Trial defense in South Delhi criminal cases, family court custody/matrimonial matters, and motor accident claims.",
-                photo: courtSaket,
-                badge: "District & Sessions",
+                name: "High Courts Across India",
+                jurisdiction: "Delhi High Court, Punjab & Haryana, Allahabad & State Benches",
+                desc: "Original civil suits, criminal quashing petitions (BNSS/CrPC), writ petitions (Art 226/227), and commercial appeals across state High Courts.",
+                photo: courtDelhiHighCourt,
+                badge: "High Courts Nationwide",
               },
               {
                 name: "NCLT & Appellate Tribunals",
-                jurisdiction: "CGO Complex & Delhi Benches",
-                desc: "Insolvency and Bankruptcy Code (IBC) litigation, company disputes, RERA Delhi, and consumer commissions.",
+                jurisdiction: "Principal Bench Delhi & Regional Benches Across India",
+                desc: "Insolvency and Bankruptcy Code (IBC) litigation, company disputes, NCLAT appeals, RERA statutory complaints, and consumer dispute commissions.",
                 photo: courtNclt,
-                badge: "Specialized Benches",
+                badge: "Corporate & Appellate Benches",
+              },
+              {
+                name: "Tis Hazari District Courts",
+                jurisdiction: "Chamber 298A, Western Wing (Headquarters)",
+                desc: "Principal litigation chambers, trial court defense in Sessions & Civil Judge benches, NI Act complaints, and procedural trial coordination.",
+                photo: courtTisHazari,
+                badge: "Permanent Headquarters Chamber",
+              },
+              {
+                name: "Patiala House Courts",
+                jurisdiction: "India Gate / New Delhi Judicial District",
+                desc: "Special trial courts for economic offences, CBI courts, ED/PMLA proceedings, and commercial trial litigation before New Delhi district benches.",
+                photo: courtPatialaHouse,
+                badge: "Special Trial Benches",
+              },
+              {
+                name: "Saket District Courts & District Judiciary",
+                jurisdiction: "South & South-East Delhi & Associated Trial Benches",
+                desc: "Trial defense in criminal cases, commercial division disputes, family court custody/matrimonial matters, and motor accident claims.",
+                photo: courtSaket,
+                badge: "District & Sessions Courts",
               },
             ].map((courtItem) => (
               <div
@@ -531,6 +556,9 @@ function IndexPage() {
           </div>
         </div>
       </section>
+
+      {/* 9. CONSULTATION NARRATIVE MESSAGE (Placed towards bottom per client instruction) */}
+      <ConsultationMessageSection />
 
       {/* 10. FREQUENTLY ASKED QUESTIONS & IMMEDIATE LEGAL HELP (Matching Image 5) */}
       <FaqWithImmediateHelpSection />

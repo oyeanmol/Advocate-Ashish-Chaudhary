@@ -9,17 +9,17 @@ import { useConsultationModal } from "@/components/site/ConsultationModal";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Us | Urmika Juris & Associates — Tis Hazari Courts, Delhi" },
+      { title: "About Us | Urmika Juris & Associates — Advocates in India" },
       {
         name: "description",
         content:
-          "Learn about Urmika Juris & Associates, Founder & Principal Advocate Aashish Choudhary, advocates Satish Chand, Durga Das, and Krishan Kumar, and our practice at Tis Hazari Courts, Delhi.",
+          "Learn about Urmika Juris & Associates, Founder & Principal Advocate Aashish Choudhary, Senior Advocates Satish Chand, Durga Das, and Krishan Kumar, practicing across District Courts, High Courts across India, and the Supreme Court of India.",
       },
       { property: "og:title", content: "About Us | Urmika Juris & Associates" },
       {
         property: "og:description",
         content:
-          "Dedicated legal advocacy founded on Satyamev Jayate. Practicing before Tis Hazari Courts and Delhi High Court.",
+          "Dedicated legal advocacy founded on Satyamev Jayate. Practicing before District Courts, High Courts across India, and the Supreme Court of India.",
       },
     ],
   }),
@@ -97,10 +97,11 @@ function AboutPage() {
 
               <p className="mt-5 text-base text-gray-700 leading-relaxed">
                 Urmika Juris & Associates is an established Indian law practice headquartered in the
-                historic Tis Hazari Courts complex of Delhi. Founded by{" "}
+                historic Tis Hazari Courts complex of Delhi, representing matters across India before
+                District Courts, State High Courts, and the Supreme Court of India. Founded by{" "}
                 <strong className="text-[#172B54]">Advocate Aashish Choudhary</strong>, the firm was
                 established to provide transparent, fearless, and ethically grounded legal
-                representation across trial courts and appellate tribunals.
+                representation across trial courts and appellate tribunals nationwide.
               </p>
               <p className="mt-4 text-base text-gray-700 leading-relaxed">
                 We believe that successful legal outcomes are won long before entering the courtroom
@@ -112,23 +113,35 @@ function AboutPage() {
 
               {/* Verified Advocates Panel */}
               <div className="mt-8 border-t border-gray-100 pt-6">
-                <div className="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">
-                  Advocates Representing the Firm:
+                <div className="flex items-center justify-between mb-4">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#172B54]">
+                    Advocates Representing the Firm:
+                  </div>
+                  <span className="text-[11px] font-semibold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                    4 Practicing Advocates
+                  </span>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                   {FIRM.advocates.map((adv) => (
                     <div
                       key={adv.name}
-                      className="rounded border border-gray-200 bg-[#FEFBF3] p-4 shadow-sm hover:border-[#172B54]/40 transition-colors"
+                      className="rounded-xl border border-gray-200 bg-[#FEFBF3] p-4 shadow-sm hover:border-[#172B54] transition-colors"
                     >
-                      <div className="flex items-center gap-2 mb-1">
-                        <Gavel className="h-4 w-4 text-[#172B54]" />
-                        <div className="font-heading text-sm font-bold text-[#172B54]">
-                          {adv.name}
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <Gavel className="h-4 w-4 text-[#172B54] shrink-0" />
+                          <div className="font-heading text-sm font-bold text-[#172B54]">
+                            Adv. {adv.name}
+                          </div>
                         </div>
+                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-[#172B54] text-[#FEC556]">
+                          {adv.role === "Founder & Principal Advocate" ? "Principal" : adv.role}
+                        </span>
                       </div>
-                      <div className="text-xs font-semibold text-[#172B54]/85">{adv.role}</div>
-                      <div className="text-[11px] text-gray-600 mt-1">{adv.forum}</div>
+                      <div className="text-[11px] font-medium text-gray-700 mt-1 flex items-start gap-1">
+                        <Scale className="h-3.5 w-3.5 text-[#172B54]/70 shrink-0 mt-0.5" />
+                        <span>{adv.forum}</span>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -201,7 +214,7 @@ function AboutPage() {
               <p className="mt-2 text-sm text-gray-700 leading-relaxed">
                 Tis Hazari Courts Complex, Delhi – 110054.
                 <br />
-                Chamber hours: Monday through Saturday, 10:00 AM – 7:00 PM (By prior appointment).
+                Chamber hours: Monday through Saturday, 10:00 AM – 6:00 PM (By prior appointment).
               </p>
               <div className="mt-5 space-y-1.5 text-xs text-gray-600">
                 <div>• Primary Registry & Bail Filings</div>

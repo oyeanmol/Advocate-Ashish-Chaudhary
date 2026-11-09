@@ -61,7 +61,7 @@ describe("Deterministic Chatbot Knowledge Engine (No External AI APIs)", () => {
     const res = getDeterministicChatReply("What are your chamber timings and availability on Saturday?");
     expect(res.isAiGenerated).toBe(false);
     expect(res.reply).toContain("Monday through Saturday");
-    expect(res.reply).toContain("10:00 AM – 7:00 PM");
+    expect(res.reply).toContain("10:00 AM – 6:00 PM");
   });
 
   it("recognizes Advocate Team and Leadership queries", () => {

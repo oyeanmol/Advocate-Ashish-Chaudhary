@@ -16,7 +16,7 @@ export const Route = createFileRoute("/legal-services/$slug")({
       ? `${service.emoji} ${service.title} Advocates | Urmika Juris & Associates — Tis Hazari, Delhi`
       : "Legal Service | Urmika Juris & Associates";
     const desc = service
-      ? `${service.short}. Practicing at Tis Hazari Courts and Delhi High Court. Initial 30-minute consultation.`
+      ? `${service.short}. Practicing before District Courts, High Courts across India, and the Supreme Court of India. Initial 30-minute consultation.`
       : "Legal counsel by Urmika Juris & Associates.";
     return {
       meta: [

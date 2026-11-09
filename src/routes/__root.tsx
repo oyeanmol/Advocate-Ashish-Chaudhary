@@ -85,11 +85,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Urmika Juris & Associates | Advocates & Legal Consultants, Tis Hazari Courts" },
+      {
+        title:
+          "Urmika Juris & Associates | Advocates Across India — Supreme Court, High Courts & District Courts",
+      },
       {
         name: "description",
         content:
-          "Urmika Juris & Associates — dedicated advocates practicing at Tis Hazari Courts, Delhi High Court and Supreme Court. Criminal Defense, Family Law, Property Disputes, Corporate Advisory.",
+          "Urmika Juris & Associates — dedicated advocates practicing across India before District Courts, High Courts across India, and the Supreme Court of India. Criminal Defense, Family Law, Property Disputes, Corporate Advisory.",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Urmika Juris & Associates" },

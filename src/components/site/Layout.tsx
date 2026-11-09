@@ -329,7 +329,7 @@ export function Footer() {
             <Logo />
             <p className="mt-4 text-xs leading-relaxed text-gray-300">
               Urmika Juris & Associates provides strategic, ethical, and dedicated legal advocacy
-              across Tis Hazari Courts, Delhi High Court, and appellate forums in Delhi.
+              across District Courts, State High Courts across India, and the Supreme Court of India.
             </p>
             <div className="mt-5 space-y-1.5 text-xs text-gray-300">
               <div className="font-semibold text-gold">Advocates:</div>

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/practice-areas/")({
       {
         name: "description",
         content:
-          "Comprehensive legal representation across criminal, family, property, civil and corporate law at Tis Hazari Courts and Delhi High Court.",
+          "Comprehensive legal representation across criminal, family, property, civil and corporate law before District Courts, High Courts across India, and the Supreme Court of India.",
       },
       { property: "og:title", content: "Our Legal Services | Urmika Juris & Associates" },
     ],
@@ -24,7 +24,7 @@ function PracticeIndexPage() {
       <PageHero
         eyebrow="Our Legal Services"
         title="Our Legal Services"
-        subtitle="Focused counsel across every major branch of law — practicing before Tis Hazari Courts, Delhi High Court and Supreme Court."
+        subtitle="Focused legal advocacy across every major branch of law — practicing before District Courts, High Courts across India, and the Supreme Court of India."
       />
       <LegalServicesSection showCategoryFilters={true} showViewAll={false} />
       <HowWeWorkSection />
