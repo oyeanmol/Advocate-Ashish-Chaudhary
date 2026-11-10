@@ -19,6 +19,7 @@ export const Route = createFileRoute("/legal-services/")({
           "Comprehensive legal representation across Delhi District Courts, Tis Hazari, and High Court.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/legal-services" }],
   }),
   component: LegalServicesHubPage,
 });

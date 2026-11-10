@@ -108,6 +108,47 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: appCss },
       { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": ["LegalService", "LawFirm"],
+          name: "Urmika Juris & Associates",
+          alternateName: "Urmika Juris",
+          url: "https://urmikajuris.com/",
+          logo: "https://urmikajuris.com/favicon.png",
+          description:
+            "Full-service litigation and legal advisory law firm practicing before District Courts, State High Courts across India, and the Supreme Court of India.",
+          telephone: "+918802487291",
+          email: "urmikajuris@gmail.com",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Chamber 298A, Western Wing, Tis Hazari Courts",
+            addressLocality: "Delhi",
+            postalCode: "110054",
+            addressCountry: "IN",
+          },
+          openingHoursSpecification: {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "10:00",
+            closes: "18:00",
+          },
+          priceRange: "₹4,500 / hr",
+          founder: {
+            "@type": "Person",
+            name: "Aashish Choudhary",
+            jobTitle: "Founder & Principal Advocate",
+          },
+          employee: [
+            { "@type": "Person", name: "Satish Chand", jobTitle: "Senior Advocate" },
+            { "@type": "Person", name: "Durga Das", jobTitle: "Senior Advocate" },
+            { "@type": "Person", name: "Krishan Kumar", jobTitle: "Senior Advocate" },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

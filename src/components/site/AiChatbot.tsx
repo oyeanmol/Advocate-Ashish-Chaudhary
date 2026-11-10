@@ -203,7 +203,7 @@ export function AiChatbot() {
           <div className="bg-navy/95 border-b border-gold/30 px-3.5 py-2.5 flex items-start gap-2 text-[10.5px] text-amber-100">
             <ShieldAlert className="h-4 w-4 text-gold shrink-0 mt-0.5" />
             <p className="leading-tight">
-              <strong className="text-gold">CONFIDENTIALITY WARNING:</strong> Automated assistant for general website queries only. <em>Do not submit confidential case documents, FIR copies, or sensitive legal details here.</em> For privileged consultations under Section 126, contact the chamber directly.
+              <strong className="text-gold">CONFIDENTIALITY WARNING:</strong> Automated assistant for general website queries only. <em>Do not submit confidential case documents, FIR copies, or sensitive legal details here.</em> For privileged consultations protected under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Evidence Act), contact our chamber directly.
             </p>
           </div>
 

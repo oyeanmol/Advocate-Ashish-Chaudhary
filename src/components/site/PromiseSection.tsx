@@ -36,9 +36,9 @@ export function PromiseSection() {
               1. 100% Confidential Consultation
             </h3>
             <p className="mt-3 text-xs sm:text-sm text-gray-300 leading-relaxed">
-              Explore your legal options from home or office without exposure. Under Section 126 of
-              the Evidence Act, your communications remain completely privileged before formal
-              engagement.
+              Explore your legal options privately. Under Section 132 of the Bharatiya Sakshya
+              Adhiniyam, 2023 (formerly Section 126 of the Evidence Act), privileged professional
+              communications remain strictly safeguarded before formal engagement.
             </p>
           </div>
 

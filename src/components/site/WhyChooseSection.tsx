@@ -5,7 +5,7 @@ const REASONS = [
   {
     icon: Shield,
     title: "Stay Protected & Confidential Through Every Conversation",
-    desc: "Your privacy matters. Discuss your sensitive legal concerns freely under Section 126 of the Evidence Act — your personal details, documents, and identity remain strictly protected.",
+    desc: "Your privacy matters. Discuss your sensitive legal concerns freely under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Evidence Act) — your confidential communications, documents, and case facts remain privileged.",
   },
   {
     icon: Users,

@@ -30,6 +30,7 @@ export const Route = createFileRoute("/contact")({
         content: "Chamber 298A, Western Wing, Tis Hazari Courts, Delhi. Call +91 88024 87291.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/contact" }],
   }),
   component: ContactPage,
 });
@@ -371,8 +372,8 @@ function ContactPage() {
                     <div className="rounded bg-white border border-gray-200 p-3 text-[11px] text-gray-600 flex items-start gap-2">
                       <ShieldCheck className="h-4 w-4 text-[#34A853] shrink-0 mt-0.5" />
                       <span>
-                        All communications are confidential under Section 126 of the Evidence Act.
-                        Initial consultation is scheduled for up to 30 minutes.
+                        Privileged communications protected under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Evidence Act).
+                        Initial consultation is scheduled for up to 30 minutes; standard advisory rate is ₹4,500/hr applying thereafter under agreed terms.
                       </span>
                     </div>
 

@@ -14,6 +14,7 @@ export const Route = createFileRoute("/terms-of-service")({
       },
       { property: "og:title", content: "Terms of Service | Urmika Juris & Associates" },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/terms-of-service" }],
   }),
   component: TermsOfServicePage,
 });

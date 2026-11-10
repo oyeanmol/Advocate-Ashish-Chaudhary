@@ -22,6 +22,7 @@ export const Route = createFileRoute("/about")({
           "Dedicated legal advocacy founded on Satyamev Jayate. Practicing before District Courts, High Courts across India, and the Supreme Court of India.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/about" }],
   }),
   component: AboutPage,
 });
@@ -35,7 +36,7 @@ const PRINCIPLES = [
   {
     icon: ShieldCheck,
     title: "Privileged Confidentiality",
-    desc: "Advocate-client communication is sacred. All documents, discussions, and strategic records remain strictly privileged under Section 126 of the Evidence Act.",
+    desc: "Advocate-client communication is sacred. All documents, discussions, and strategic records remain strictly privileged under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Indian Evidence Act, 1872).",
   },
   {
     icon: Handshake,

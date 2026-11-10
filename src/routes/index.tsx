@@ -54,6 +54,7 @@ export const Route = createFileRoute("/")({
           "Founder Advocate Aashish Choudhary and Senior Advocates Satish Chand, Durga Das and Krishan Kumar representing clients across District Courts, High Courts, and the Supreme Court of India.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/" }],
   }),
   component: IndexPage,
 });
@@ -400,7 +401,7 @@ function IndexPage() {
                   <CheckCircle2 className="h-4 w-4 text-whatsapp shrink-0 mt-0.5" />
                   <span>
                     <strong>Privileged Communication:</strong> Confidentiality protected under
-                    Section 126 of the Evidence Act.
+                    Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 Evidence Act).
                   </span>
                 </li>
               </ul>

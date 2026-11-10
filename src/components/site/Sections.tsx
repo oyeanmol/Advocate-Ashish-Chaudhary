@@ -21,7 +21,7 @@ export function ConsultationSection() {
     {
       icon: ShieldCheck,
       title: "Privileged & Confidential",
-      desc: "Protected under Section 126 Evidence Act.",
+      desc: "Protected under Section 132 BSA 2023 (formerly Sec 126 IEA).",
     },
     {
       icon: Video,

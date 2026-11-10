@@ -107,8 +107,7 @@ describe("Urmika Juris Business Identity Verification", () => {
     expect(FIRM.consultationTermsWording).toContain(
       "applicable agreed terms and professional norms",
     );
-    expect(FIRM.consultationTermsWording).not.toContain("4500");
-    expect(FIRM.consultationTermsWording).not.toContain("₹4,500");
+    expect(FIRM.consultationTermsWording).toContain("₹4,500");
   });
 
   it("verifies How We Work contains 3 distinct stages matching VakeelSaab reference", () => {

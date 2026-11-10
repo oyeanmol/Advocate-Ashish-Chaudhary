@@ -79,8 +79,9 @@ export const FIRM = {
   courtJurisdiction: "District Courts, High Courts Across India & Supreme Court of India",
   hours: "Mon – Sat, 10:00 AM – 6:00 PM (By Appointment)",
   consultationDuration: "30 Minutes",
+  consultationFeePerHour: "₹4,500 / hr",
   consultationTermsWording:
-    "Your initial consultation is scheduled for up to 30 minutes. Any applicable charges beyond the initial consultation period, or any subsequent professional fees, will be communicated to you according to the applicable agreed terms and professional norms. Where agreed, applicable consultation charges may be adjusted as part of the overall case fees.",
+    "Initial structured consultation is scheduled for up to 30 minutes. The firm's professional advisory rate is ₹4,500 per hour, with charges applying after the initial 30-minute period in accordance with applicable agreed terms and professional norms. Where mutually agreed upon formal brief engagement, applicable consultation charges may be adjusted against comprehensive case representation fees.",
   bciDisclaimer:
     "As per the rules of the Bar Council of India (Rule 36), advocates are not permitted to advertise or solicit work in any form or manner. This website is solely intended for informational purposes and should not be construed as an advertisement, solicitation, personal communication, invitation, or legal advice. Any user seeking information does so of their own volition.",
 };
@@ -792,7 +793,7 @@ export const FAQS = [
   },
   {
     q: "How is advocate-client confidentiality safeguarded?",
-    a: "All consultations and communications are protected under the strict ethical provisions of the Advocates Act and Section 126 of the Indian Evidence Act (Advocate-Client Privilege). Your information is never shared with third parties.",
+    a: "All consultations and communications are protected under the strict ethical provisions of the Advocates Act, 1961 and Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Indian Evidence Act, 1872) governing advocate-client privilege. Your information is never shared with third parties.",
   },
   {
     q: "What are your professional fee terms?",
