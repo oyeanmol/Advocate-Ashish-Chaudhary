@@ -25,6 +25,7 @@ export const Route = createFileRoute("/legal-services/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
       ],
+      links: [{ rel: "canonical", href: `https://urmikajuris.com/legal-services/${params.slug}` }],
     };
   },
   component: LegalServiceDetailPage,

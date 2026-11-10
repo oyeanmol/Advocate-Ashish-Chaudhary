@@ -126,8 +126,8 @@ export function HowWeWorkSection({
                 <div className="flex items-start gap-2.5 text-xs text-gray-200">
                   <ShieldCheck className="h-4 w-4 text-whatsapp shrink-0 mt-0.5" />
                   <div>
-                    <span className="font-semibold text-white">Section 126 Privilege:</span>
-                    <p className="text-[11px] text-gray-300">100% confidential disclosures under Evidence Act</p>
+                    <span className="font-semibold text-white">Section 132 BSA Privilege:</span>
+                    <p className="text-[11px] text-gray-300">Confidential disclosures under Bharatiya Sakshya Adhiniyam, 2023 (formerly Sec 126 IEA)</p>
                   </div>
                 </div>
               </div>

@@ -22,6 +22,7 @@ export const Route = createFileRoute("/faq")({
       },
       { property: "og:title", content: "FAQ | Urmika Juris & Associates" },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/faq" }],
   }),
   component: FaqPage,
 });

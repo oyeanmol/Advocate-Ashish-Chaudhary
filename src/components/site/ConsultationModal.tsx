@@ -90,7 +90,7 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
     }
 
     if (!agreed) {
-      setValidationError("Please acknowledge the 30-minute structured consultation terms under BCI Rule 36.");
+      setValidationError("Please acknowledge the consultation terms under BCI Rule 36.");
       return;
     }
 
@@ -189,15 +189,15 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                       <ShieldCheck className="h-4 w-4 text-[#34A853] shrink-0 mt-0.5" />
                       <span>
                         <strong>Statutory Privilege:</strong> Confidential disclosures protected
-                        under Section 126 of the Evidence Act.
+                        under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Evidence Act).
                       </span>
                     </div>
 
                     <div className="flex items-start gap-2.5">
                       <Clock className="h-4 w-4 text-[#FEC556] shrink-0 mt-0.5" />
                       <span>
-                        <strong>30-Minute Protocol:</strong> Objective evaluation of procedural
-                        merits, jurisdiction, and limitation periods.
+                        <strong>30-Minute Structured Advisory:</strong> Initial evaluation of merits & procedure.
+                        Advisory rate: ₹4,500/hr, applying after the initial 30 minutes under agreed terms.
                       </span>
                     </div>
 
@@ -376,8 +376,7 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                         className="mt-0.5 h-3.5 w-3.5 rounded border-gray-300 text-[#172B54] accent-[#172B54]"
                       />
                       <span className="text-[11px] text-gray-600 select-none leading-tight">
-                        I acknowledge the 30-minute structured consultation terms under BCI Rule 36.
-                        Subsequent court representation governed by agreed professional norms.
+                        I acknowledge the consultation terms (initial 30-min evaluation; standard advisory rate ₹4,500/hr applying thereafter under agreed terms) compliant with BCI Rule 36.
                       </span>
                     </label>
 

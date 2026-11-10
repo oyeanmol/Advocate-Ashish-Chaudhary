@@ -33,7 +33,7 @@ export function ConsultationMessageSection() {
             authentic trial court experience. You only share your full case documents, evidence, or
             identity with the advocate who understands your situation, explains the statutory
             procedure clearly, and makes you feel confident. This disciplined approach keeps your
-            information privileged under Section 126 of the Evidence Act and eliminates the risk of
+            information privileged under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 of the Indian Evidence Act, 1872) and eliminates the risk of
             procedural conflicts.
           </p>
 

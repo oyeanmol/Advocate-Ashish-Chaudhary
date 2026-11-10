@@ -21,6 +21,7 @@ export const Route = createFileRoute("/how-we-work")({
           "Transparent legal consultation and litigation process at Tis Hazari Courts, Delhi.",
       },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/how-we-work" }],
   }),
   component: HowWeWorkPage,
 });
@@ -64,7 +65,7 @@ function HowWeWorkPage() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <CheckCircle2 className="h-4 w-4 text-[#34A853] shrink-0 mt-0.5" />
-                  <span>Strict protection under Section 126 of the Indian Evidence Act.</span>
+                  <span>Strict protection under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 Evidence Act).</span>
                 </li>
               </ul>
             </div>

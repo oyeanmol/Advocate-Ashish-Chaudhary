@@ -24,6 +24,7 @@ export const Route = createFileRoute("/practice-areas/$slug")({
         { name: "description", content: desc },
         { property: "og:title", content: title },
       ],
+      links: [{ rel: "canonical", href: `https://urmikajuris.com/practice-areas/${params.slug}` }],
     };
   },
   component: PracticeAreaDetailPage,

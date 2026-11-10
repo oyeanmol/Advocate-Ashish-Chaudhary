@@ -14,6 +14,7 @@ export const Route = createFileRoute("/practice-areas/")({
       },
       { property: "og:title", content: "Our Legal Services | Urmika Juris & Associates" },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/practice-areas" }],
   }),
   component: PracticeIndexPage,
 });

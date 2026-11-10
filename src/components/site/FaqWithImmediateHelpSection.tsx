@@ -26,7 +26,7 @@ const FAQS_VAKEELSAAB = [
   {
     num: 3,
     q: "Can I get legal advice without visiting a law office?",
-    a: "Yes. Many preliminary legal matters, bail assessments, agreement vetting, legal notice drafting, and strategy reviews can be conducted completely via phone or secure video consultation with full Section 126 Evidence Act confidentiality.",
+    a: "Yes. Many preliminary legal matters, bail assessments, agreement vetting, legal notice drafting, and strategy reviews can be conducted completely via phone or secure video consultation with confidentiality protected under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 Evidence Act).",
   },
   {
     num: 4,

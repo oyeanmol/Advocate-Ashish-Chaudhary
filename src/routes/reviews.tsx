@@ -17,6 +17,7 @@ export const Route = createFileRoute("/reviews")({
         content: "Client Feedback & Ethics Policy | Urmika Juris & Associates",
       },
     ],
+    links: [{ rel: "canonical", href: "https://urmikajuris.com/reviews" }],
   }),
   component: ReviewsPage,
 });
@@ -76,7 +77,7 @@ export function ReviewsPage() {
               </h4>
               <p className="mt-2 text-xs text-gray-600 leading-relaxed">
                 Every conversation, factual disclosure, and legal document shared with our chamber
-                remains privileged under Section 126 of the Evidence Act.
+                remains privileged under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 Evidence Act).
               </p>
             </div>
 
