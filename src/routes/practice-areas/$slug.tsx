@@ -13,16 +13,17 @@ export const Route = createFileRoute("/practice-areas/$slug")({
   head: ({ params }) => {
     const service = findLegalService(params.slug);
     const title = service
-      ? `${service.emoji} ${service.title} Advocates | Urmika Juris & Associates`
+      ? `${service.title} Advocates | Urmika Juris & Associates`
       : "Legal Service | Urmika Juris & Associates";
     const desc = service
-      ? `${service.short}. Legal representation at Tis Hazari Courts, Delhi.`
+      ? `${service.title} legal counsel: ${service.desc} Practicing before District Courts, High Courts across India, and Supreme Court.`
       : "Legal services by Urmika Juris & Associates.";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
+        { property: "og:description", content: desc },
       ],
       links: [{ rel: "canonical", href: `https://urmikajuris.com/practice-areas/${params.slug}` }],
     };

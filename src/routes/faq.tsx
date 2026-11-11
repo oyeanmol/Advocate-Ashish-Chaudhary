@@ -14,13 +14,32 @@ import { WhatsAppLogo } from "@/components/site/WhatsAppLogo";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ | Urmika Juris & Associates — Legal Consultation Questions" },
+      { title: "FAQ | Urmika Juris & Associates — Legal Consultation & Court Questions" },
       {
         name: "description",
         content:
-          "Answers to frequently asked questions about consultation terms, chamber visits at Tis Hazari Courts, fee transparency, and advocate representation.",
+          "Frequently asked questions on legal consultations, Tis Hazari chamber visits, court jurisdictions, consultation fee norms, and advocate representation at Urmika Juris & Associates.",
       },
-      { property: "og:title", content: "FAQ | Urmika Juris & Associates" },
+      {
+        name: "keywords",
+        content:
+          "legal FAQ Delhi, lawyer consultation questions, Tis Hazari Court chamber appointment, advocate fees Delhi, how to book consultation",
+      },
+      { property: "og:title", content: "FAQ | Urmika Juris & Associates — Legal Consultation Questions" },
+      {
+        property: "og:description",
+        content:
+          "Clear answers regarding consultation protocols, initial 30-minute advisory terms, court jurisdictions, and representation before Tis Hazari, High Court, and Supreme Court.",
+      },
+      {
+        name: "twitter:title",
+        content: "FAQ | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Answers to legal consultation, chamber visit, and court representation questions at Urmika Juris & Associates.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/faq" }],
   }),

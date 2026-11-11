@@ -12,13 +12,27 @@ export const Route = createFileRoute("/how-we-work")({
       {
         name: "description",
         content:
-          "Discover our transparent 3-stage legal methodology from confidential document review and 30-minute consultation to dedicated courtroom advocacy.",
+          "Explore our disciplined 3-stage legal methodology: confidential document intake, structured 30-minute chamber advisory, and ethical courtroom litigation before Indian courts.",
       },
-      { property: "og:title", content: "How We Work | Urmika Juris & Associates" },
+      {
+        name: "keywords",
+        content:
+          "how lawyers work India, legal process Delhi, litigation methodology, lawyer consultation procedure, court filing stages, Urmika Juris process",
+      },
+      { property: "og:title", content: "How We Work | Urmika Juris & Associates — 3-Stage Process" },
       {
         property: "og:description",
         content:
-          "Transparent legal consultation and litigation process at Tis Hazari Courts, Delhi.",
+          "Disciplined case analysis from preliminary confidential intake to structured consultation and decisive courtroom advocacy across District Courts, High Courts & Supreme Court.",
+      },
+      {
+        name: "twitter:title",
+        content: "How We Work | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A transparent 3-stage legal journey: confidential intake, structured 30-minute advisory, and disciplined courtroom litigation.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/how-we-work" }],

@@ -10,9 +10,28 @@ export const Route = createFileRoute("/terms-of-service")({
       {
         name: "description",
         content:
-          "Terms of service, consultation conditions, and legal disclaimers for Urmika Juris & Associates, Chamber 298A Tis Hazari Courts, Delhi.",
+          "Official terms of service, initial 30-minute consultation protocols, professional fee conditions, and Bar Council of India Rule 36 disclaimers for Urmika Juris & Associates.",
       },
-      { property: "og:title", content: "Terms of Service | Urmika Juris & Associates" },
+      {
+        name: "keywords",
+        content:
+          "terms of service Urmika Juris, consultation terms, advocate fee norms, Bar Council Rule 36 disclaimer, Tis Hazari legal terms",
+      },
+      { property: "og:title", content: "Terms of Service & Consultation Norms | Urmika Juris & Associates" },
+      {
+        property: "og:description",
+        content:
+          "Consultation standards, professional norms, and legal disclaimers for Chamber 298A Tis Hazari Courts, Delhi.",
+      },
+      {
+        name: "twitter:title",
+        content: "Terms of Service | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Official terms governing website access, 30-minute consultation protocols, and Bar Council of India compliance.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/terms-of-service" }],
   }),

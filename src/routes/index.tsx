@@ -20,7 +20,7 @@ import courtDelhiHighCourt from "@/assets/courts/court-delhi-high-court.jpg";
 import courtSupremeCourt from "@/assets/courts/court-supreme-court.jpg";
 import courtPatialaHouse from "@/assets/courts/court-patiala-house.jpg";
 import courtSaket from "@/assets/courts/court-saket.jpg";
-import courtNclt from "@/assets/courts/court-nclt.jpg";
+import courtAllahabadHighCourt from "@/assets/courts/court-allahabad-high-court.jpg";
 import { SiteShell } from "@/components/site/Layout";
 import { FIRM } from "@/components/site/data";
 import { WhatsAppLogo } from "@/components/site/WhatsAppLogo";
@@ -42,7 +42,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Urmika Juris & Associates — Trusted advocates practicing across India before the Supreme Court, State High Courts, and District Courts with permanent chambers at Tis Hazari Courts, Delhi. Criminal Defense, Family Law, Property Disputes, Corporate Litigation.",
+          "Urmika Juris & Associates — Trusted advocates practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India with permanent chambers at Tis Hazari Courts, Delhi. Criminal Defense, Bail, Matrimonial & Divorce, Property Disputes, and Civil Litigation.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Advocate Aashish Choudhary, Urmika Juris, Tis Hazari Court advocates, Supreme Court advocate Delhi, Delhi High Court lawyer, Allahabad High Court advocate, criminal lawyer Delhi, bail lawyer, property lawyer, divorce lawyer Delhi, civil lawyer India",
       },
       {
         property: "og:title",
@@ -51,7 +56,16 @@ export const Route = createFileRoute("/")({
       {
         property: "og:description",
         content:
-          "Founder Advocate Aashish Choudhary and Senior Advocates Satish Chand, Durga Das and Krishan Kumar representing clients across District Courts, High Courts, and the Supreme Court of India.",
+          "Advocates Aashish Choudhary, Satish Chand, Durga Das, and Krishan Kumar representing clients before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India.",
+      },
+      {
+        name: "twitter:title",
+        content: "Urmika Juris & Associates | Advocates Across India",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Trusted advocates practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India. Chamber 298A Tis Hazari Courts.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/" }],
@@ -357,7 +371,7 @@ function IndexPage() {
                           </div>
                         </div>
                         <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-navy text-gold">
-                          {adv.role === "Founder & Principal Advocate" ? "Principal" : adv.role}
+                          Advocate
                         </span>
                       </div>
                       <div className="text-[11px] text-gray-700 mt-1 flex items-start gap-1.5">
@@ -453,34 +467,34 @@ function IndexPage() {
             <div className="mx-auto mt-4 h-1 w-20 rounded bg-gold" />
             <p className="mt-4 text-base sm:text-lg text-gray-300 leading-relaxed">
               Our advocates maintain active presence and direct filing privileges across the Supreme
-              Court of India, State High Courts across India, Tis Hazari headquarters, and specialized
-              commercial tribunals nationwide.
+              Court of India, State High Courts including Delhi High Court and Allahabad High Court,
+              Tis Hazari headquarters, and District Courts across India.
             </p>
           </div>
 
-          {/* 6-Card Judicial Coverage Grid with Real Court Photos (Ordered by Judicial Hierarchy) */}
+          {/* 6-Card Judicial Coverage Grid with Real Court Photos (Ordered Strictly by Judicial Hierarchy) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {[
               {
                 name: "Supreme Court of India",
-                jurisdiction: "Tilak Marg, New Delhi (All-India Jurisdiction)",
-                desc: "Special Leave Petitions (SLP under Art 136), transfer petitions between states, statutory appeals, and constitutional writs (Art 32).",
+                jurisdiction: "Tilak Marg, New Delhi (Apex Judicial Forum)",
+                desc: "Special Leave Petitions (SLP under Art 136), transfer petitions between states, statutory appeals, and constitutional writs (Art 32) before the Apex Court of India.",
                 photo: courtSupremeCourt,
                 badge: "Apex Court of India",
               },
               {
-                name: "High Courts Across India",
-                jurisdiction: "Delhi High Court, Punjab & Haryana, Allahabad & State Benches",
-                desc: "Original civil suits, criminal quashing petitions (BNSS/CrPC), writ petitions (Art 226/227), and commercial appeals across state High Courts.",
+                name: "High Court of Delhi",
+                jurisdiction: "Sher Shah Road, New Delhi (State High Court)",
+                desc: "Original civil suits, criminal quashing petitions (BNSS/CrPC), writ petitions (Art 226/227), and commercial appellate litigation before the Delhi High Court.",
                 photo: courtDelhiHighCourt,
-                badge: "High Courts Nationwide",
+                badge: "State High Court",
               },
               {
-                name: "NCLT & Appellate Tribunals",
-                jurisdiction: "Principal Bench Delhi & Regional Benches Across India",
-                desc: "Insolvency and Bankruptcy Code (IBC) litigation, company disputes, NCLAT appeals, RERA statutory complaints, and consumer dispute commissions.",
-                photo: courtNclt,
-                badge: "Corporate & Appellate Benches",
+                name: "Allahabad High Court",
+                jurisdiction: "Principal Bench Prayagraj & Lucknow Bench",
+                desc: "Civil appeals, criminal appeals, revision petitions, and constitutional writ petitions (Articles 226/227) before the High Court of Judicature at Allahabad.",
+                photo: courtAllahabadHighCourt,
+                badge: "High Court of Judicature",
               },
               {
                 name: "Tis Hazari District Courts",

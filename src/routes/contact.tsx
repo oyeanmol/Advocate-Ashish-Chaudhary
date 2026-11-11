@@ -22,12 +22,27 @@ export const Route = createFileRoute("/contact")({
       {
         name: "description",
         content:
-          "Connect with Urmika Juris & Associates. Chamber 298A, Western Wing, Tis Hazari Courts, Delhi. Phone: +91 88024 87291. Book a 30-minute consultation.",
+          "Contact Urmika Juris & Associates at Chamber 298A, Western Wing, Tis Hazari Courts, Delhi. Call +91 88024 87291 or WhatsApp for legal consultation before Supreme Court, High Court & District Courts.",
       },
-      { property: "og:title", content: "Contact Us | Urmika Juris & Associates" },
+      {
+        name: "keywords",
+        content:
+          "Contact Urmika Juris, Tis Hazari Court chamber address, Advocate Aashish Choudhary phone, legal consultation Delhi, book lawyer appointment, Delhi lawyer phone number",
+      },
+      { property: "og:title", content: "Contact Us | Urmika Juris & Associates — Tis Hazari Courts" },
       {
         property: "og:description",
-        content: "Chamber 298A, Western Wing, Tis Hazari Courts, Delhi. Call +91 88024 87291.",
+        content:
+          "Chamber 298A, Western Wing, Tis Hazari Courts, Delhi – 110054. Direct Phone: +91 88024 87291. Book a structured 30-minute case consultation.",
+      },
+      {
+        name: "twitter:title",
+        content: "Contact Us | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Chamber 298A Tis Hazari Courts, Delhi. Phone: +91 88024 87291. Legal counsel across Supreme Court, High Courts and District Courts.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/contact" }],

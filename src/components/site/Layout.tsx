@@ -8,6 +8,7 @@ import {
   MapPin,
   Clock,
   ChevronDown,
+  ChevronRight,
   ShieldAlert,
   ArrowRight,
   Scale,
@@ -126,41 +127,78 @@ export function Header() {
                     </button>
                   </div>
 
-                  {/* Mega-style Services Dropdown */}
+                  {/* Mega-style Services Dropdown Matching Multi-column Directory */}
                   {servicesDropdown && (
-                    <div className="absolute left-0 mt-2 w-80 rounded-lg border border-white/10 bg-navy p-3 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-150 z-50">
-                      <div className="flex items-center justify-between px-2.5 py-1.5 text-[10.5px] font-bold uppercase tracking-wider text-gold border-b border-white/10">
-                        <span>Our 19 Practice Areas</span>
+                    <div
+                      className="absolute left-1/2 -translate-x-[35%] xl:-translate-x-1/2 top-full mt-3 w-[780px] lg:w-[840px] rounded-2xl bg-white p-7 shadow-2xl border border-gray-100 z-50 text-gray-800 animate-in fade-in slide-in-from-top-2 duration-150"
+                      role="menu"
+                      aria-label="Legal Services Directory"
+                    >
+                      <div className="grid grid-cols-3 gap-6">
+                        {/* Column 1 */}
+                        <div className="space-y-1">
+                          {LEGAL_SERVICES.slice(0, 6).map((s) => (
+                            <Link
+                              key={s.slug}
+                              to="/legal-services/$slug"
+                              params={{ slug: s.slug }}
+                              onClick={() => setServicesDropdown(false)}
+                              className="group flex items-center gap-3 rounded-lg px-2.5 py-2 hover:bg-slate-50 transition-colors"
+                            >
+                              <span className="text-xl shrink-0 leading-none select-none">{s.emoji}</span>
+                              <span className="text-[13.5px] font-medium text-gray-800 group-hover:text-navy transition-colors whitespace-nowrap">
+                                {s.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+
+                        {/* Column 2 */}
+                        <div className="space-y-1">
+                          {LEGAL_SERVICES.slice(6, 12).map((s) => (
+                            <Link
+                              key={s.slug}
+                              to="/legal-services/$slug"
+                              params={{ slug: s.slug }}
+                              onClick={() => setServicesDropdown(false)}
+                              className="group flex items-center gap-3 rounded-lg px-2.5 py-2 hover:bg-slate-50 transition-colors"
+                            >
+                              <span className="text-xl shrink-0 leading-none select-none">{s.emoji}</span>
+                              <span className="text-[13.5px] font-medium text-gray-800 group-hover:text-navy transition-colors whitespace-nowrap">
+                                {s.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+
+                        {/* Column 3 */}
+                        <div className="space-y-1">
+                          {LEGAL_SERVICES.slice(12, 18).map((s) => (
+                            <Link
+                              key={s.slug}
+                              to="/legal-services/$slug"
+                              params={{ slug: s.slug }}
+                              onClick={() => setServicesDropdown(false)}
+                              className="group flex items-center gap-3 rounded-lg px-2.5 py-2 hover:bg-slate-50 transition-colors"
+                            >
+                              <span className="text-xl shrink-0 leading-none select-none">{s.emoji}</span>
+                              <span className="text-[13.5px] font-medium text-gray-800 group-hover:text-navy transition-colors whitespace-nowrap">
+                                {s.title}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Bottom Footer: View All Legal Services */}
+                      <div className="mt-5 pt-3.5 border-t border-gray-100 flex items-center justify-between">
                         <Link
                           to="/legal-services"
                           onClick={() => setServicesDropdown(false)}
-                          className="text-[10px] text-gray-300 hover:text-white underline underline-offset-2"
+                          className="inline-flex items-center gap-1 text-xs font-bold text-amber-500 hover:text-amber-600 transition-colors"
                         >
-                          View All
-                        </Link>
-                      </div>
-                      <div className="py-2 max-h-[380px] overflow-y-auto space-y-0.5 pr-1">
-                        {LEGAL_SERVICES.map((s) => (
-                          <Link
-                            key={s.slug}
-                            to="/legal-services/$slug"
-                            params={{ slug: s.slug }}
-                            onClick={() => setServicesDropdown(false)}
-                            className="flex items-center gap-2.5 rounded px-2.5 py-1.5 text-xs text-gray-200 hover:bg-white/10 hover:text-gold transition-colors whitespace-nowrap"
-                          >
-                            <span className="text-sm shrink-0">{s.emoji}</span>
-                            <span className="truncate font-medium">{s.title}</span>
-                          </Link>
-                        ))}
-                      </div>
-                      <div className="border-t border-white/10 pt-2 px-1">
-                        <Link
-                          to="/legal-services"
-                          onClick={() => setServicesDropdown(false)}
-                          className="flex items-center justify-between rounded bg-navy-deep px-3 py-2 text-xs font-semibold text-gold hover:bg-navy-hover transition-colors"
-                        >
-                          <span>Explore Full Legal Directory</span>
-                          <ArrowRight className="h-3.5 w-3.5" />
+                          <span>View All Legal Services</span>
+                          <ChevronRight className="h-3.5 w-3.5" />
                         </Link>
                       </div>
                     </div>

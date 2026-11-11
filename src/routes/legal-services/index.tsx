@@ -6,17 +6,31 @@ import { HowWeWorkSection } from "@/components/site/HowWeWorkSection";
 export const Route = createFileRoute("/legal-services/")({
   head: () => ({
     meta: [
-      { title: "Legal Services | Urmika Juris & Associates — Delhi Advocates" },
+      { title: "Legal Services Directory | Urmika Juris & Associates — Delhi Advocates" },
       {
         name: "description",
         content:
-          "Explore our legal services in criminal defense, family & divorce, property disputes, civil litigation, corporate advisory, consumer protection, and high court writs.",
+          "Comprehensive legal directory across 19 practice domains including criminal defense, property disputes, divorce & family law, corporate advisory, and writ petitions before Indian courts.",
       },
-      { property: "og:title", content: "Legal Services | Urmika Juris & Associates" },
+      {
+        name: "keywords",
+        content:
+          "legal services Delhi, law firm practice areas, criminal lawyer, property disputes, divorce lawyer Tis Hazari, corporate law Delhi, High Court writ advocate",
+      },
+      { property: "og:title", content: "Legal Services Directory | Urmika Juris & Associates" },
       {
         property: "og:description",
         content:
-          "Comprehensive legal representation across Delhi District Courts, Tis Hazari, and High Court.",
+          "Strategic legal counsel and courtroom representation across 19 specialized domains before District Courts, High Courts & Supreme Court of India.",
+      },
+      {
+        name: "twitter:title",
+        content: "Legal Services Directory | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Full directory of 19 legal practice areas with experienced trial advocates at Chamber 298A Tis Hazari Courts.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/legal-services" }],

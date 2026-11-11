@@ -107,7 +107,7 @@ export function TeamSection() {
               <Scale className="h-7 w-7 text-[#FEC556] mx-auto mb-2.5" />
               <h3 className="font-heading text-base font-bold text-[#172B54]">Adv. {adv.name}</h3>
               <div className="inline-block text-[10px] font-bold uppercase tracking-wider text-amber-900 bg-amber-100/80 px-2 py-0.5 rounded mt-1.5">
-                {adv.role === "Founder & Principal Advocate" ? "Principal" : adv.role}
+                Advocate
               </div>
               <div className="text-[11px] text-gray-600 mt-2 leading-relaxed">{adv.forum}</div>
             </div>
