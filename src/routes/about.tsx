@@ -13,13 +13,27 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Learn about Urmika Juris & Associates, Founder & Principal Advocate Aashish Choudhary, Senior Advocates Satish Chand, Durga Das, and Krishan Kumar, practicing across District Courts, High Courts across India, and the Supreme Court of India.",
+          "Learn about Urmika Juris & Associates — Advocates Aashish Choudhary, Satish Chand, Durga Das, and Krishan Kumar, practicing across the Supreme Court of India, Delhi High Court & District Courts Pan-India.",
+      },
+      {
+        name: "keywords",
+        content:
+          "About Urmika Juris, Advocate Aashish Choudhary, Advocate Satish Chand, Advocate Durga Das, Advocate Krishan Kumar, Tis Hazari Court advocates, Delhi advocates, Supreme Court lawyers India",
       },
       { property: "og:title", content: "About Us | Urmika Juris & Associates" },
       {
         property: "og:description",
         content:
-          "Dedicated legal advocacy founded on Satyamev Jayate. Practicing before District Courts, High Courts across India, and the Supreme Court of India.",
+          "Dedicated legal advocacy founded on Satyamev Jayate. Advocates practicing before the Supreme Court of India, Delhi High Court & District Courts Pan-India.",
+      },
+      {
+        name: "twitter:title",
+        content: "About Us | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Advocates Aashish Choudhary, Satish Chand, Durga Das, and Krishan Kumar practicing before the Supreme Court of India, Delhi High Court & District Courts Pan-India.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/about" }],
@@ -136,7 +150,7 @@ function AboutPage() {
                           </div>
                         </div>
                         <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded bg-[#172B54] text-[#FEC556]">
-                          {adv.role === "Founder & Principal Advocate" ? "Principal" : adv.role}
+                          Advocate
                         </span>
                       </div>
                       <div className="text-[11px] font-medium text-gray-700 mt-1 flex items-start gap-1">

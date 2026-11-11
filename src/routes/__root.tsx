@@ -92,7 +92,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Urmika Juris & Associates — dedicated advocates practicing across India before District Courts, High Courts across India, and the Supreme Court of India. Criminal Defense, Family Law, Property Disputes, Corporate Advisory.",
+          "Urmika Juris & Associates — dedicated advocates practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India. Criminal Defense, Matrimonial, Property Disputes & Corporate Litigation.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Urmika Juris, Advocate Aashish Choudhary, Tis Hazari advocates, Supreme Court advocate Delhi, Delhi High Court lawyer, Allahabad High Court advocate, Indian law firm, criminal defense Delhi, property lawyer India",
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Urmika Juris & Associates" },

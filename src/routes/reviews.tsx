@@ -6,15 +6,34 @@ import { ShieldCheck, Scale, Award, HeartHandshake, Mail, MessageSquare } from "
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Client Feedback & Ethics Policy | Urmika Juris & Associates" },
+      { title: "Client Feedback & Ethics Policy | Urmika Juris & Associates — BCI Rule 36" },
       {
         name: "description",
         content:
-          "Our commitment to client confidentiality, ethical legal representation, and compliance with Bar Council of India Rule 36.",
+          "Read our professional conduct principles, client confidentiality safeguards under Section 132 BSA, and strict ethical compliance with Bar Council of India Rule 36.",
+      },
+      {
+        name: "keywords",
+        content:
+          "legal ethics Delhi, Bar Council of India Rule 36 compliance, client privilege India, Section 132 BSA, professional legal conduct, advocate standards Tis Hazari",
       },
       {
         property: "og:title",
-        content: "Client Feedback & Ethics Policy | Urmika Juris & Associates",
+        content: "Professional Conduct & Ethics Policy | Urmika Juris & Associates",
+      },
+      {
+        property: "og:description",
+        content:
+          "Firm commitments to ethical integrity, advocate-client privilege, and non-solicitation under Bar Council of India Rule 36.",
+      },
+      {
+        name: "twitter:title",
+        content: "Ethics & Professional Conduct | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Adherence to statutory advocate-client privilege and Bar Council of India professional standards.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/reviews" }],

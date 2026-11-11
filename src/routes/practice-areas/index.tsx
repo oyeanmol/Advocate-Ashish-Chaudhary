@@ -6,13 +6,23 @@ import { HowWeWorkSection } from "@/components/site/HowWeWorkSection";
 export const Route = createFileRoute("/practice-areas/")({
   head: () => ({
     meta: [
-      { title: "Our Legal Services | Urmika Juris & Associates" },
+      { title: "Our Legal Practice Areas | Urmika Juris & Associates" },
       {
         name: "description",
         content:
-          "Comprehensive legal representation across criminal, family, property, civil and corporate law before District Courts, High Courts across India, and the Supreme Court of India.",
+          "Comprehensive legal practice areas including criminal defense, matrimonial disputes, property suits, corporate compliance, and writ petitions across Indian courts.",
       },
-      { property: "og:title", content: "Our Legal Services | Urmika Juris & Associates" },
+      {
+        name: "keywords",
+        content:
+          "practice areas Urmika Juris, legal services Delhi, courtroom representation India, Tis Hazari advocates, High Court lawyers",
+      },
+      { property: "og:title", content: "Our Legal Practice Areas | Urmika Juris & Associates" },
+      {
+        property: "og:description",
+        content:
+          "Full spectrum of legal representation before District Courts, High Courts across India, and the Supreme Court of India.",
+      },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/practice-areas" }],
   }),

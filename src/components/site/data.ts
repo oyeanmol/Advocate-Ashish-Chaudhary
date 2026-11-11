@@ -25,8 +25,8 @@ import {
 
 /**
  * Verified details for Urmika Juris & Associates.
- * Founder & Principal Advocate: Advocate Aashish Choudhary
- * Senior Associates & Advocates: Satish Chand, Durga Das, Krishan Kumar
+ * Founder: Advocate Aashish Choudhary
+ * Practicing Advocates: Satish Chand, Durga Das, Krishan Kumar
  */
 export const FIRM = {
   name: "Urmika Juris & Associates",
@@ -36,7 +36,7 @@ export const FIRM = {
   founder: {
     name: "Aashish Choudhary",
     title: "Advocate Aashish Choudhary",
-    designation: "Founder & Principal Advocate",
+    designation: "Advocate",
     barCouncil: "Bar Council of Delhi",
     chambers: "Chamber 298A, Western Wing, Tis Hazari Courts, Delhi",
   },
@@ -44,26 +44,26 @@ export const FIRM = {
     {
       name: "Aashish Choudhary",
       designation: "Advocate",
-      role: "Founder & Principal Advocate",
+      role: "Advocate",
       forum: "Supreme Court of India, Delhi High Court & District Courts Pan-India",
     },
     {
       name: "Satish Chand",
       designation: "Advocate",
-      role: "Senior Advocate",
-      forum: "District Courts, High Courts Across India & Supreme Court",
+      role: "Advocate",
+      forum: "Supreme Court of India, Delhi High Court & District Courts Pan-India",
     },
     {
       name: "Durga Das",
       designation: "Advocate",
-      role: "Senior Advocate",
-      forum: "District & Sessions Courts Across India & High Courts",
+      role: "Advocate",
+      forum: "Supreme Court of India, Delhi High Court & District Courts Pan-India",
     },
     {
       name: "Krishan Kumar",
       designation: "Advocate",
-      role: "Senior Advocate",
-      forum: "Appellate Tribunals, High Courts Across India & District Courts",
+      role: "Advocate",
+      forum: "Supreme Court of India, Delhi High Court & District Courts Pan-India",
     },
   ],
   phone: "+91 88024 87291",

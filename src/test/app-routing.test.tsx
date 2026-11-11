@@ -90,6 +90,10 @@ describe("Urmika Juris Business Identity Verification", () => {
 
     for (const adv of FIRM.advocates) {
       expect(adv.designation).toBe("Advocate");
+      expect(adv.role).toBe("Advocate");
+      expect(adv.forum).toBe(
+        "Supreme Court of India, Delhi High Court & District Courts Pan-India",
+      );
     }
   });
 

@@ -13,17 +13,23 @@ export const Route = createFileRoute("/legal-services/$slug")({
   head: ({ params }) => {
     const service = findLegalService(params.slug);
     const title = service
-      ? `${service.emoji} ${service.title} Advocates | Urmika Juris & Associates — Tis Hazari, Delhi`
+      ? `${service.title} Advocates | Urmika Juris & Associates — Delhi`
       : "Legal Service | Urmika Juris & Associates";
     const desc = service
-      ? `${service.short}. Practicing before District Courts, High Courts across India, and the Supreme Court of India. Initial 30-minute consultation.`
-      : "Legal counsel by Urmika Juris & Associates.";
+      ? `${service.title} legal counsel: ${service.desc} Practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India.`
+      : "Experienced legal counsel and courtroom representation by Urmika Juris & Associates advocates.";
+    const keywords = service
+      ? `${service.title}, ${service.category}, ${service.title} Delhi, Tis Hazari ${service.title}, Supreme Court advocate, Delhi High Court lawyer, ${service.slug}`
+      : "lawyer Delhi, legal services, advocate Tis Hazari";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
+        { name: "keywords", content: keywords },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: desc },
       ],
       links: [{ rel: "canonical", href: `https://urmikajuris.com/legal-services/${params.slug}` }],
     };

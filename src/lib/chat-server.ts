@@ -207,11 +207,11 @@ export function getDeterministicChatReply(message: string): ChatResponse {
   ) {
     responseText =
       `Legal Advocacy Team at Urmika Juris & Associates:\n\n` +
-      `• Advocate Aashish Choudhary — Founder & Principal Advocate (Delhi Bar Council & Associates)\n` +
-      `• Satish Chand (Advocate) — Senior Advocate\n` +
-      `• Durga Das (Advocate) — Senior Advocate\n` +
-      `• Krishan Kumar (Advocate) — Senior Advocate\n\n` +
-      `Our advocates represent matters across District Courts, High Courts across India, the Supreme Court of India, and statutory appellate tribunals.`;
+      `• Advocate Aashish Choudhary — Advocate (Founder, Chamber 298A Tis Hazari Courts)\n` +
+      `• Advocate Satish Chand — Advocate\n` +
+      `• Advocate Durga Das — Advocate\n` +
+      `• Advocate Krishan Kumar — Advocate\n\n` +
+      `Our advocates represent matters across the Supreme Court of India, Delhi High Court & District Courts Pan-India.`;
   }
   // 10. Property, Real Estate & RERA
   else if (

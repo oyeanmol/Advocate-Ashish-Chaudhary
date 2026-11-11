@@ -13,13 +13,27 @@ export const Route = createFileRoute("/privacy-policy")({
       {
         name: "description",
         content:
-          "Privacy policy, DPDP Act 2023 disclosures, and confidentiality protections under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 Evidence Act) for Urmika Juris & Associates.",
+          "Privacy policy, DPDP Act 2023 disclosures, and statutory confidentiality protections under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 for Urmika Juris & Associates.",
+      },
+      {
+        name: "keywords",
+        content:
+          "privacy policy Urmika Juris, DPDP Act 2023 notice, Section 132 BSA privilege, legal confidentiality India, client data protection Delhi",
       },
       { property: "og:title", content: "Privacy Policy & Confidentiality | Urmika Juris & Associates" },
       {
         property: "og:description",
         content:
           "Privileged client confidentiality, statutory DPDP Act notice, and stateless data-flow practices of Urmika Juris & Associates.",
+      },
+      {
+        name: "twitter:title",
+        content: "Privacy Policy & DPDP Notice | Urmika Juris & Associates",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Advocate-client confidentiality safeguards under Section 132 BSA and DPDP Act 2023 compliance.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/privacy-policy" }],
