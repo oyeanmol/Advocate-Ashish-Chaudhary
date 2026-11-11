@@ -12,12 +12,27 @@ export const Route = createFileRoute("/legal-services/$slug")({
   },
   head: ({ params }) => {
     const service = findLegalService(params.slug);
-    const title = service
-      ? `${service.title} Advocates | Urmika Juris & Associates — Delhi`
+    let title = service
+      ? `${service.title} Delhi | Urmika Juris & Associates`
       : "Legal Service | Urmika Juris & Associates";
-    const desc = service
-      ? `${service.title} legal counsel: ${service.desc} Practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India.`
-      : "Experienced legal counsel and courtroom representation by Urmika Juris & Associates advocates.";
+    if (service && title.length > 60) {
+      title = `${service.title} | Urmika Juris & Associates`;
+    }
+
+    let desc = "Legal counsel and court representation by Urmika Juris & Associates advocates.";
+    if (service) {
+      desc = `${service.title} legal services: ${service.desc} Consult Urmika Juris advocates in Delhi.`;
+      if (desc.length > 160) {
+        desc = `${service.title}: ${service.desc} Consult Urmika Juris advocates in Delhi.`;
+      }
+      if (desc.length > 160) {
+        desc = `${service.desc} Consult Urmika Juris advocates in Delhi.`;
+      }
+      if (desc.length < 120) {
+        desc = `${service.title} legal counsel: ${service.desc} Consult Urmika Juris advocates at Tis Hazari Delhi.`;
+      }
+    }
+
     const keywords = service
       ? `${service.title}, ${service.category}, ${service.title} Delhi, Tis Hazari ${service.title}, Supreme Court advocate, Delhi High Court lawyer, ${service.slug}`
       : "lawyer Delhi, legal services, advocate Tis Hazari";
@@ -163,9 +178,9 @@ function LegalServiceDetailPage() {
             <div className="inline-block border-l-2 border-[#172B54] bg-white px-3 py-1 text-xs font-bold uppercase tracking-widest text-[#172B54]">
               Jurisdictional Benches
             </div>
-            <h3 className="mt-2 font-heading text-2xl font-bold text-[#172B54]">
+            <h2 className="mt-2 font-heading text-2xl font-bold text-[#172B54]">
               Forums Where We Appear for {service.title}
-            </h3>
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -217,7 +232,7 @@ function LegalServiceDetailPage() {
                   {step.num}
                 </div>
                 <div>
-                  <h4 className="font-heading text-base font-bold text-[#172B54]">{step.title}</h4>
+                  <h3 className="font-heading text-base font-bold text-[#172B54]">{step.title}</h3>
                   <p className="mt-1 text-xs text-gray-600 leading-relaxed">{step.desc}</p>
                 </div>
               </div>
@@ -234,9 +249,9 @@ function LegalServiceDetailPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-[#FEC556]">
                 Explore
               </span>
-              <h3 className="font-heading text-xl sm:text-2xl font-bold text-white">
+              <h2 className="font-heading text-xl sm:text-2xl font-bold text-white">
                 Other Legal Services
-              </h3>
+              </h2>
             </div>
             <Link
               to="/legal-services"

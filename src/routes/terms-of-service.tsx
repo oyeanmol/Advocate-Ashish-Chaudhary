@@ -6,31 +6,31 @@ import { ShieldAlert, Clock, Scale, FileText } from "lucide-react";
 export const Route = createFileRoute("/terms-of-service")({
   head: () => ({
     meta: [
-      { title: "Terms of Service & Consultation Norms | Urmika Juris & Associates" },
+      { title: "Terms of Service & Norms | Urmika Juris & Associates" },
       {
         name: "description",
         content:
-          "Official terms of service, initial 30-minute consultation protocols, professional fee conditions, and Bar Council of India Rule 36 disclaimers for Urmika Juris & Associates.",
+          "Terms of service, initial 30-minute consultation protocols, fee conditions, and Bar Council of India Rule 36 disclaimers for Urmika Juris & Associates.",
       },
       {
         name: "keywords",
         content:
           "terms of service Urmika Juris, consultation terms, advocate fee norms, Bar Council Rule 36 disclaimer, Tis Hazari legal terms",
       },
-      { property: "og:title", content: "Terms of Service & Consultation Norms | Urmika Juris & Associates" },
+      { property: "og:title", content: "Terms of Service & Norms | Urmika Juris & Associates" },
       {
         property: "og:description",
         content:
-          "Consultation standards, professional norms, and legal disclaimers for Chamber 298A Tis Hazari Courts, Delhi.",
+          "Terms of service, initial 30-minute consultation protocols, fee conditions, and Bar Council of India Rule 36 disclaimers for Urmika Juris & Associates.",
       },
       {
         name: "twitter:title",
-        content: "Terms of Service | Urmika Juris & Associates",
+        content: "Terms of Service & Norms | Urmika Juris & Associates",
       },
       {
         name: "twitter:description",
         content:
-          "Official terms governing website access, 30-minute consultation protocols, and Bar Council of India compliance.",
+          "Terms of service, initial 30-minute consultation protocols, fee conditions, and Bar Council of India Rule 36 disclaimers for Urmika Juris & Associates.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/terms-of-service" }],
@@ -54,7 +54,7 @@ function TermsOfServicePage() {
             <div className="rounded-2xl border-2 border-amber-300 bg-[#FEFBF3] p-8 shadow-sm">
               <div className="flex items-center gap-3 text-[#172B54] mb-3">
                 <Clock className="h-6 w-6 text-[#FEC556]" />
-                <h3 className="font-heading text-lg font-bold">Consultation Terms & Conditions</h3>
+                <h2 className="font-heading text-lg font-bold">Consultation Terms & Conditions</h2>
               </div>
               <blockquote className="border-l-4 border-[#FEC556] pl-4 text-sm font-medium italic text-gray-800 leading-relaxed">
                 "{FIRM.consultationTermsWording}"
@@ -68,10 +68,10 @@ function TermsOfServicePage() {
 
             {/* Section 1: Informational Purpose & BCI Disclaimer */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <Scale className="h-5 w-5 text-[#FEC556]" />
                 1. Bar Council of India Compliance (Rule 36)
-              </h3>
+              </h2>
               <p className="mt-2">
                 In compliance with the Advocates Act 1961 and Rule 36 of the Bar Council of India
                 Rules, this website is intended solely for informational purposes and should not be
@@ -88,10 +88,10 @@ function TermsOfServicePage() {
 
             {/* Section 2: Consultation Protocol */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <Clock className="h-5 w-5 text-[#FEC556]" />
                 2. 30-Minute Consultation Protocol
-              </h3>
+              </h2>
               <p className="mt-2">
                 All preliminary consultations are structured for up to 30 minutes. During this
                 session, the advocate will review documents and facts to assess procedural
@@ -103,10 +103,10 @@ function TermsOfServicePage() {
 
             {/* Section 3: No Warranty or Outcome Guarantee */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <ShieldAlert className="h-5 w-5 text-[#FEC556]" />
                 3. No Outcome Guarantees
-              </h3>
+              </h2>
               <p className="mt-2">
                 Legal proceedings are inherently subject to judicial discretion, statutory
                 interpretation, and the evidentiary merits of each individual matter. Urmika Juris &
@@ -117,10 +117,10 @@ function TermsOfServicePage() {
 
             {/* Section 4: Jurisdiction */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <FileText className="h-5 w-5 text-[#FEC556]" />
                 4. Governing Law & Jurisdiction
-              </h3>
+              </h2>
               <p className="mt-2">
                 These terms and any disputes relating to the usage of this website shall be governed
                 exclusively by the laws of India, and subject to the exclusive jurisdiction of the

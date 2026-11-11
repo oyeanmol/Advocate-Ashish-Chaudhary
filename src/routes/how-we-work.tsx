@@ -8,31 +8,31 @@ import { ShieldCheck, Phone, MapPin, CheckCircle2 } from "lucide-react";
 export const Route = createFileRoute("/how-we-work")({
   head: () => ({
     meta: [
-      { title: "How We Work | Urmika Juris & Associates — Structured Legal Methodology" },
+      { title: "How We Work | Urmika Juris & Associates — Legal Process" },
       {
         name: "description",
         content:
-          "Explore our disciplined 3-stage legal methodology: confidential document intake, structured 30-minute chamber advisory, and ethical courtroom litigation before Indian courts.",
+          "Discover our 3-stage legal methodology: confidential document intake, structured 30-minute chamber consultation, and disciplined courtroom litigation.",
       },
       {
         name: "keywords",
         content:
           "how lawyers work India, legal process Delhi, litigation methodology, lawyer consultation procedure, court filing stages, Urmika Juris process",
       },
-      { property: "og:title", content: "How We Work | Urmika Juris & Associates — 3-Stage Process" },
+      { property: "og:title", content: "How We Work | Urmika Juris & Associates — Legal Process" },
       {
         property: "og:description",
         content:
-          "Disciplined case analysis from preliminary confidential intake to structured consultation and decisive courtroom advocacy across District Courts, High Courts & Supreme Court.",
+          "Discover our 3-stage legal methodology: confidential document intake, structured 30-minute chamber consultation, and disciplined courtroom litigation.",
       },
       {
         name: "twitter:title",
-        content: "How We Work | Urmika Juris & Associates",
+        content: "How We Work | Urmika Juris & Associates — Legal Process",
       },
       {
         name: "twitter:description",
         content:
-          "A transparent 3-stage legal journey: confidential intake, structured 30-minute advisory, and disciplined courtroom litigation.",
+          "Discover our 3-stage legal methodology: confidential document intake, structured 30-minute chamber consultation, and disciplined courtroom litigation.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/how-we-work" }],
@@ -115,9 +115,9 @@ function HowWeWorkPage() {
               <div className="text-xs uppercase font-bold text-[#FEC556] tracking-wider">
                 Tis Hazari Courts Chamber 298A
               </div>
-              <h4 className="mt-1 font-heading text-xl sm:text-2xl font-bold">
+              <h3 className="mt-1 font-heading text-xl sm:text-2xl font-bold">
                 Ready to Schedule Your 30-Minute Consultation?
-              </h4>
+              </h3>
               <p className="mt-1 text-xs text-gray-300">
                 Review our consultation terms and connect directly with our advocates.
               </p>

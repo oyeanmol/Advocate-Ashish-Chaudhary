@@ -33,7 +33,7 @@ export function HowWeWorkSection({
       <div className="absolute inset-0 bg-[radial-gradient(var(--color-gold)_1px,transparent_1px)] [background-size:28px_28px] opacity-10 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {showHeading && (
+        {showHeading ? (
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               How Urmika Juris Works
@@ -44,6 +44,8 @@ export function HowWeWorkSection({
               representation across Delhi courts.
             </p>
           </div>
+        ) : (
+          <h2 className="sr-only">How Urmika Juris Works — Legal Process & Methodology</h2>
         )}
 
         {/* 2-Column Split Matching VakeelSaab Image 4 */}

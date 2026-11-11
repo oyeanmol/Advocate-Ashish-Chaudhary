@@ -36,13 +36,12 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title:
-          "Urmika Juris & Associates | Advocates Across India — Supreme Court, High Courts & District Courts",
+        title: "Urmika Juris & Associates | Advocates Across Courts in India",
       },
       {
         name: "description",
         content:
-          "Urmika Juris & Associates — Trusted advocates practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India with permanent chambers at Tis Hazari Courts, Delhi. Criminal Defense, Bail, Matrimonial & Divorce, Property Disputes, and Civil Litigation.",
+          "Urmika Juris & Associates: Dedicated advocates at Tis Hazari Courts Delhi practicing before Supreme Court, High Courts, and District Courts across India.",
       },
       {
         name: "keywords",
@@ -51,21 +50,21 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Urmika Juris & Associates | Advocates Across India",
+        content: "Urmika Juris & Associates | Advocates Across Courts in India",
       },
       {
         property: "og:description",
         content:
-          "Advocates Aashish Choudhary, Satish Chand, Durga Das, and Krishan Kumar representing clients before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India.",
+          "Urmika Juris & Associates: Dedicated advocates at Tis Hazari Courts Delhi practicing before Supreme Court, High Courts, and District Courts across India.",
       },
       {
         name: "twitter:title",
-        content: "Urmika Juris & Associates | Advocates Across India",
+        content: "Urmika Juris & Associates | Advocates Across Courts in India",
       },
       {
         name: "twitter:description",
         content:
-          "Trusted advocates practicing before the Supreme Court of India, Delhi High Court, Allahabad High Court & District Courts Pan-India. Chamber 298A Tis Hazari Courts.",
+          "Urmika Juris & Associates: Dedicated advocates at Tis Hazari Courts Delhi practicing before Supreme Court, High Courts, and District Courts across India.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/" }],
@@ -195,9 +194,9 @@ function IndexPage() {
                     <span>Tis Hazari Courts • Delhi</span>
                   </div>
 
-                  <h3 className="font-heading text-lg font-bold text-white tracking-tight">
+                  <h2 className="font-heading text-lg font-bold text-white tracking-tight">
                     Urmika Juris & Associates
-                  </h3>
+                  </h2>
                   <div className="text-xs text-gold font-serif italic mt-0.5">
                     Satyamev Jayate
                   </div>

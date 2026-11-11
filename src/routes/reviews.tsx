@@ -6,11 +6,11 @@ import { ShieldCheck, Scale, Award, HeartHandshake, Mail, MessageSquare } from "
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Client Feedback & Ethics Policy | Urmika Juris & Associates — BCI Rule 36" },
+      { title: "Professional Conduct & Ethics | Urmika Juris & Associates" },
       {
         name: "description",
         content:
-          "Read our professional conduct principles, client confidentiality safeguards under Section 132 BSA, and strict ethical compliance with Bar Council of India Rule 36.",
+          "Professional conduct standards, client confidentiality safeguards under Section 132 BSA, and Bar Council of India Rule 36 non-solicitation compliance.",
       },
       {
         name: "keywords",
@@ -19,21 +19,21 @@ export const Route = createFileRoute("/reviews")({
       },
       {
         property: "og:title",
-        content: "Professional Conduct & Ethics Policy | Urmika Juris & Associates",
+        content: "Professional Conduct & Ethics | Urmika Juris & Associates",
       },
       {
         property: "og:description",
         content:
-          "Firm commitments to ethical integrity, advocate-client privilege, and non-solicitation under Bar Council of India Rule 36.",
+          "Professional conduct standards, client confidentiality safeguards under Section 132 BSA, and Bar Council of India Rule 36 non-solicitation compliance.",
       },
       {
         name: "twitter:title",
-        content: "Ethics & Professional Conduct | Urmika Juris & Associates",
+        content: "Professional Conduct & Ethics | Urmika Juris & Associates",
       },
       {
         name: "twitter:description",
         content:
-          "Adherence to statutory advocate-client privilege and Bar Council of India professional standards.",
+          "Professional conduct standards, client confidentiality safeguards under Section 132 BSA, and Bar Council of India Rule 36 non-solicitation compliance.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/reviews" }],
@@ -59,9 +59,9 @@ export function ReviewsPage() {
                 <Scale className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-heading text-lg font-bold text-[#172B54]">
+                <h2 className="font-heading text-lg font-bold text-[#172B54]">
                   Compliance with Bar Council of India Rule 36
-                </h3>
+                </h2>
                 <p className="text-xs text-amber-800 font-semibold">
                   Standards of Professional Conduct and Etiquette
                 </p>
@@ -91,9 +91,9 @@ export function ReviewsPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EDF3FA] text-[#172B54] mb-3">
                 <ShieldCheck className="h-5 w-5" />
               </div>
-              <h4 className="font-heading text-base font-bold text-[#172B54]">
+              <h3 className="font-heading text-base font-bold text-[#172B54]">
                 Strict Confidentiality
-              </h4>
+              </h3>
               <p className="mt-2 text-xs text-gray-600 leading-relaxed">
                 Every conversation, factual disclosure, and legal document shared with our chamber
                 remains privileged under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 (formerly Section 126 Evidence Act).
@@ -104,9 +104,9 @@ export function ReviewsPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EDF3FA] text-[#172B54] mb-3">
                 <HeartHandshake className="h-5 w-5" />
               </div>
-              <h4 className="font-heading text-base font-bold text-[#172B54]">
+              <h3 className="font-heading text-base font-bold text-[#172B54]">
                 Honest Assessment of Merits
-              </h4>
+              </h3>
               <p className="mt-2 text-xs text-gray-600 leading-relaxed">
                 We provide unbiased legal opinions on the strengths and weaknesses of each matter,
                 never encouraging futile or unmerited litigation.
@@ -117,9 +117,9 @@ export function ReviewsPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EDF3FA] text-[#172B54] mb-3">
                 <Award className="h-5 w-5" />
               </div>
-              <h4 className="font-heading text-base font-bold text-[#172B54]">
+              <h3 className="font-heading text-base font-bold text-[#172B54]">
                 Transparent Professional Terms
-              </h4>
+              </h3>
               <p className="mt-2 text-xs text-gray-600 leading-relaxed">
                 Consultation and representation terms are discussed clearly upfront according to
                 applicable professional norms, with zero hidden costs.
@@ -130,9 +130,9 @@ export function ReviewsPage() {
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EDF3FA] text-[#172B54] mb-3">
                 <MessageSquare className="h-5 w-5" />
               </div>
-              <h4 className="font-heading text-base font-bold text-[#172B54]">
+              <h3 className="font-heading text-base font-bold text-[#172B54]">
                 Regular Procedural Updates
-              </h4>
+              </h3>
               <p className="mt-2 text-xs text-gray-600 leading-relaxed">
                 Clients receive prompt communication following court listings, order pronouncements,
                 and notice filings before Tis Hazari and Delhi benches.
@@ -142,7 +142,7 @@ export function ReviewsPage() {
 
           {/* Feedback Form / Channel */}
           <div className="mt-14 rounded-2xl bg-[#172B54] p-8 text-white text-center">
-            <h3 className="font-heading text-xl font-bold">Client Communication Channel</h3>
+            <h2 className="font-heading text-xl font-bold">Client Communication Channel</h2>
             <p className="mt-2 text-xs text-gray-300 max-w-lg mx-auto">
               If you are an existing client and wish to share confidential feedback or discuss
               matter progress, please write directly to our advocates.

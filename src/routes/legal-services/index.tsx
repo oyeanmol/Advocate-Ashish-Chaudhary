@@ -6,11 +6,11 @@ import { HowWeWorkSection } from "@/components/site/HowWeWorkSection";
 export const Route = createFileRoute("/legal-services/")({
   head: () => ({
     meta: [
-      { title: "Legal Services Directory | Urmika Juris & Associates — Delhi Advocates" },
+      { title: "Legal Services Directory | Urmika Juris & Associates" },
       {
         name: "description",
         content:
-          "Comprehensive legal directory across 19 practice domains including criminal defense, property disputes, divorce & family law, corporate advisory, and writ petitions before Indian courts.",
+          "Explore our directory of 19 legal practice areas from criminal defense and property disputes to corporate advisory across Delhi courts and tribunals.",
       },
       {
         name: "keywords",
@@ -21,7 +21,7 @@ export const Route = createFileRoute("/legal-services/")({
       {
         property: "og:description",
         content:
-          "Strategic legal counsel and courtroom representation across 19 specialized domains before District Courts, High Courts & Supreme Court of India.",
+          "Explore our directory of 19 legal practice areas from criminal defense and property disputes to corporate advisory across Delhi courts and tribunals.",
       },
       {
         name: "twitter:title",
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/legal-services/")({
       {
         name: "twitter:description",
         content:
-          "Full directory of 19 legal practice areas with experienced trial advocates at Chamber 298A Tis Hazari Courts.",
+          "Explore our directory of 19 legal practice areas from criminal defense and property disputes to corporate advisory across Delhi courts and tribunals.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/legal-services" }],

@@ -12,12 +12,26 @@ export const Route = createFileRoute("/practice-areas/$slug")({
   },
   head: ({ params }) => {
     const service = findLegalService(params.slug);
-    const title = service
-      ? `${service.title} Advocates | Urmika Juris & Associates`
+    let title = service
+      ? `${service.title} Delhi | Urmika Juris & Associates`
       : "Legal Service | Urmika Juris & Associates";
-    const desc = service
-      ? `${service.title} legal counsel: ${service.desc} Practicing before District Courts, High Courts across India, and Supreme Court.`
-      : "Legal services by Urmika Juris & Associates.";
+    if (service && title.length > 60) {
+      title = `${service.title} | Urmika Juris & Associates`;
+    }
+
+    let desc = "Legal counsel and court representation by Urmika Juris & Associates advocates.";
+    if (service) {
+      desc = `${service.title} legal services: ${service.desc} Consult Urmika Juris advocates in Delhi.`;
+      if (desc.length > 160) {
+        desc = `${service.title}: ${service.desc} Consult Urmika Juris advocates in Delhi.`;
+      }
+      if (desc.length > 160) {
+        desc = `${service.desc} Consult Urmika Juris advocates in Delhi.`;
+      }
+      if (desc.length < 120) {
+        desc = `${service.title} legal counsel: ${service.desc} Consult Urmika Juris advocates at Tis Hazari Delhi.`;
+      }
+    }
     return {
       meta: [
         { title },
