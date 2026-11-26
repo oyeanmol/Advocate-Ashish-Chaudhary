@@ -15,11 +15,8 @@ import {
 import court from "@/assets/court.jpg";
 import portrait from "@/assets/advocate-portrait.jpg";
 import urmikaOriginalLogo from "@/assets/urmika-original-logo.jpg";
-import courtTisHazari from "@/assets/courts/court-tis-hazari.jpg";
 import courtDelhiHighCourt from "@/assets/courts/court-delhi-high-court.jpg";
 import courtSupremeCourt from "@/assets/courts/court-supreme-court.jpg";
-import courtPatialaHouse from "@/assets/courts/court-patiala-house.jpg";
-import courtSaket from "@/assets/courts/court-saket.jpg";
 import courtAllahabadHighCourt from "@/assets/courts/court-allahabad-high-court.jpg";
 import { SiteShell } from "@/components/site/Layout";
 import { FIRM } from "@/components/site/data";
@@ -466,13 +463,12 @@ function IndexPage() {
             <div className="mx-auto mt-4 h-1 w-20 rounded bg-gold" />
             <p className="mt-4 text-base sm:text-lg text-gray-300 leading-relaxed">
               Our advocates maintain active presence and direct filing privileges across the Supreme
-              Court of India, State High Courts including Delhi High Court and Allahabad High Court,
-              Tis Hazari headquarters, and District Courts across India.
+              Court of India, High Court of Delhi, and Allahabad High Court.
             </p>
           </div>
 
-          {/* 6-Card Judicial Coverage Grid with Real Court Photos (Ordered Strictly by Judicial Hierarchy) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          {/* 3-Card Judicial Coverage Grid with Real Court Photos */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
             {[
               {
                 name: "Supreme Court of India",
@@ -494,27 +490,6 @@ function IndexPage() {
                 desc: "Civil appeals, criminal appeals, revision petitions, and constitutional writ petitions (Articles 226/227) before the High Court of Judicature at Allahabad.",
                 photo: courtAllahabadHighCourt,
                 badge: "High Court of Judicature",
-              },
-              {
-                name: "Tis Hazari District Courts",
-                jurisdiction: "Chamber 298A, Western Wing (Headquarters)",
-                desc: "Principal litigation chambers, trial court defense in Sessions & Civil Judge benches, NI Act complaints, and procedural trial coordination.",
-                photo: courtTisHazari,
-                badge: "Permanent Headquarters Chamber",
-              },
-              {
-                name: "Patiala House Courts",
-                jurisdiction: "India Gate / New Delhi Judicial District",
-                desc: "Special trial courts for economic offences, CBI courts, ED/PMLA proceedings, and commercial trial litigation before New Delhi district benches.",
-                photo: courtPatialaHouse,
-                badge: "Special Trial Benches",
-              },
-              {
-                name: "Saket District Courts & District Judiciary",
-                jurisdiction: "South & South-East Delhi & Associated Trial Benches",
-                desc: "Trial defense in criminal cases, commercial division disputes, family court custody/matrimonial matters, and motor accident claims.",
-                photo: courtSaket,
-                badge: "District & Sessions Courts",
               },
             ].map((courtItem) => (
               <div
