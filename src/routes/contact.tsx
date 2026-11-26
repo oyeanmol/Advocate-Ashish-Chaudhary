@@ -18,11 +18,11 @@ import { WhatsAppLogo } from "@/components/site/WhatsAppLogo";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Us | Urmika Juris & Associates — Chamber 298A Tis Hazari Courts" },
+      { title: "Contact Us | Urmika Juris & Associates — Tis Hazari Courts" },
       {
         name: "description",
         content:
-          "Contact Urmika Juris & Associates at Chamber 298A, Western Wing, Tis Hazari Courts, Delhi. Call +91 88024 87291 or WhatsApp for legal consultation before Supreme Court, High Court & District Courts.",
+          "Contact Urmika Juris & Associates at Chamber 298A Tis Hazari Courts, Delhi. Call +91 88024 87291 or WhatsApp to schedule a structured legal consultation.",
       },
       {
         name: "keywords",
@@ -33,16 +33,16 @@ export const Route = createFileRoute("/contact")({
       {
         property: "og:description",
         content:
-          "Chamber 298A, Western Wing, Tis Hazari Courts, Delhi – 110054. Direct Phone: +91 88024 87291. Book a structured 30-minute case consultation.",
+          "Contact Urmika Juris & Associates at Chamber 298A Tis Hazari Courts, Delhi. Call +91 88024 87291 or WhatsApp to schedule a structured legal consultation.",
       },
       {
         name: "twitter:title",
-        content: "Contact Us | Urmika Juris & Associates",
+        content: "Contact Us | Urmika Juris & Associates — Tis Hazari Courts",
       },
       {
         name: "twitter:description",
         content:
-          "Chamber 298A Tis Hazari Courts, Delhi. Phone: +91 88024 87291. Legal counsel across Supreme Court, High Courts and District Courts.",
+          "Contact Urmika Juris & Associates at Chamber 298A Tis Hazari Courts, Delhi. Call +91 88024 87291 or WhatsApp to schedule a structured legal consultation.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/contact" }],
@@ -309,10 +309,11 @@ function ContactPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="fullName" className="block text-xs font-bold text-gray-700 mb-1">
                           Full Name <span className="text-red-500">*</span>
                         </label>
                         <input
+                          id="fullName"
                           type="text"
                           required
                           value={fullName}
@@ -322,10 +323,11 @@ function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="mobile" className="block text-xs font-bold text-gray-700 mb-1">
                           Mobile Number <span className="text-red-500">*</span>
                         </label>
                         <input
+                          id="mobile"
                           type="tel"
                           required
                           value={mobile}
@@ -338,11 +340,12 @@ function ContactPage() {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="email" className="block text-xs font-bold text-gray-700 mb-1">
                           Email Address{" "}
                           <span className="text-xs text-gray-400 font-normal">(Optional)</span>
                         </label>
                         <input
+                          id="email"
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -351,10 +354,11 @@ function ContactPage() {
                         />
                       </div>
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="service" className="block text-xs font-bold text-gray-700 mb-1">
                           Legal Service Required <span className="text-red-500">*</span>
                         </label>
                         <select
+                          id="service"
                           required
                           value={service}
                           onChange={(e) => setService(e.target.value)}
@@ -371,10 +375,11 @@ function ContactPage() {
                     </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1">
+                      <label htmlFor="message" className="block text-xs font-bold text-gray-700 mb-1">
                         Brief Summary of Matter <span className="text-red-500">*</span>
                       </label>
                       <textarea
+                        id="message"
                         rows={4}
                         required
                         value={message}

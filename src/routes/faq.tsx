@@ -14,22 +14,22 @@ import { WhatsAppLogo } from "@/components/site/WhatsAppLogo";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "FAQ | Urmika Juris & Associates — Legal Consultation & Court Questions" },
+      { title: "FAQ | Urmika Juris & Associates — Legal Consultation Info" },
       {
         name: "description",
         content:
-          "Frequently asked questions on legal consultations, Tis Hazari chamber visits, court jurisdictions, consultation fee norms, and advocate representation at Urmika Juris & Associates.",
+          "Frequently asked questions about legal consultations, chamber visits at Tis Hazari Courts, fee norms, and court representation by Urmika Juris advocates.",
       },
       {
         name: "keywords",
         content:
           "legal FAQ Delhi, lawyer consultation questions, Tis Hazari Court chamber appointment, advocate fees Delhi, how to book consultation",
       },
-      { property: "og:title", content: "FAQ | Urmika Juris & Associates — Legal Consultation Questions" },
+      { property: "og:title", content: "FAQ | Urmika Juris & Associates — Legal Consultation Info" },
       {
         property: "og:description",
         content:
-          "Clear answers regarding consultation protocols, initial 30-minute advisory terms, court jurisdictions, and representation before Tis Hazari, High Court, and Supreme Court.",
+          "Frequently asked questions about legal consultations, chamber visits at Tis Hazari Courts, fee norms, and court representation by Urmika Juris advocates.",
       },
       {
         name: "twitter:title",
@@ -38,7 +38,7 @@ export const Route = createFileRoute("/faq")({
       {
         name: "twitter:description",
         content:
-          "Answers to legal consultation, chamber visit, and court representation questions at Urmika Juris & Associates.",
+          "Frequently asked questions about legal consultations, chamber visits at Tis Hazari Courts, fee norms, and court representation by Urmika Juris advocates.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/faq" }],

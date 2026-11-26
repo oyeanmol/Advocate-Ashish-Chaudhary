@@ -13,7 +13,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Learn about Urmika Juris & Associates — Advocates Aashish Choudhary, Satish Chand, Durga Das, and Krishan Kumar, practicing across the Supreme Court of India, Delhi High Court & District Courts Pan-India.",
+          "Learn about Urmika Juris & Associates advocates based at Tis Hazari Courts Delhi, representing clients before the Supreme Court, High Courts, and trials.",
       },
       {
         name: "keywords",
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/about")({
       {
         property: "og:description",
         content:
-          "Dedicated legal advocacy founded on Satyamev Jayate. Advocates practicing before the Supreme Court of India, Delhi High Court & District Courts Pan-India.",
+          "Learn about Urmika Juris & Associates advocates based at Tis Hazari Courts Delhi, representing clients before the Supreme Court, High Courts, and trials.",
       },
       {
         name: "twitter:title",
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "twitter:description",
         content:
-          "Advocates Aashish Choudhary, Satish Chand, Durga Das, and Krishan Kumar practicing before the Supreme Court of India, Delhi High Court & District Courts Pan-India.",
+          "Learn about Urmika Juris & Associates advocates based at Tis Hazari Courts Delhi, representing clients before the Supreme Court, High Courts, and trials.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/about" }],

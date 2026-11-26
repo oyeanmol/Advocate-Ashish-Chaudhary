@@ -7,24 +7,23 @@ export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
       {
-        title:
-          "Privacy Policy & DPDP Disclosures | Urmika Juris & Associates — Client Confidentiality",
+        title: "Privacy Policy & DPDP Notice | Urmika Juris & Associates",
       },
       {
         name: "description",
         content:
-          "Privacy policy, DPDP Act 2023 disclosures, and statutory confidentiality protections under Section 132 of the Bharatiya Sakshya Adhiniyam, 2023 for Urmika Juris & Associates.",
+          "Privacy policy, DPDP Act 2023 notice, and client confidentiality protections under Section 132 Bharatiya Sakshya Adhiniyam for Urmika Juris & Associates.",
       },
       {
         name: "keywords",
         content:
           "privacy policy Urmika Juris, DPDP Act 2023 notice, Section 132 BSA privilege, legal confidentiality India, client data protection Delhi",
       },
-      { property: "og:title", content: "Privacy Policy & Confidentiality | Urmika Juris & Associates" },
+      { property: "og:title", content: "Privacy Policy & DPDP Notice | Urmika Juris & Associates" },
       {
         property: "og:description",
         content:
-          "Privileged client confidentiality, statutory DPDP Act notice, and stateless data-flow practices of Urmika Juris & Associates.",
+          "Privacy policy, DPDP Act 2023 notice, and client confidentiality protections under Section 132 Bharatiya Sakshya Adhiniyam for Urmika Juris & Associates.",
       },
       {
         name: "twitter:title",
@@ -33,7 +32,7 @@ export const Route = createFileRoute("/privacy-policy")({
       {
         name: "twitter:description",
         content:
-          "Advocate-client confidentiality safeguards under Section 132 BSA and DPDP Act 2023 compliance.",
+          "Privacy policy, DPDP Act 2023 notice, and client confidentiality protections under Section 132 Bharatiya Sakshya Adhiniyam for Urmika Juris & Associates.",
       },
     ],
     links: [{ rel: "canonical", href: "https://urmikajuris.com/privacy-policy" }],
@@ -57,9 +56,9 @@ function PrivacyPolicyPage() {
             <div className="rounded-2xl border border-gray-200 bg-[#FEFBF3] p-8 shadow-sm">
               <div className="flex items-center gap-3 text-[#172B54] mb-3">
                 <Lock className="h-6 w-6 text-[#FEC556]" />
-                <h3 className="font-heading text-lg font-bold">
+                <h2 className="font-heading text-lg font-bold">
                   Statutory Advocate-Client Privilege
-                </h3>
+                </h2>
               </div>
               <p className="text-gray-800">
                 At Urmika Juris & Associates, client confidentiality is a non-negotiable professional
@@ -72,10 +71,10 @@ function PrivacyPolicyPage() {
 
             {/* Section 1: Data Fiduciary & Stateless Architecture */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <DatabaseZap className="h-5 w-5 text-[#FEC556]" />
                 1. Data Fiduciary Identity & Stateless Website Architecture
-              </h3>
+              </h2>
               <p className="mt-2">
                 The Data Fiduciary for this website is <strong>Urmika Juris & Associates</strong>,
                 headquartered at Chamber 298A, Western Wing, Tis Hazari Courts, Delhi – 110054.
@@ -91,10 +90,10 @@ function PrivacyPolicyPage() {
 
             {/* Section 2: Personal Data Collected */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <FileText className="h-5 w-5 text-[#FEC556]" />
                 2. Information Collected & Processing Notice
-              </h3>
+              </h2>
               <p className="mt-2">
                 When you initiate an enquiry or schedule a consultation, we receive only the information
                 necessary to assess preliminary forum jurisdiction and communicate with you:
@@ -109,10 +108,10 @@ function PrivacyPolicyPage() {
 
             {/* Section 3: Purposes of Processing & Consultation Terms */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <ShieldCheck className="h-5 w-5 text-[#FEC556]" />
                 3. Purpose of Processing & Consultation Norms
-              </h3>
+              </h2>
               <p className="mt-2">Information provided is utilized strictly for:</p>
               <ul className="mt-2 space-y-1.5 list-disc pl-5 text-gray-600">
                 <li>
@@ -134,10 +133,10 @@ function PrivacyPolicyPage() {
 
             {/* Section 4: Data Principal Rights under DPDP Act, 2023 */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <UserCheck className="h-5 w-5 text-[#FEC556]" />
                 4. Data Principal Rights under DPDP Act, 2023
-              </h3>
+              </h2>
               <p className="mt-2">
                 In compliance with the Digital Personal Data Protection Act, 2023, you hold the following rights:
               </p>
@@ -159,10 +158,10 @@ function PrivacyPolicyPage() {
 
             {/* Section 5: Automated Enquiry Engine Notice */}
             <div>
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <EyeOff className="h-5 w-5 text-[#FEC556]" />
                 5. Website Information Assistant Notice
-              </h3>
+              </h2>
               <p className="mt-2">
                 The enquiry assistant on this website is a deterministic navigation engine designed solely to guide
                 visitors toward appropriate practice areas and chamber contact points. It makes zero third-party AI
@@ -173,10 +172,10 @@ function PrivacyPolicyPage() {
 
             {/* Section 6: Grievance Redressal Officer */}
             <div className="border-t border-gray-200 pt-6">
-              <h3 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
+              <h2 className="font-heading text-lg font-bold text-[#172B54] flex items-center gap-2">
                 <HelpCircle className="h-5 w-5 text-[#FEC556]" />
                 6. Grievance Redressal & Chamber Contact
-              </h3>
+              </h2>
               <p className="mt-2 text-xs text-gray-600">
                 For any inquiries regarding data protection, statutory rights, or confidentiality, contact the
                 Chamber Grievance Point:

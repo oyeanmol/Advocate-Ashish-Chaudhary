@@ -263,10 +263,11 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                     {/* Full Name & Phone Number */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="modal_name" className="block text-xs font-bold text-gray-700 mb-1">
                           Full Name <span className="text-red-500">*</span>
                         </label>
                         <input
+                          id="modal_name"
                           type="text"
                           required
                           value={name}
@@ -277,10 +278,11 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="modal_phone" className="block text-xs font-bold text-gray-700 mb-1">
                           Mobile Number <span className="text-red-500">*</span>
                         </label>
                         <input
+                          id="modal_phone"
                           type="tel"
                           required
                           value={phone}
@@ -294,11 +296,12 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                     {/* Email (Optional) & Practice Area */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="modal_email" className="block text-xs font-bold text-gray-700 mb-1">
                           Email Address{" "}
                           <span className="text-[10px] text-gray-400 font-normal">(Optional)</span>
                         </label>
                         <input
+                          id="modal_email"
                           type="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
@@ -308,10 +311,11 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
                       </div>
 
                       <div>
-                        <label className="block text-xs font-bold text-gray-700 mb-1">
+                        <label htmlFor="modal_service" className="block text-xs font-bold text-gray-700 mb-1">
                           Legal Domain <span className="text-red-500">*</span>
                         </label>
                         <select
+                          id="modal_service"
                           value={service}
                           onChange={(e) => setService(e.target.value)}
                           className="w-full rounded border border-gray-300 bg-white px-3 py-2 text-xs text-gray-900 outline-none focus:border-[#172B54] focus:ring-1 focus:ring-[#172B54]"
@@ -352,13 +356,14 @@ export function ConsultationModalProvider({ children }: { children: ReactNode })
 
                     {/* Brief Query Notes */}
                     <div>
-                      <label className="block text-xs font-bold text-gray-700 mb-1">
+                      <label htmlFor="modal_notes" className="block text-xs font-bold text-gray-700 mb-1">
                         Brief Case Summary / Matter Overview{" "}
                         <span className="text-[10px] text-gray-400 font-normal">
                           (Confidential)
                         </span>
                       </label>
                       <textarea
+                        id="modal_notes"
                         rows={2}
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}

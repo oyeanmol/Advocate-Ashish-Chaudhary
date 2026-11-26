@@ -331,9 +331,9 @@ export function Footer() {
               <span className="text-xs font-bold uppercase tracking-widest text-gold">
                 Tis Hazari Courts & Delhi NCR
               </span>
-              <h3 className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-white">
+              <h2 className="mt-1 font-heading text-2xl md:text-3xl font-extrabold text-white">
                 Need Professional Legal Counsel?
-              </h3>
+              </h2>
             </div>
             <p className="mt-2 text-sm text-gray-300">
               Schedule an initial 30-minute structured case review with our advocates.
@@ -384,9 +384,9 @@ export function Footer() {
 
           {/* Column 2: Our Legal Services */}
           <div>
-            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-gold">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-gold">
               Our Legal Services
-            </h4>
+            </h3>
             <ul className="mt-4 space-y-2 text-xs text-gray-300">
               {LEGAL_SERVICES.map((s) => (
                 <li key={s.slug}>
@@ -404,9 +404,9 @@ export function Footer() {
 
           {/* Column 3: Quick Navigation */}
           <div>
-            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-gold">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-gold">
               Quick Links
-            </h4>
+            </h3>
             <ul className="mt-4 space-y-2 text-xs text-gray-300">
               {NAV.map((n) => (
                 <li key={n.to}>
@@ -430,9 +430,9 @@ export function Footer() {
 
           {/* Column 4: Chamber Coordinates */}
           <div>
-            <h4 className="font-heading text-sm font-bold uppercase tracking-wider text-gold">
+            <h3 className="font-heading text-sm font-bold uppercase tracking-wider text-gold">
               Chamber Coordinates
-            </h4>
+            </h3>
             <ul className="mt-4 space-y-3 text-xs text-gray-300">
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 shrink-0 text-gold mt-0.5" />
